@@ -20,7 +20,7 @@ belongs_to :word_point
 
 | Column              | Type       | Options                        |
 | --------------      | ---------- | ------------------------------ |
-| word                | string     | null: false                    |
+| name                | string     | null: false                    |
 | main_category_id    | integer    | null: false                    |
 | service_category_id | integer    | null: false                    | 
 | user                | references | null: false, foreign_key: true |
