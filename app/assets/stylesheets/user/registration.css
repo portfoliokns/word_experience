@@ -1,6 +1,4 @@
-body {
-  background-color: red;
-}
+/* editと共有しています */
 
 .registration-main {
   width: 100%;
@@ -165,5 +163,30 @@ body {
   margin: 30px 180px 0 0;
   color: #0099e8;
   text-align: right;
+  cursor: pointer;
+}
+
+.header-edit-title{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 25px;
+  color: #6c757d;
+}
+
+.header-delete-title{
+  text-align: center;
+  margin-top: 50px;
+  font-size: 25px;
+  color: #6c757d;
+}
+
+.delete-gray-btn {
+  width: 100%;
+  background: #dfcab3;
+  border: 1px solid #dfcab3;
+  border-radius: 10px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 20px;
   cursor: pointer;
 }
