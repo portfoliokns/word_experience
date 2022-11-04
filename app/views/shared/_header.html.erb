@@ -1,20 +1,21 @@
-  <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-
-      <a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        <div>Word Experience</div>
-      </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-4 link-secondary">お問合せ</a></li>
-        <li><a href="#" class="nav-link px-4 link-secondary">マニュアル</a></li>
-        <li><a href="#" class="nav-link px-4 link-secondary">About</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <%= link_to 'ログイン', user_session_path, class: "login" %>
-        <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-      </div>
-    </header>
+<div class="top-container">
+  <div>Word Experience</div>
+  
+  <div>
+    <ul class="links">
+      <li><a href="#" class="link">お問合せ</a></li>
+      <li><a href="#" class="link">マニュアル</a></li>
+      <li><a href="#" class="link">About</a></li>
+    </ul>
   </div>
+  
+  <div>
+    <% if user_signed_in? %>
+      <%= link_to current_user.nickname + "さん", "#", class: "user" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %>
+    <% else %>
+      <%= link_to 'ログイン', user_session_path, class: "login" %>
+      <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+    <% end %>
+  </div>
+</div>
