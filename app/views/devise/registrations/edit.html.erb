@@ -102,14 +102,14 @@
       <div class="header-delete-title">
         ユーザーアカウントの削除と退会
       </div>
-
-      <div class='register-btn'>
-        <%= button_to "ユーザーアカウントの削除",
-              registration_path(resource_name),
-              class:"delete-gray-btn",
-              data: { confirm: "あなたのアカウントを削除してもよろしいですか?削除した場合、このサイトから退会することとなります。" },
-              method: :delete %>
-      </div>
     <% end %>
+
+    <div class='register-btn'>
+      <%= button_to "ユーザーアカウントの削除",
+          registration_path(resource_name),
+          class:"delete-gray-btn",
+          data: { confirm: "あなたのアカウントを削除してもよろしいですか?削除した場合、このサイトから退会することとなります。" },
+          method: :delete %>
+    </div>
   </div>
 </div>
