@@ -22,8 +22,13 @@
         </button>
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <%= link_to '登録ページ', words_path, class: "link-dark rounded" %>
-            <%= link_to '登録済のワード一覧', new_word_path, class: "link-dark rounded" %>
+            <% if user_signed_in? %>
+              <%= link_to '登録ページ', new_user_word_path(current_user.id), class: "link-dark rounded" %>
+              <%= link_to '登録済のワード一覧', user_words_path(current_user.id), class: "link-dark rounded" %>
+            <% elsif %>
+              <%= link_to '登録ページ', user_session_path, class: "link-dark rounded" %>
+              <%= link_to '登録済のワード一覧', user_session_path, class: "link-dark rounded" %>
+            <% end %>
           </ul>
         </div>
       </li>

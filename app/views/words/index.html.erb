@@ -1,2 +1,19 @@
-<h1>Words#index</h1>
-<p>Find me in app/views/words/index.html.erb</p>
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <div class="side-bar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    ワード一覧ビュー
+    <br>
+    <%# <%= render partial: "words_list", locals: { words: @words } %> 
+    <% @words.each do |word| %>
+      <%= word.user.nickname %>
+      <%= word.name %>
+      <br>
+    <% end %>
+  </div>
+</div>
