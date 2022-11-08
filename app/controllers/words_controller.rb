@@ -18,10 +18,11 @@ class WordsController < ApplicationController
 
   def create
     @words = WordCollection.new()
-    @words.set_data(words_params)
     if @words.save_data(words_params)
-      redirect_to root_path
+      redirect_to user_words_path(current_user.id)
     else
+      @words = WordCollection.new()
+      @words.new_set_data
       render :new
     end
   end

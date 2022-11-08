@@ -20,7 +20,7 @@
 
     <%= form_with url: "#", method: :post, local: true do |form| %>
       <% @words.each do |word| %>
-        <%= form.text_field :name, readonly: true, value: word.name%>
+        <%= form.text_field :name, readonly: true, value: word.name %>
         <%= form.text_field :main_category_id, readonly: true, value: @main_category.find(word.main_category_id).name %>
         <%= form.text_field :service_category_id, readonly: true, value: @service_category.find(word.service_category_id).name %>
         <%# <%= form.hidden_field :edit_button, readonly: true, value: "編集" %>
