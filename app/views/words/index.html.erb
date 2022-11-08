@@ -11,12 +11,6 @@
       "ワード"一覧
     </h3>
     <br>
-    <%# <%= render partial: "words_list", locals: { words: @words } %> 
-    <%# <% @words.each do |word| %>
-      <%# <%= word.user.nickname %>
-      <%# <%= word.name %>
-      <%# <br> %>
-    <%# <% end %>
 
     <%= form_with url: "#", method: :post, local: true do |form| %>
       <% @words.each do |word| %>
