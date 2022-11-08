@@ -1,0 +1,31 @@
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <div class="side-bar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="">
+      "ワード"新規登録
+    </h3>
+
+    <%= form_with modele: @words, url: user_words_path, method: :post, local: true do |form| %>
+      <% @words.collection.each do |word| %>
+        <%= fields_for 'words[]', word do |field| %>
+          <div class="">
+            <%= field.text_field :name %>
+            <%= field.collection_select(:main_category_id, MainCategory.all, :id, :name, {}, {class:"", id:""}) %>
+            <%= field.collection_select(:service_category_id, ServiceCategory.all, :id, :name, {}, {class:"", id:""}) %>
+          </div>
+          <br>
+        <% end %>
+      <% end %>
+    <div class="">
+      <%= form.submit '投稿する' %>
+    </div>
+    <% end %>
+
+  </div>
+</div>

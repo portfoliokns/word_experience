@@ -1,0 +1,31 @@
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <div class="side-bar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="">
+      "ワード"一覧
+    </h3>
+    <br>
+    <%# <%= render partial: "words_list", locals: { words: @words } %> 
+    <%# <% @words.each do |word| %>
+      <%# <%= word.user.nickname %>
+      <%# <%= word.name %>
+      <%# <br> %>
+    <%# <% end %>
+
+    <%= form_with url: "#", method: :post, local: true do |form| %>
+      <% @words.each do |word| %>
+        <%= form.text_field :name, readonly: true, value: word.name %>
+        <%= form.text_field :main_category_id, readonly: true, value: @main_category.find(word.main_category_id).name %>
+        <%= form.text_field :service_category_id, readonly: true, value: @service_category.find(word.service_category_id).name %>
+        <%# <%= form.hidden_field :edit_button, readonly: true, value: "編集" %>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+</div>
