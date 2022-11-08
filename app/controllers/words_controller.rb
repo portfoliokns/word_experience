@@ -7,28 +7,33 @@ class WordsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @words = Word.where(user_id: current_user.id).order('created_at DESC')
+    @main_category = MainCategory.all
+    @service_category = ServiceCategory.all
   end
 
   def new
-    @word = Word.new
+    @words = WordCollection.new()
+    @words.new_set_data
+  end
+
+  def create
+    @words = WordCollection.new()
+    @words.set_data(words_params)
+    if @words.save_data(words_params)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
-  # def set_word
-  #   binding.pry
-  #   @word = Word.find(params[:item_id])
-  # end
-
-  # def move_to_toppage
-  #   binding.pry
-  #   redirect_to root_path if @word.user_id == current_user.id
-  # end
-
+  def words_params
+    return params.require(:words).map do |word|
+      word.permit(
+        :name,
+        :main_category_id,
+        :service_category_id
+      ).merge(user_id: current_user.id)
+    end
+  end
 end
-
-# @words = Word.where(user_id: current_user.id)
-    # binding.pry
-    # user = User.find(current_user.id)
-    # @words = Word.includes(:user)
-    # @user = User.where('id = ?',current_user.id)
-    # @words = Word.all.order('created_at DESC')
