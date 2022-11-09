@@ -1,0 +1,26 @@
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <div class="side-bar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="">
+      "ワード"編集
+    </h3>
+    <br>
+
+    <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), local: true) do |form| %>
+      <%= form.text_field :name, value: @word.name %>
+      <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"", id:""}) %>
+      <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"", id:""}) %>
+      <br>
+      <%= form.text_field :created_at, readonly: true, value: @word.created_at %>
+      <%= form.text_field :updated_at, readonly: true, value: @word.updated_at %>
+      <br>
+      <%= form.submit '保存',class:"" %>
+    <% end %>
+  </div>
+</div>
