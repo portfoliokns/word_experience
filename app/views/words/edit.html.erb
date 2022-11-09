@@ -13,6 +13,9 @@
     <br>
 
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), local: true) do |form| %>
+
+      <%= render 'shared/error_messages', model: form.object %>
+      
       <%= form.text_field :name, value: @word.name %>
       <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"", id:""}) %>
       <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"", id:""}) %>
