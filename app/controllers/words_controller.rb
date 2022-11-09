@@ -1,9 +1,9 @@
 class WordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update]
-  before_action :move_to_toppage, only: [:index, :new, :create, :edit, :update]
+  before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update, :destroy]
+  before_action :move_to_toppage, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_words_collection, only: [:new, :create]
-  before_action :set_word, only: [:edit, :update]
+  before_action :set_word, only: [:edit, :update, :destroy]
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
@@ -29,6 +29,14 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
+      redirect_to user_words_path(current_user.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @word.destroy
       redirect_to user_words_path(current_user.id)
     else
       render :edit
