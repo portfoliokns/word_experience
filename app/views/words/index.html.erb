@@ -7,17 +7,22 @@
     <%= render "shared/side_bar" %>
   </div>
   <div class="main_screen">
-    <h3 class="">
+    <h3 class="word_theme">
       "ワード"一覧
     </h3>
-    <br>
 
-    <%= form_with local: true do |form| %>
+    <div class="word_title_header">
+      <div class="word_title_header_name">ワードの名称</div>
+      <div class="word_title_header_main_category">カテゴリ</div>
+      <div class="word_title_header_service_category">サービス</div>
+    </div>
+
+    <%= form_with class: "word_list", local: true do |form| %>
       <% @words.each do |word| %>
-        <%= form.text_field :name, readonly: true, value: word.name, class: "" %>
-        <%= form.text_field :main_category_id, readonly: true, value: @main_category.find(word.main_category_id).name, class: "" %>
-        <%= form.text_field :service_category_id, readonly: true, value: @service_category.find(word.service_category_id).name, class: "" %>
-        <%= link_to '編集', edit_user_word_path(word.user_id,word), class: "" %>
+        <%= form.text_field :name, readonly: true, value: word.name, class: "word_name" %>
+        <%= form.text_field :main_category_id, readonly: true, value: @main_category.find(word.main_category_id).name, class: "word_main_category" %>
+        <%= form.text_field :service_category_id, readonly: true, value: @service_category.find(word.service_category_id).name, class: "word_service_category" %>
+        <%= link_to '編集', edit_user_word_path(word.user_id,word), class: "word_button_edit" %>
         <br>
       <% end %>
     <% end %>
