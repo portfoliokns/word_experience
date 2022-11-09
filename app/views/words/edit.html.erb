@@ -7,30 +7,33 @@
     <%= render "shared/side_bar" %>
   </div>
   <div class="main_screen">
-    <h3 class="">
+    <h3 class="word_theme">
       "ワード"編集
     </h3>
-    <br>
 
-    <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), local: true) do |form| %>
+    <div class="">
+    
+    </div>
+
+    <%= form_with(model: @word, url: user_word_path(@word.user_id, @word),class: "word_edit_list", local: true) do |form| %>
 
       <%= render 'shared/error_messages', model: form.object %>
 
-      <%= form.text_field :name, value: @word.name %>
-      <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"", id:""}) %>
-      <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"", id:""}) %>
-      <br>
-      <%= form.text_field :created_at, readonly: true, value: @word.created_at %>
-      <%= form.text_field :updated_at, readonly: true, value: @word.updated_at %>
-      <br>
-      <%= form.submit '保存',class:"", data: { confirm: "このワードを更新します。更新してもよろしいですか。" } %>
+      <label class="word_edit_title">ワードの名称</label>
+      <%= form.text_field :name, value: @word.name, class:"word_edit_field", maxlength: 30 %>
+      <label class="word_edit_title">カテゴリ</label>
+      <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"word_edit_field", id:""}) %>
+      <label class="word_edit_title">サービス</label>
+      <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"word_edit_field", id:""}) %>
+      <label class="word_edit_title">登録日時（編集不可）</label>
+      <%= form.text_field :created_at, readonly: true, value: l(@word.created_at), class:"word_edit_field" %>
+      <label class="word_edit_title">更新日時（編集不可）</label>
+      <%= form.text_field :updated_at, readonly: true, value: l(@word.updated_at), class:"word_edit_field" %>
+      <%= form.submit '保存',class:"word_edit_save_button", data: { confirm: "このワードを更新します。更新してもよろしいですか。" } %>
     <% end %>
 
-    <br>
-    <br>
-
-    <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), method: :delete, local: true) do |form| %>
-      <%= form.submit '削除',class:"", data: { confirm: "このワードを削除してもよろしいですか?削除した場合、他のユーザーもこのワードを確認できなくなります。" } %>
+    <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), class: "word_edit_delete", method: :delete, local: true) do |form| %>
+      <%= form.submit '削除',class: "word_edit_delete_button", data: { confirm: "このワードを削除してもよろしいですか?削除した場合、他のユーザーもこのワードを確認できなくなります。" } %>
     <% end %>
   </div>
 </div>
