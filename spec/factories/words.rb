@@ -1,7 +1,7 @@
 random = Random.new()
 FactoryBot.define do
   factory :word do
-    name_num = random.rand(3..30)
+    name_num = random.rand(4..30)
     main_category_max_id = 5
     service_category_max_id = 5
     name                  { Faker::Lorem.characters(number: name_num ) }
