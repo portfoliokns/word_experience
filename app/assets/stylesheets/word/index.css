@@ -14,22 +14,25 @@
   border-radius: 5px;
   padding: 8px;
   font-size: 15px;
+  color: #000000;
   border: solid 0.1px black;
   background-color: #FFFFFF;
   text-align: center;
+  cursor: copy;
 }
 
-.word_main_category{
+.word_category{
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
   font-size: 15px;
+  color: #6c757d;
   border: solid 0.1px black;
   background-color: #FFFFFF;
   text-align: center;
 }
 
-.word_service_category{
+.word_category{
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
@@ -72,20 +75,12 @@
   text-align: left;
 }
 
-.word_new_main_category{
+.word_new_category{
   border-radius: 5px;
   margin-left: 3px;
   padding: 10px;
   font-size: 15px;
-  border: solid 0.1px black;
-  text-align: center;
-}
-
-.word_new_service_category{
-  border-radius: 5px;
-  margin-left: 3px;
-  padding: 10px;
-  font-size: 15px;
+  color: #000000;
   border: solid 0.1px black;
   text-align: center;
 }
