@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :user
+  has_many :exchanged_words
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :main_category
   belongs_to :service_category
