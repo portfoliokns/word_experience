@@ -20,15 +20,15 @@
       <%= render 'shared/error_messages', model: form.object %>
 
       <label class="word_edit_title">ワードの名称</label>
-      <%= form.text_field :name, value: @word.name, class:"word_edit_field", maxlength: 30 %>
+      <%= form.text_field :name, value: @word.name, class:"word_edit_field", maxlength: 30, placeholder:"4文字以上、30文字以下" %>
       <label class="word_edit_title">カテゴリ</label>
       <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"word_edit_field", id:""}) %>
       <label class="word_edit_title">サービス</label>
       <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"word_edit_field", id:""}) %>
       <label class="word_edit_title">登録日時（編集不可）</label>
-      <%= form.text_field :created_at, readonly: true, value: @word.created_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
+      <%= form.text_field :created_at, readonly: true, disabled: true, value: @word.created_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
       <label class="word_edit_title">更新日時（編集不可）</label>
-      <%= form.text_field :updated_at, readonly: true, value: @word.updated_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
+      <%= form.text_field :updated_at, readonly: true, disabled: true, value: @word.updated_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
       <%= form.submit '保存',class:"word_edit_save_button", data: { confirm: "このワードを更新します。更新してもよろしいですか。" } %>
     <% end %>
 

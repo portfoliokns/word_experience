@@ -1,64 +1,48 @@
 .word_theme {
   color: #444444;
   text-align: center;
+  margin-bottom: 20px;
   font-size: 30px;
+  color: #6c757d;
 }
 
 .word_list{
   text-align: center;
 }
 
-.word_title_header{
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-  margin-top: 25px;
-}
-
-.word_title_header_name{
-  
-}
-
-.word_title_header_main_category{
-  margin-left: 80px;
-}
-
-.word_title_header_service_category{
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
 .word_name{
   border-radius: 5px;
-  margin-top: 7px;
-  padding: 3px;
+  padding: 8px;
   font-size: 15px;
   border: solid 0.1px black;
+  background-color: #FFFFFF;
+  text-align: center;
 }
 
 .word_main_category{
   border-radius: 5px;
-  margin-left: 3px;
-  margin-top: 7px;
-  padding: 3px;
+  padding: 8px;
+  margin-left: 5px;
   font-size: 15px;
   border: solid 0.1px black;
+  background-color: #FFFFFF;
+  text-align: center;
 }
 
 .word_service_category{
   border-radius: 5px;
-  margin-left: 3px;
-  margin-top: 7px;
-  padding: 3px;
+  padding: 8px;
+  margin-left: 5px;
   font-size: 15px;
   border: solid 0.1px black;
+  background-color: #FFFFFF;
+  text-align: center;
 }
 
 .word_button_edit{
   border-radius: 5px;
-  margin-left: 3px;
-  margin-top: 1px;
-  padding: 7px 20px;
+  padding: 8px 20px;
+  margin-left: 5px;
   font-size: 15px;
   background-color: rgb(52, 152, 219);
   color: #EEEEEE;
@@ -76,26 +60,6 @@
   text-align: center;
 }
 
-.word_new_title_header{
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-}
-
-.word_new_title_header_name{
-  
-}
-
-.word_new_title_header_main_category{
-  margin-left: 100px;
-}
-
-.word_new_title_header_service_category{
-  margin-left: 30px;
-  
-}
-
 .word_new_record{
   margin-bottom: 15px;
 }
@@ -103,31 +67,33 @@
 .word_new_name{
   border-radius: 5px;
   padding: 8px;
-  font-size: 16px;
+  font-size: 15px;
   border: solid 0.1px black;
+  text-align: left;
 }
 
 .word_new_main_category{
   border-radius: 5px;
   margin-left: 3px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   border: solid 0.1px black;
+  text-align: center;
 }
 
 .word_new_service_category{
   border-radius: 5px;
   margin-left: 3px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   border: solid 0.1px black;
+  text-align: center;
 }
 
 .word_new_button_save{
   border-radius: 5px;
   padding: 8px 32px;
-  margin-top: 10px;
-  font-size: 17px;
+  font-size: 15px;
   background-color: rgb(52, 152, 219);
   color: #EEEEEE;
   border: none;
@@ -147,16 +113,19 @@
 
 .word_edit_title{
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 15px;
+  color: #6c757d;
+  font-weight: 600;
 }
 
 .word_edit_field{
-  padding: 5px 10px;
-  margin-bottom: 15px;
-  font-size: 16px;
+  padding: 8px;
+  margin-bottom: 18px;
+  font-size: 15px;
   width: 300px;
   border: solid 0.1px black;
   border-radius: 5px;
+  text-align: center;
 }
 
 .word_edit_save_button{

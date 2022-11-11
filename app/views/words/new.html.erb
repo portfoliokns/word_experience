@@ -8,27 +8,22 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      "ワード"新規登録
+      "ワード" 新規登録
     </h3>
-
-    <div class="word_new_title_header">
-      <div class="word_new_title_header_name">ワードの名称</div>
-      <div class="word_new_title_header_main_category">カテゴリ</div>
-      <div class="word_new_title_header_service_category">サービス</div>
-    </div>
-
 
     <%= form_with class: "word_new_list", modele: @words, url: user_words_path, method: :post, local: true do |form| %>
       <% @words.collection.each do |word| %>
         <%= fields_for 'words[]', word do |field| %>
           <div class="word_new_record">
-            <%= field.text_field :name , class: "word_new_name", maxlength: 30 %>
-            <%= field.collection_select(:main_category_id, MainCategory.all, :id, :name, {}, {class:"word_new_main_category", id:""}) %>
+            <hr size="1" width="99%">
+            <%= field.text_field :name , class: "word_new_name", maxlength: 30, placeholder:"ワード(4文字以上、30文字以下)" %>
+            <%= field.collection_select(:main_category_id, MainCategory.all, :id, :name, {}, {class:"word_new_main_category", id:"", placeholder:"例)3"}) %>
             <%= field.collection_select(:service_category_id, ServiceCategory.all, :id, :name, {}, {class:"word_new_service_category", id:""}) %>
           </div>
         <% end %>
       <% end %>
-        <%= form.submit '登録',class:"word_new_button_save", data: { confirm: "このワードを登録します。更新してもよろしいですか。" } %>
+      <hr size="1" width="99%">
+      <%= form.submit '登録',class:"word_new_button_save", data: { confirm: "このワードを登録します。更新してもよろしいですか。" } %>
     <% end %>
 
   </div>
