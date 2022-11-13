@@ -4,7 +4,7 @@ class ExchangedWordsController < ApplicationController
   before_action :set_exchanged_words, only: [:index]
 
   def index
-    @exchanged_words = Word.where(user_id: current_user.id).order('updated_at DESC')
+    @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
     @main_category = MainCategory.all
     @service_category = ServiceCategory.all
   end
