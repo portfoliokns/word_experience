@@ -3,11 +3,10 @@ class WordsController < ApplicationController
   before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update, :destroy]
   before_action :set_words_collection, only: [:new, :create]
   before_action :set_word, only: [:edit, :update, :destroy]
+  before_action :set_category, only: [:index, :edit]
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
-    @main_category = MainCategory.all
-    @service_category = ServiceCategory.all
   end
 
   def new
@@ -74,5 +73,10 @@ class WordsController < ApplicationController
 
   def set_word
     @word = Word.find_by(user_id: params[:user_id],id: params[:id])
+  end
+
+  def set_category
+    @main_category = MainCategory.all
+    @service_category = ServiceCategory.all
   end
 end

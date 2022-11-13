@@ -1,16 +1,14 @@
 class ExchangedWordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_and_set_user, only: [:index,:new, :create]
-  before_action :set_exchanged_words, only: [:index]
+  before_action :check_and_set_user, only: [:index,:new, :create, :show]
+  before_action :set_exchanged_word, only: [:show]
+  before_action :set_category, only: [:index, :show]
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
-    @main_category = MainCategory.all
-    @service_category = ServiceCategory.all
   end
 
   def new
-    
   end
 
   def create
@@ -20,6 +18,9 @@ class ExchangedWordsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   private
@@ -49,7 +50,12 @@ class ExchangedWordsController < ApplicationController
     end
   end
 
-  def set_exchanged_words
-    @exchanged_words = Word.find_by(user_id: params[:user_id],id: params[:id])
+  def set_exchanged_word
+    @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], word_id: params[:id])
+  end
+
+  def set_category
+    @main_category = MainCategory.all
+    @service_category = ServiceCategory.all
   end
 end
