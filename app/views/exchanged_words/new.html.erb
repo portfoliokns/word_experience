@@ -12,10 +12,9 @@
     </h3>
     <%= form_with class: "", url: user_exchanged_words_path, method: :post, local: true do |form| %>
       <div class="">
-        交換したいワードの数を選択して、交換ボタンを押してください。（1〜5を選択してください）
+        交換ボタンを押してください。
       </div>
-      <%= form.number_field :num, value: 1 ,in: 1..5, class: "" %>
-      <%# <%= form.submit '交換',class:"word_new_button_save", data: { confirm: "ワードを交換します。よろしいですか？" } %> %>
+      <%# <%= form.number_field :num, value: 1 ,in: 1..5, class: "" %>
       <%= form.submit '交換',class:"word_new_button_save" %>
     <% end %>
     

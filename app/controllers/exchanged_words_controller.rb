@@ -10,8 +10,7 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    exchanged_word_params
-    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(2)
+    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(5)
     if save_exchanged_word_or_exchanged_words(words)
       redirect_to user_exchanged_words_path(current_user.id)
     else
@@ -20,10 +19,6 @@ class ExchangedWordsController < ApplicationController
   end
 
   private
-  def exchanged_word_params
-    aa = params.permit(:num)
-  end
-
   def save_exchanged_word_or_exchanged_words(words)
     is_success = true
     ActiveRecord::Base.transaction do
