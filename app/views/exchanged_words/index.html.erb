@@ -11,7 +11,7 @@
       "交換済ワード"一覧
     </h3>
     <%= form_with class: "word_list", local: true do |form| %>
-      <% @words.each do |word| %>
+      <% @exchanged_words.each do |word| %>
         <hr size="1" width="98%" noshade="">
         <%= form.text_field :name, readonly: true, size: 30, value: "交換済ワード", class: "word_name" %>
         <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(word.main_category_id).name, class: "word_category" %>

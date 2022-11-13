@@ -1,15 +1,16 @@
 class ExchangedWordsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_and_set_user, only: [:index,:new, :create]
+  before_action :set_exchanged_words, only: [:index]
 
   def index
-    @words = Word.where(user_id: current_user.id).order('updated_at DESC')
+    @exchanged_words = Word.where(user_id: current_user.id).order('updated_at DESC')
     @main_category = MainCategory.all
     @service_category = ServiceCategory.all
   end
 
   def new
-
+    
   end
 
   def create
@@ -27,7 +28,7 @@ class ExchangedWordsController < ApplicationController
     ActiveRecord::Base.transaction do
       words.each do |word|
         exchanged_word = ExchangedWord.new()
-        exchanged_word.user_id = word.user_id
+        exchanged_word.user_id = params[:user_id]
         exchanged_word.word_id = word.id
         is_success = false unless exchanged_word.save
       end
@@ -46,5 +47,9 @@ class ExchangedWordsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def set_exchanged_words
+    @exchanged_words = Word.find_by(user_id: params[:user_id],id: params[:id])
   end
 end
