@@ -41,7 +41,7 @@ has_many :evolutions
 
 ### アソシエーション
 belongs_to :user
-belongs_to :exchanged_word
+belongs_to :word
 has_many :evolutions
 
 ## evolutionsテーブル ： 評価テーブル

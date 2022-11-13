@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: "toppage#index"
   resources :users, only: [:index] do
     resources :words, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :exchanged_words, only: [:index, :new, :create, :show]
   end
 end

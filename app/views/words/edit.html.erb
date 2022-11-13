@@ -8,12 +8,8 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      "ワード"編集
+      "ワード" 編集
     </h3>
-
-    <div class="">
-    
-    </div>
 
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word),class: "word_edit_list", local: true) do |form| %>
 
@@ -22,9 +18,9 @@
       <label class="word_edit_title">ワードの名称</label>
       <%= form.text_field :name, value: @word.name, class:"word_edit_field", maxlength: 30, placeholder:"4文字以上、30文字以下" %>
       <label class="word_edit_title">カテゴリ</label>
-      <%= form.collection_select(:main_category_id, MainCategory.all, :id, :name, options ={selected: @word.main_category_id}, {class:"word_edit_field", id:""}) %>
+      <%= form.collection_select(:main_category_id, @main_category, :id, :name, options ={selected: @word.main_category_id}, {class:"word_edit_field", id:""}) %>
       <label class="word_edit_title">サービス</label>
-      <%= form.collection_select(:service_category_id, ServiceCategory.all, :id, :name, options ={selected: @word.service_category_id}, {class:"word_edit_field", id:""}) %>
+      <%= form.collection_select(:service_category_id, @service_category, :id, :name, options ={selected: @word.service_category_id}, {class:"word_edit_field", id:""}) %>
       <label class="word_edit_title">登録日時（編集不可）</label>
       <%= form.text_field :created_at, readonly: true, disabled: true, value: @word.created_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
       <label class="word_edit_title">更新日時（編集不可）</label>

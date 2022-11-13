@@ -1,0 +1,2 @@
+module ExchangedWordsHelper
+end

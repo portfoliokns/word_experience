@@ -1,0 +1,28 @@
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <div class="side-bar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="word_theme">
+      "ワード" 詳細
+    </h3>
+
+    <div class="exchanged_word_show_box">
+      <label class="exchanged_word_show_title">ワードの名称</label>
+      <%= text_field_tag :title, @exchanged_word.word.name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">カテゴリ</label>
+      <%= text_field_tag :title, @main_category.find(@exchanged_word.word.main_category_id).name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">サービス</label>
+      <%= text_field_tag :title, @service_category.find(@exchanged_word.word.service_category_id).name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">登録日時</label>
+      <%= text_field_tag :title, @exchanged_word.word.created_at.strftime('%Y/%m/%d %H:%M:%S'), readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">更新日時</label>
+      <%= text_field_tag :title, @exchanged_word.word.updated_at.strftime('%Y/%m/%d %H:%M:%S'), readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+    </div>
+
+  </div>
+</div>

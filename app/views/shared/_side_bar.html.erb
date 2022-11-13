@@ -10,8 +10,13 @@
         </button>
         <div class="collapse show" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">交換ページ</a></li>
-            <li><a href="#" class="link-dark rounded">交換済のワード一覧</a></li>
+            <% if user_signed_in? %>
+              <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "link-dark rounded" %>
+              <%= link_to '交換済のワード一覧', user_exchanged_words_path(current_user.id), class: "link-dark rounded" %>
+            <% elsif %>
+              <%= link_to '交換ページ', user_session_path, class: "link-dark rounded" %>
+              <%= link_to '交換済のワード一覧', user_session_path, class: "link-dark rounded" %>
+            <% end %>
           </ul>
         </div>
       </li>
