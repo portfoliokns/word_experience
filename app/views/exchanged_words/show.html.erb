@@ -12,10 +12,15 @@
     </h3>
 
     <div class="">
+      <label class="word_edit_title">ワードの名称</label>
       <%= @exchanged_word.word.name %>
+      <label class="word_edit_title">カテゴリ</label>
       <%= @main_category.find(@exchanged_word.word.main_category_id).name %>
+      <label class="word_edit_title">サービス</label>
       <%= @service_category.find(@exchanged_word.word.service_category_id).name %>
+      <label class="word_edit_title">登録日時（編集不可）</label>
       <%= @exchanged_word.word.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      <label class="word_edit_title">更新日時（編集不可）</label>
       <%= @exchanged_word.word.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
     </div>
 

@@ -8,12 +8,8 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      "ワード"編集
+      "ワード" 編集
     </h3>
-
-    <div class="">
-    
-    </div>
 
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word),class: "word_edit_list", local: true) do |form| %>
 
