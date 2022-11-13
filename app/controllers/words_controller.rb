@@ -1,7 +1,6 @@
 class WordsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update, :destroy]
-  before_action :move_to_toppage, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_words_collection, only: [:new, :create]
   before_action :set_word, only: [:edit, :update, :destroy]
 
@@ -63,13 +62,10 @@ class WordsController < ApplicationController
   def check_and_set_user
     if User.exists?(params[:user_id])
       @user = User.find(params[:user_id])
+      redirect_to root_path if @user.id != current_user.id
     else
       redirect_to root_path
     end
-  end
-
-  def move_to_toppage
-    redirect_to root_path if @user.id != current_user.id
   end
 
   def set_words_collection

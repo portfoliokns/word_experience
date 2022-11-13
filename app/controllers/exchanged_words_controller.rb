@@ -1,4 +1,7 @@
 class ExchangedWordsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_and_set_user, only: [:index,:new, :create]
+
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
     @main_category = MainCategory.all
@@ -34,5 +37,14 @@ class ExchangedWordsController < ApplicationController
     p 'transaction error'
   ensure
     return is_success
+  end
+
+  def check_and_set_user
+    if User.exists?(params[:user_id])
+      @user = User.find(params[:user_id])
+      redirect_to root_path if @user.id != current_user.id
+    else
+      redirect_to root_path
+    end
   end
 end
