@@ -111,15 +111,15 @@
 }
 
 .word_edit_title{
-  margin-bottom: 5px;
-  font-size: 15px;
+  margin-bottom: 6px;
+  font-size: 20px;
   color: #6c757d;
   font-weight: 600;
 }
 
 .word_edit_field{
   padding: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   font-size: 15px;
   width: 300px;
   border: solid 0.1px black;

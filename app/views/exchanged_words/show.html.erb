@@ -8,20 +8,20 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      "ワード"詳細
+      "ワード" 詳細
     </h3>
 
-    <div class="">
-      <label class="word_edit_title">ワードの名称</label>
-      <%= @exchanged_word.word.name %>
-      <label class="word_edit_title">カテゴリ</label>
-      <%= @main_category.find(@exchanged_word.word.main_category_id).name %>
-      <label class="word_edit_title">サービス</label>
-      <%= @service_category.find(@exchanged_word.word.service_category_id).name %>
-      <label class="word_edit_title">登録日時（編集不可）</label>
-      <%= @exchanged_word.word.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      <label class="word_edit_title">更新日時（編集不可）</label>
-      <%= @exchanged_word.word.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    <div class="exchanged_word_show_box">
+      <label class="exchanged_word_show_title">ワードの名称</label>
+      <%= text_field_tag :title, @exchanged_word.word.name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">カテゴリ</label>
+      <%= text_field_tag :title, @main_category.find(@exchanged_word.word.main_category_id).name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">サービス</label>
+      <%= text_field_tag :title, @service_category.find(@exchanged_word.word.service_category_id).name, readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">登録日時</label>
+      <%= text_field_tag :title, @exchanged_word.word.created_at.strftime('%Y/%m/%d %H:%M:%S'), readonly: true, disabled: true, class: "exchanged_word_show_field" %>
+      <label class="exchanged_word_show_title">更新日時</label>
+      <%= text_field_tag :title, @exchanged_word.word.updated_at.strftime('%Y/%m/%d %H:%M:%S'), readonly: true, disabled: true, class: "exchanged_word_show_field" %>
     </div>
 
   </div>

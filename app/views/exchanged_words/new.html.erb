@@ -10,12 +10,12 @@
     <h3 class="word_theme">
       "ワード"交換
     </h3>
-    <%= form_with class: "", url: user_exchanged_words_path, method: :post, local: true do |form| %>
-      <div class="">
+    <%= form_with class: "exchanged_word_new_box", url: user_exchanged_words_path, method: :post, local: true do |form| %>
+      <div class="exchanged_word_new_discribe">
         交換ボタンを押してください。
       </div>
       <%# <%= form.number_field :num, value: 1 ,in: 1..5, class: "" %>
-      <%= form.submit '交換',class:"word_new_button_save" %>
+      <%= form.submit '交換',class:"exchanged_word_new_button" %>
     <% end %>
     
   </div>
