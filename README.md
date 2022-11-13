@@ -16,7 +16,7 @@
 has_many :words
 has_many :exchanged_words
 has_many :evolutions
-belongs_to :word_point
+has_to :word_point
 
 ##  wordsテーブル ： ワードテーブル
 
