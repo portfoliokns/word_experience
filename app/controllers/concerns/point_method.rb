@@ -2,6 +2,7 @@ module PointMethod
   extend ActiveSupport::Concern
 
   def have_decrease_error?(requested_point)
+    check = true
     if WordPoint.exists?(user_id: current_user.id)
       now_point = WordPoint.find_by(user_id: current_user.id).point
       check = false if now_point >= requested_point
