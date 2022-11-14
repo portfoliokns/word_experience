@@ -4,6 +4,9 @@ class WordsController < ApplicationController
   before_action :set_words_collection, only: [:new, :create]
   before_action :set_word, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:index, :edit]
+  include PointMethod
+  before_action :check_requested_point_update, only:[:update]
+  before_action :check_requested_point_destroy, only:[:destroy]
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
@@ -15,6 +18,7 @@ class WordsController < ApplicationController
 
   def create
     if @words.save_data(words_params)
+      create_or_add_point
       redirect_to user_words_path(current_user.id)
     else
       @words.new_set_data
@@ -27,16 +31,20 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
+      decrease_point(ENV["WORD_POINT_UPDATE"].to_i)
       redirect_to user_words_path(current_user.id)
     else
+      set_category
       render :edit
     end
   end
 
   def destroy
     if @word.destroy
+      decrease_point(ENV["WORD_POINT_DESTROY"].to_i)
       redirect_to user_words_path(current_user.id)
     else
+      set_category
       render :edit
     end
   end
@@ -78,5 +86,29 @@ class WordsController < ApplicationController
   def set_category
     @main_category = MainCategory.all
     @service_category = ServiceCategory.all
+  end
+
+  def create_or_add_point
+    if WordPoint.exists?(user_id: current_user.id)
+      add_point(ENV["WORD_POINT_CREATE"].to_i)
+    else
+      create_point
+    end
+  end
+  
+  def check_requested_point_update
+    requested_point = ENV["WORD_POINT_UPDATE"].to_i
+    if have_decrease_error?(requested_point)
+      set_category
+      render :edit
+    end
+  end
+
+  def check_requested_point_destroy
+    requested_point = ENV["WORD_POINT_DESTROY"].to_i
+    if have_decrease_error?(requested_point)
+      set_category
+      render :edit
+    end
   end
 end
