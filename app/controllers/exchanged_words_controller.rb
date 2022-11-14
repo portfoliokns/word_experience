@@ -14,6 +14,7 @@ class ExchangedWordsController < ApplicationController
   def create
     words = Word.where.not(user_id: current_user.id).order("RAND()").limit(5)
     if save_exchanged_word_or_exchanged_words(words)
+      decrease_point(ENV["WORD_POINT_EXCHANGE"].to_i)
       redirect_to user_exchanged_words_path(current_user.id)
     else
       render :new
