@@ -4,6 +4,9 @@ class WordsController < ApplicationController
   before_action :set_words_collection, only: [:new, :create]
   before_action :set_word, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:index, :edit]
+  include PointMethod
+  before_action :check_requested_point_update, only:[:update]
+  before_action :check_requested_point_destroy, only:[:destroy]
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
@@ -90,5 +93,20 @@ class WordsController < ApplicationController
       create_point
     end
   end
+  
+  def check_requested_point_update
+    requested_point = ENV["WORD_POINT_UPDATE"].to_i
+    if have_decrease_error?(requested_point)
+      set_category
+      render :edit
+    end
+  end
 
+  def check_requested_point_destroy
+    requested_point = ENV["WORD_POINT_DESTROY"].to_i
+    if have_decrease_error?(requested_point)
+      set_category
+      render :edit
+    end
+  end
 end

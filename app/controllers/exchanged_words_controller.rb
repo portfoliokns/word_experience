@@ -3,6 +3,8 @@ class ExchangedWordsController < ApplicationController
   before_action :check_and_set_user, only: [:index,:new, :create, :show]
   before_action :set_exchanged_word, only: [:show]
   before_action :set_category, only: [:index, :show]
+  include PointMethod
+  before_action :check_requested_point, only:[:create]
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -12,9 +14,10 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(5)
+    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(3)
     if save_exchanged_word_or_exchanged_words(words)
-      decrease_point(ENV["WORD_POINT_EXCHANGE"].to_i)
+      requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
+      decrease_point(requested_point)
       redirect_to user_exchanged_words_path(current_user.id)
     else
       render :new
@@ -58,5 +61,10 @@ class ExchangedWordsController < ApplicationController
   def set_category
     @main_category = MainCategory.all
     @service_category = ServiceCategory.all
+  end
+
+  def check_requested_point
+    requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
+    render :new if have_decrease_error?(requested_point)
   end
 end
