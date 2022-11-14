@@ -34,6 +34,7 @@ class WordsController < ApplicationController
       decrease_point(ENV["WORD_POINT_UPDATE"].to_i)
       redirect_to user_words_path(current_user.id)
     else
+      set_category
       render :edit
     end
   end
@@ -43,6 +44,7 @@ class WordsController < ApplicationController
       decrease_point(ENV["WORD_POINT_DESTROY"].to_i)
       redirect_to user_words_path(current_user.id)
     else
+      set_category
       render :edit
     end
   end
