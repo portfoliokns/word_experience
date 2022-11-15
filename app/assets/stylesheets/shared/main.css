@@ -16,5 +16,24 @@
   background-color: #fcf5f3;
   margin-top: 20px;
   padding: 16px;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.word_board{
+  display:flex;
+  justify-content: center;
+}
+
+.word_board_text{
+  width: auto;
+  height: 80px;
+  padding: 8px 32px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: 1px double #efe2ce;
+  font-size: 13px;
+  color: #6c757d;
+  overflow: auto;
 }

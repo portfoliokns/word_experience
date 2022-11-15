@@ -12,11 +12,11 @@ module PointMethod
 
   def set_word_point_display
     if !user_signed_in?
-      @word_point = '一部編集'
+      @word_point = 'Login Please'
     elsif WordPoint.exists?(user_id: current_user.id)
       @word_point = WordPoint.find_by(user_id: current_user.id).point
     else
-      @word_point = '未登録'
+      @word_point = '0'
     end
   end
 

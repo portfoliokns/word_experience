@@ -11,6 +11,20 @@
       "ワード" 新規登録
     </h3>
 
+    <div class="word_board">
+      <div class="word_board_text">
+        登録時の注意点：
+        <br>
+        ・ワードは4文字以上、30文字以下で入力してください。
+        <br>
+        ・カテゴリとサービスはそれぞれ1つずつ選択してください。
+        <br>
+        ・登録をすると、"WordPoint"が 100ポイント 手に入ります。
+        <br>
+        ・現在、エラー表示等の機能は実装できていません。ご不便をおかけいたします。
+      </div>
+    </div>
+
     <%= form_with class: "word_new_list", modele: @words, url: user_words_path, method: :post, local: true do |form| %>
       <% @words.collection.each do |word| %>
         <%= fields_for 'words[]', word do |field| %>
