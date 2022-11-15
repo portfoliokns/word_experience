@@ -1,24 +1,36 @@
 .top-container{
   font-size: 18px;
   color: #6c757d;
-  margin: 10px;
-  padding: 10px;
+  margin: 0 10px 10px 10px;
+  padding: 0 10px 10px 10px;
   border-bottom: solid 1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.icon{
+  text-decoration: none;
+  padding: 8px 24px;
+  color: #327eef;
+  font-weight: 700;
+  font-size: 20px;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: coral;
+  margin-top: 20px;
 }
 
 .link {
   padding: 8px 24px;
-  margin-right: 30px;
+  margin-right: 10px;
+  text-decoration: none;
+  background-color: #efd7ba;
+  color: #6c757d;
+  border-radius: 10px;
 }
 
 .login {
@@ -42,9 +54,12 @@
 
 .user {
   padding: 8px 24px;
+  text-decoration: none;
   margin-right: 10px;
   color: #6c757d;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 20px;
+
 }
 
 .log-out {
