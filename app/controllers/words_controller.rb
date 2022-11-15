@@ -5,8 +5,8 @@ class WordsController < ApplicationController
   before_action :set_word, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:index, :edit]
   include PointMethod
-  before_action :check_requested_point_update, only:[:update]
-  before_action :check_requested_point_destroy, only:[:destroy]
+  # before_action :check_requested_point_update, only:[:update]
+  # before_action :check_requested_point_destroy, only:[:destroy] 
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
@@ -30,22 +30,28 @@ class WordsController < ApplicationController
   end
 
   def update
-    if @word.update(word_params)
-      decrease_point(ENV["WORD_POINT_UPDATE"].to_i)
-      redirect_to user_words_path(current_user.id)
-    else
-      set_category
-      render :edit
+    check = check_requested_point_update
+    if check == true
+      if @word.update(word_params)
+        decrease_point(ENV["WORD_POINT_UPDATE"].to_i)
+        redirect_to user_words_path(current_user.id)
+      else
+        set_category
+        render :edit
+      end
     end
   end
 
   def destroy
-    if @word.destroy
-      decrease_point(ENV["WORD_POINT_DESTROY"].to_i)
-      redirect_to user_words_path(current_user.id)
-    else
-      set_category
-      render :edit
+    check = check_requested_point_destroy
+    if check == true
+      if @word.destroy
+        decrease_point(ENV["WORD_POINT_DESTROY"].to_i)
+        redirect_to user_words_path(current_user.id)
+      else
+        set_category
+        render :edit
+      end
     end
   end
 
@@ -96,19 +102,39 @@ class WordsController < ApplicationController
     end
   end
   
+  # def check_requested_point_update
+  #   requested_point = ENV["WORD_POINT_UPDATE"].to_i
+  #   if have_decrease_error?(requested_point)
+  #     set_category
+  #     render :edit
+  #   end
+  # end
+
   def check_requested_point_update
+    check = true
     requested_point = ENV["WORD_POINT_UPDATE"].to_i
     if have_decrease_error?(requested_point)
       set_category
-      render :edit
+      check = false
     end
+    return check
   end
 
+  # def check_requested_point_destroy
+  #   requested_point = ENV["WORD_POINT_DESTROY"].to_i
+  #   if have_decrease_error?(requested_point)
+  #     set_category
+  #     render :edit
+  #   end
+  # end
+  
   def check_requested_point_destroy
+    check = true
     requested_point = ENV["WORD_POINT_DESTROY"].to_i
     if have_decrease_error?(requested_point)
       set_category
-      render :edit
+      check = false
     end
+    return check
   end
 end
