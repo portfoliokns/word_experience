@@ -16,7 +16,7 @@ module PointMethod
     elsif WordPoint.exists?(user_id: current_user.id)
       @word_point = WordPoint.find_by(user_id: current_user.id).point
     else
-      @word_point = '0'
+      @word_point = 'ワードポイントのデータが登録されていない'
     end
   end
 
