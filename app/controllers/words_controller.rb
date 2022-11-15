@@ -6,7 +6,7 @@ class WordsController < ApplicationController
   before_action :set_category, only: [:index, :edit]
   include PointMethod
   # before_action :check_requested_point_update, only:[:update]
-  # before_action :check_requested_point_destroy, only:[:destroy]
+  # before_action :check_requested_point_destroy, only:[:destroy] 
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
