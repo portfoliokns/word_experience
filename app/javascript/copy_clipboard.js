@@ -2,7 +2,7 @@ function copyToClipboard (tagValue) {
     try {
       navigator.clipboard.writeText(tagValue);
     } catch (error) {
-      alert('コピーに失敗しました');
+      alert('コピーに失敗しました(通信プロトコルがHTTPS(有料)ではなく、HTTPであるため、APIが機能しない状態です。)');
     }
 }
 
