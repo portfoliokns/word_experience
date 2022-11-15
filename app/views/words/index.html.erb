@@ -11,6 +11,18 @@
       "ワード" 一覧
     </h3>
 
+    <div class="word_board">
+      <div class="word_board_text">
+        ・編集、削除したい場合、そのワードの編集ページへ移動してください。
+        <br>
+        ・編集、削除には"WordPoint"が 50ポイント 必要です。
+        <br>
+        ・ワードをクリックすると、クリップボードにワードがコピーされます。
+        <br>
+        　※HTTPSの通信ではないので、コピー時にエラーが発生します。
+      </div>
+    </div>
+
     <%= form_with class: "word_list", local: true do |form| %>
       <% @words.each do |word| %>
         <hr size="1" width="98%" noshade="">

@@ -10,10 +10,18 @@
     <h3 class="word_theme">
       "ワード"交換
     </h3>
-    <%= form_with class: "exchanged_word_new_box", url: user_exchanged_words_path, method: :post, local: true do |form| %>
-      <div class="exchanged_word_new_discribe">
-        交換ボタンを押してください。
+
+    <div class="word_board">
+      <div class="word_board_text">
+        ・交換ボタンを押すことで、みんなが登録したワードをランダムに交換できます。
+        <br>
+        ・交換には"WordPoint"が 100ポイント 必要です。
+        <br>
+        ・現在、エラー表示等の機能は実装できていません。ご不便をおかけいたします。
       </div>
+    </div>
+
+    <%= form_with class: "exchanged_word_new_box", url: user_exchanged_words_path, method: :post, local: true do |form| %>
       <%# <%= form.number_field :num, value: 1 ,in: 1..5, class: "" %>
       <%= form.submit '交換',class:"exchanged_word_new_button" %>
     <% end %>

@@ -5,13 +5,10 @@
   align-items: center;
 }
 
-.exchanged_word_new_discribe{
-  margin-bottom: 15px;
-}
-
 .exchanged_word_new_button{
   border-radius: 5px;
   padding: 8px 20px;
+  margin-top: 15px;
   font-size: 15px;
   background-color: rgb(52, 152, 219);
   color: #EEEEEE;
