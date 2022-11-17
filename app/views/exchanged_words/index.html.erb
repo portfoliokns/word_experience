@@ -30,7 +30,7 @@
             <div class="reputation_counter">
               15
             </div>
-            <%= link_to  "", root_path, class:"reputation_link" %>
+            <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.word), method: :post,model: @good_reputations, class:"reputation_link" %>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: exchanged_word.word.name, class: "word_name" %>
           <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(exchanged_word.word.main_category_id).name, class: "word_category" %>

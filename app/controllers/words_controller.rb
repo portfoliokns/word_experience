@@ -1,4 +1,5 @@
 class WordsController < ApplicationController
+  include SetCategory
   before_action :authenticate_user!
   before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update, :destroy]
   before_action :set_words_collection, only: [:new, :create]
@@ -81,11 +82,6 @@ class WordsController < ApplicationController
 
   def set_word
     @word = Word.find_by(user_id: params[:user_id],id: params[:id])
-  end
-
-  def set_category
-    @main_category = MainCategory.all
-    @service_category = ServiceCategory.all
   end
 
   def create_or_add_point

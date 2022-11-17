@@ -1,4 +1,5 @@
 class ExchangedWordsController < ApplicationController
+  include SetCategory
   before_action :authenticate_user!
   before_action :check_and_set_user, only: [:index,:new, :create, :show]
   before_action :set_exchanged_word, only: [:show]
@@ -11,6 +12,7 @@ class ExchangedWordsController < ApplicationController
   end
 
   def new
+    @good_reputation = GoodReputation.new
   end
 
   def create
@@ -56,11 +58,6 @@ class ExchangedWordsController < ApplicationController
 
   def set_exchanged_word
     @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], word_id: params[:id])
-  end
-
-  def set_category
-    @main_category = MainCategory.all
-    @service_category = ServiceCategory.all
   end
 
   def check_requested_point

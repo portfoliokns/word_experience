@@ -1,3 +1,35 @@
+/* index */
+/* wordと共有 */
+.reputation{
+  position: relative;
+}
+
+.reputation_star{
+  -webkit-text-stroke:1px #f0d0d0;
+  font-size: 30px;
+  /* color: #eefe57; */
+  color: #e3e0df;
+}
+
+.reputation_counter{
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  padding: 4px;
+  font-size: 12px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.reputation_link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 45px;
+  width: 45px;
+}
+
+
 /* new */
 .exchanged_word_new_box{
   display: flex;
