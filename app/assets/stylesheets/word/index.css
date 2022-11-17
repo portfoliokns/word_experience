@@ -11,12 +11,43 @@
 /* exchanged_wordと共有 */
 
 .word_list{
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reputation{
+  font-size: 30px;
+  color: #eefe57;
+  position: relative;
+}
+
+.reputation_star{
+  -webkit-text-stroke:1px #f0d0d0;
+}
+
+.reputation_counter{
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  padding: 4px;
+  font-size: 12px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.reputation_link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 45px;
+  width: 45px;
 }
 
 .word_name{
   border-radius: 5px;
   padding: 8px;
+  margin-left: 20px;
   font-size: 15px;
   color: #000000;
   border: solid 0.1px black;
@@ -62,11 +93,14 @@
 
 /* new */
 .word_new_list{
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .word_new_record{
-  margin-bottom: 15px;
+
 }
 
 .word_new_name{
