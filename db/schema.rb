@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_13_144747) do
+ActiveRecord::Schema.define(version: 2022_11_17_053327) do
 
   create_table "exchanged_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2022_11_13_144747) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_exchanged_words_on_user_id"
     t.index ["word_id"], name: "index_exchanged_words_on_word_id"
+  end
+
+  create_table "good_reputations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "word_id", null: false
+    t.bigint "exchanged_word_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exchanged_word_id"], name: "index_good_reputations_on_exchanged_word_id"
+    t.index ["user_id"], name: "index_good_reputations_on_user_id"
+    t.index ["word_id"], name: "index_good_reputations_on_word_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -59,6 +70,9 @@ ActiveRecord::Schema.define(version: 2022_11_13_144747) do
 
   add_foreign_key "exchanged_words", "users"
   add_foreign_key "exchanged_words", "words"
+  add_foreign_key "good_reputations", "exchanged_words"
+  add_foreign_key "good_reputations", "users"
+  add_foreign_key "good_reputations", "words"
   add_foreign_key "word_points", "users"
   add_foreign_key "words", "users"
 end
