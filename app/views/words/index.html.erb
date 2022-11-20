@@ -32,7 +32,7 @@
               ★
             </div>
             <div class="reputation_counter">
-              15
+              <%= word.good_reputations.where(flag: true).count %>
             </div>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: word.name, class: "word_name" %>
