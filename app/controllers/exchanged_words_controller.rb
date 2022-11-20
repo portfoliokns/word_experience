@@ -8,6 +8,7 @@ class ExchangedWordsController < ApplicationController
   before_action :set_category, only: [:index, :show]
   include PointMethod
   before_action :check_requested_point, only:[:create]
+  WORD_NUM = 2
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -17,7 +18,7 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(3)
+    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(WORD_NUM)
     if save_exchanged_word_or_exchanged_words(words)
       requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
       decrease_point(requested_point)
