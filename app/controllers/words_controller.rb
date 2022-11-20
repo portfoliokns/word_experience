@@ -1,7 +1,9 @@
 class WordsController < ApplicationController
   include SetCategory
   before_action :authenticate_user!
-  before_action :check_and_set_user, only: [:index,:new, :create, :edit, :update, :destroy]
+  include CheckRedirector
+  before_action :check_user_id, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :check_word_id, only: [:edit, :update, :destroy]
   before_action :set_words_collection, only: [:new, :create]
   before_action :set_word, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:index, :edit]
@@ -65,15 +67,6 @@ class WordsController < ApplicationController
     return params.require(:word)
       .permit(:name, :main_category_id, :service_category_id)
       .merge(user_id: current_user.id)
-  end
-
-  def check_and_set_user
-    if User.exists?(params[:user_id])
-      @user = User.find(params[:user_id])
-      redirect_to root_path if @user.id != current_user.id
-    else
-      redirect_to root_path
-    end
   end
 
   def set_words_collection

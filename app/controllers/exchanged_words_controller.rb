@@ -1,7 +1,9 @@
 class ExchangedWordsController < ApplicationController
   include SetCategory
   before_action :authenticate_user!
-  before_action :check_and_set_user, only: [:index,:new, :create, :show]
+  include CheckRedirector
+  before_action :check_user_id, only: [:index,:new, :create, :show]
+  before_action :check_exchanged_word_id, only: [:show]
   before_action :set_exchanged_word, only: [:show]
   before_action :set_category, only: [:index, :show]
   include PointMethod
@@ -44,15 +46,6 @@ class ExchangedWordsController < ApplicationController
     p 'transaction error'
   ensure
     return is_success
-  end
-
-  def check_and_set_user
-    if User.exists?(params[:user_id])
-      @user = User.find(params[:user_id])
-      redirect_to root_path if @user.id != current_user.id
-    else
-      redirect_to root_path
-    end
   end
 
   def set_exchanged_word

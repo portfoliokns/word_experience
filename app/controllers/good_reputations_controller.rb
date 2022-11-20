@@ -1,5 +1,9 @@
 class GoodReputationsController < ApplicationController
   include SetCategory
+  before_action :authenticate_user!
+  include CheckRedirector
+  before_action :check_user_id, only: [:create]
+  before_action :check_exchanged_word_id_for_reputation, only: [:create]
 
   def create
     insert_or_change_good_reputation
