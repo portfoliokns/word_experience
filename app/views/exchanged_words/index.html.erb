@@ -24,9 +24,15 @@
         <hr size="1" width="98%" noshade="">
         <div class="word_list">
           <div class="reputation">
-            <div class="reputation_star">
-              ★
-            </div>
+            <% if exchanged_word.good_reputations.count == 0 %>
+              <div class="reputation_star">
+            <% elsif exchanged_word.good_reputations[0].flag %>
+              <div class="word_reputation_star">
+            <% else %>
+              <div class="reputation_star">
+            <% end %>
+                ★
+              </div>
             <div class="reputation_counter">
               <%= exchanged_word.word.good_reputations.where(flag: true).count %>
             </div>
