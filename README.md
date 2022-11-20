@@ -30,7 +30,7 @@ has_to :word_point
 ### アソシエーション
 belongs_to :user
 has_many :exchanged_words
-has_many :good_reputations
+<!-- has_many :good_reputations -->
 
 ## exchanged_words ： 交換済みのワードテーブル
 
@@ -42,7 +42,7 @@ has_many :good_reputations
 ### アソシエーション
 belongs_to :user
 belongs_to :word
-<!-- has_many :good_reputations -->
+has_many :good_reputations
 
 ## word_pointテーブル ： ワードポイントテーブル
 
@@ -60,7 +60,8 @@ belongs_to :user
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
 | word           | references | null: false, foreign_key: true |
-<!-- | exchanged_word | references | null: false, foreign_key: true | -->
+| exchanged_word | references | null: false, foreign_key: true |
+| flag | boolean | null: false |
 
 ### アソシエーション
 belongs_to :user

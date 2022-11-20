@@ -2,14 +2,8 @@ class GoodReputationsController < ApplicationController
   include SetCategory
 
   def create
-    exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], word_id: params[:exchanged_word_id])
-    binding.pry
-    good_reputaion = GoodReputation.new(good_reputaion_params)
-    binding.pry
-    good_reputaion.user_id = current_user.id
-    good_reputaion.word_id = exchanged_word.word_id
-    good_reputaion.exchanged_word_id = exchanged_word.id
-    if good_reputaion.save
+    insert_or_change_good_reputation
+    if @good_reputation.save
       redirect_to user_exchanged_words_path(current_user.id)
     else
       @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -19,10 +13,31 @@ class GoodReputationsController < ApplicationController
   end
 
   private
-  def good_reputaion_params
-    # binding.pry
-    # params.require(:good_reputation).permit(:word_id, :exchanged_word_id).merge(user_id: current_user.id)
-    # binding.pry
+  def insert_or_change_good_reputation
+    good_reputation_saved_count = GoodReputation.where(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id]).count
+    if good_reputation_saved_count == 0
+      @good_reputation = GoodReputation.new()
+      made_good_reputation
+    else
+      @good_reputation = GoodReputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
+      change_flag
+    end
+  end
+
+  def made_good_reputation
+    exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:exchanged_word_id])
+    @good_reputation.user_id = current_user.id
+    @good_reputation.word_id = exchanged_word.word_id
+    @good_reputation.exchanged_word_id = exchanged_word.id
+    @good_reputation.flag = true
+  end
+
+  def change_flag
+    if @good_reputation.flag == true
+      @good_reputation.flag = false
+    else
+      @good_reputation.flag = true
+    end
   end
 
 end

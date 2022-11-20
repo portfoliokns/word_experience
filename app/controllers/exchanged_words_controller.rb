@@ -12,7 +12,6 @@ class ExchangedWordsController < ApplicationController
   end
 
   def new
-    @good_reputation = GoodReputation.new
   end
 
   def create
@@ -57,7 +56,7 @@ class ExchangedWordsController < ApplicationController
   end
 
   def set_exchanged_word
-    @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], word_id: params[:id])
+    @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:id])
   end
 
   def check_requested_point

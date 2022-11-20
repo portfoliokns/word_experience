@@ -30,12 +30,12 @@
             <div class="reputation_counter">
               15
             </div>
-            <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.word), method: :post,model: @good_reputations, class:"reputation_link" %>
+            <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: exchanged_word.word.name, class: "word_name" %>
           <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(exchanged_word.word.main_category_id).name, class: "word_category" %>
           <%= form.text_field :service_category_id, readonly: true, disabled: true, size: 15, value: @service_category.find(exchanged_word.word.service_category_id).name, class: "word_category" %>
-          <%= link_to '詳細', user_exchanged_word_path(current_user.id,exchanged_word.word), class: "word_button_edit" %>
+          <%= link_to '詳細', user_exchanged_word_path(current_user.id,exchanged_word.id), class: "word_button_edit" %>
         </div>
       <% end %>
       <hr size="1" width="98%" noshade="">
