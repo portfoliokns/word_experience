@@ -61,7 +61,7 @@ belongs_to :user
 | user           | references | null: false, foreign_key: true |
 | word           | references | null: false, foreign_key: true |
 | exchanged_word | references | null: false, foreign_key: true |
-| flag | boolean | null: false |
+| star_flag      | boolean    | null: false |
 
 ### アソシエーション
 belongs_to :user

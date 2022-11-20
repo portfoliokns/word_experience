@@ -20,7 +20,7 @@ class GoodReputationsController < ApplicationController
       made_good_reputation
     else
       @good_reputation = GoodReputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
-      change_flag
+      change_reputation
     end
   end
 
@@ -29,14 +29,14 @@ class GoodReputationsController < ApplicationController
     @good_reputation.user_id = current_user.id
     @good_reputation.word_id = exchanged_word.word_id
     @good_reputation.exchanged_word_id = exchanged_word.id
-    @good_reputation.flag = true
+    @good_reputation.star_flag = true
   end
 
-  def change_flag
-    if @good_reputation.flag == true
-      @good_reputation.flag = false
+  def change_reputation
+    if @good_reputation.star_flag == true
+      @good_reputation.star_flag = false
     else
-      @good_reputation.flag = true
+      @good_reputation.star_flag = true
     end
   end
 

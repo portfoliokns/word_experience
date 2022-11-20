@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_053327) do
     t.bigint "user_id", null: false
     t.bigint "word_id", null: false
     t.bigint "exchanged_word_id", null: false
-    t.boolean "flag", null: false
+    t.boolean "star_flag", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exchanged_word_id"], name: "index_good_reputations_on_exchanged_word_id"

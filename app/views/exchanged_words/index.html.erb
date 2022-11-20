@@ -26,7 +26,7 @@
           <div class="reputation">
             <% if exchanged_word.good_reputations.count == 0 %>
               <div class="reputation_star">
-            <% elsif exchanged_word.good_reputations[0].flag %>
+            <% elsif exchanged_word.good_reputations[0].star_flag %>
               <div class="word_reputation_star">
             <% else %>
               <div class="reputation_star">
@@ -34,7 +34,7 @@
                 ★
               </div>
             <div class="reputation_counter">
-              <%= exchanged_word.word.good_reputations.where(flag: true).count %>
+              <%= exchanged_word.word.good_reputations.where(star_flag: true).count %>
             </div>
             <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
           </div>
