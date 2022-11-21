@@ -15,7 +15,7 @@
 ### アソシエーション
 has_many :words
 has_many :exchanged_words
-has_many :evolutions
+has_many :good_reputations
 has_to :word_point
 
 ##  wordsテーブル ： ワードテーブル
@@ -30,7 +30,7 @@ has_to :word_point
 ### アソシエーション
 belongs_to :user
 has_many :exchanged_words
-has_many :evolutions
+<!-- has_many :good_reputations -->
 
 ## exchanged_words ： 交換済みのワードテーブル
 
@@ -42,21 +42,7 @@ has_many :evolutions
 ### アソシエーション
 belongs_to :user
 belongs_to :word
-has_many :evolutions
-
-## evolutionsテーブル ： 評価テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| word           | references | null: false, foreign_key: true |
-| exchanged_word | references | null: false, foreign_key: true |
-
-### アソシエーション
-belongs_to :user
-belongs_to :word
-belongs_to :exchanged_word
-
+has_many :good_reputations
 
 ## word_pointテーブル ： ワードポイントテーブル
 
@@ -68,3 +54,16 @@ belongs_to :exchanged_word
 ### アソシエーション
 belongs_to :user
 
+## good_reputationsテーブル ： 高評価テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| word           | references | null: false, foreign_key: true |
+| exchanged_word | references | null: false, foreign_key: true |
+| star_flag      | boolean    | null: false |
+
+### アソシエーション
+belongs_to :user
+belongs_to :word
+<!-- belongs_to :exchanged_word -->

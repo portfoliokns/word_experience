@@ -19,7 +19,7 @@
         <br>
         ・カテゴリとサービスはそれぞれ1つずつ選択してください。
         <br>
-        ・登録をすると、"WordPoint"が 100ポイント 手に入ります。
+        ・登録をすると、"WordPoint"が 200ポイント 手に入ります。
         <br>
         ・現在、エラー表示等の機能は実装できていません。ご不便をおかけいたします。
       </div>
@@ -28,8 +28,8 @@
     <%= form_with class: "word_new_list", modele: @words, url: user_words_path, method: :post, local: true do |form| %>
       <% @words.collection.each do |word| %>
         <%= fields_for 'words[]', word do |field| %>
+          <hr size="1" width="99%">
           <div class="word_new_record">
-            <hr size="1" width="99%">
             <%= field.text_field :name , class: "word_new_name", maxlength: 30, placeholder:"ワード(4文字以上、30文字以下)" %>
             <%= field.collection_select(:main_category_id, MainCategory.all, :id, :name, {}, {class:"word_new_category", id:"", placeholder:"例)3"}) %>
             <%= field.collection_select(:service_category_id, ServiceCategory.all, :id, :name, {}, {class:"word_new_category", id:""}) %>

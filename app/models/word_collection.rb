@@ -4,7 +4,7 @@ class WordCollection
   extend ActiveModel::Translation
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-  WORD_NUM = 3
+  WORD_NUM = 4
   attr_accessor :collection
 
   def new_set_data

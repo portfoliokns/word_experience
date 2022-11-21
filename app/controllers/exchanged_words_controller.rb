@@ -1,10 +1,14 @@
 class ExchangedWordsController < ApplicationController
+  include SetCategory
   before_action :authenticate_user!
-  before_action :check_and_set_user, only: [:index,:new, :create, :show]
+  include CheckRedirector
+  before_action :check_user_id, only: [:index,:new, :create, :show]
+  before_action :check_exchanged_word_id, only: [:show]
   before_action :set_exchanged_word, only: [:show]
   before_action :set_category, only: [:index, :show]
   include PointMethod
   before_action :check_requested_point, only:[:create]
+  WORD_NUM = 2
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -14,11 +18,15 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(3)
-    if save_exchanged_word_or_exchanged_words(words)
-      requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
-      decrease_point(requested_point)
-      redirect_to user_exchanged_words_path(current_user.id)
+    words = Word.where.not(user_id: current_user.id).left_joins(:exchanged_words).where(exchanged_words: {id: nil}).order("RAND()").limit(WORD_NUM)
+    if words.count == WORD_NUM
+      if save_exchanged_word_or_exchanged_words(words)
+        requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
+        decrease_point(requested_point)
+        redirect_to user_exchanged_words_path(current_user.id)
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -45,22 +53,8 @@ class ExchangedWordsController < ApplicationController
     return is_success
   end
 
-  def check_and_set_user
-    if User.exists?(params[:user_id])
-      @user = User.find(params[:user_id])
-      redirect_to root_path if @user.id != current_user.id
-    else
-      redirect_to root_path
-    end
-  end
-
   def set_exchanged_word
-    @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], word_id: params[:id])
-  end
-
-  def set_category
-    @main_category = MainCategory.all
-    @service_category = ServiceCategory.all
+    @exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:id])
   end
 
   def check_requested_point

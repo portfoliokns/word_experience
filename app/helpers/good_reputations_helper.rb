@@ -1,0 +1,2 @@
+module GoodReputationsHelper
+end
