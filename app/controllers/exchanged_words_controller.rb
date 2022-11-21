@@ -18,11 +18,15 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    words = Word.where.not(user_id: current_user.id).order("RAND()").limit(WORD_NUM)
-    if save_exchanged_word_or_exchanged_words(words)
-      requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
-      decrease_point(requested_point)
-      redirect_to user_exchanged_words_path(current_user.id)
+    words = Word.where.not(user_id: current_user.id).left_joins(:exchanged_words).where(exchanged_words: {id: nil}).order("RAND()").limit(WORD_NUM)
+    if words.count == WORD_NUM
+      if save_exchanged_word_or_exchanged_words(words)
+        requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
+        decrease_point(requested_point)
+        redirect_to user_exchanged_words_path(current_user.id)
+      else
+        render :new
+      end
     else
       render :new
     end
