@@ -9,6 +9,7 @@ class ExchangedWordsController < ApplicationController
   include PointMethod
   before_action :check_requested_point, only:[:create]
   WORD_NUM = 2
+  RANDOM_SEED = 17
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -18,7 +19,7 @@ class ExchangedWordsController < ApplicationController
   end
 
   def create
-    words = Word.where.not(user_id: current_user.id).left_joins(:exchanged_words).where(exchanged_words: {id: nil}).order("RAND()").limit(WORD_NUM)
+    words = get_random_words
     if words.count == WORD_NUM
       if save_exchanged_word_or_exchanged_words(words)
         requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
@@ -36,6 +37,36 @@ class ExchangedWordsController < ApplicationController
   end
 
   private
+  def get_random_words
+    other_users_words = Word.where.not(user_id: current_user.id).to_a
+    delete_words = Word.joins(:exchanged_words).where(exchanged_words: {user_id: current_user.id})
+    
+    delete_words.each do |delete_word|
+      counter = 0
+      other_users_words.each do |other_users_word|
+        if other_users_word.id == delete_word.id
+          other_users_words.delete_at(counter)
+          break
+        end
+        counter += 1
+      end
+    end
+
+    RANDOM_SEED.times do
+      other_users_words = other_users_words.shuffle
+    end
+
+    counter = 0
+    random_words = []
+    WORD_NUM.times do
+      if other_users_words[counter] != nil
+        random_words.push(other_users_words[counter])
+      end
+      counter += 1
+    end
+    return random_words
+  end
+  
   def save_exchanged_word_or_exchanged_words(words)
     is_success = true
     ActiveRecord::Base.transaction do
