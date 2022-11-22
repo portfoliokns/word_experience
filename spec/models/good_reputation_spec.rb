@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe GoodReputation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    # @word = FactoryBot.build(:word)
+    sleep 0.01
+  end
+
+
 end
