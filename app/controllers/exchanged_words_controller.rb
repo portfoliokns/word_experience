@@ -9,6 +9,7 @@ class ExchangedWordsController < ApplicationController
   include PointMethod
   before_action :check_requested_point, only:[:create]
   WORD_NUM = 2
+  RANDOM_SEED = 17
 
   def index
     @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
@@ -51,7 +52,7 @@ class ExchangedWordsController < ApplicationController
       end
     end
 
-    17.times do
+    RANDOM_SEED.times do
       other_users_words = other_users_words.shuffle
     end
 
