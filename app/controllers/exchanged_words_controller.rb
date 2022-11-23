@@ -8,6 +8,7 @@ class ExchangedWordsController < ApplicationController
   before_action :set_category, only: [:index, :show]
   include PointMethod
   before_action :check_requested_point, only:[:create]
+  include ErrorMessageFlash
   before_action :reset_flash, only:[:new]
   WORD_NUM = 2
   RANDOM_SEED = 17
@@ -27,11 +28,11 @@ class ExchangedWordsController < ApplicationController
         decrease_point(requested_point)
         redirect_to user_exchanged_words_path(current_user.id)
       else
-        flash.now[:alert] = '交換に失敗しました。管理者にお問合せください。'
+        flash.now[:alert] = get_point_message(requested_point, "交換")
         render :new
       end
     else
-      flash[:alert] = '交換するワードがありません。他のユーザーがワードを登録するのをお待ちください。'
+      flash[:alert] = get_no_word_message()
       render :new
     end
   end
@@ -94,12 +95,9 @@ class ExchangedWordsController < ApplicationController
   def check_requested_point
     requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
     if have_decrease_error?(requested_point)
-      flash[:alert] = "ワードポイントが#{requested_point - @word_point}ポイント足りません。交換には#{requested_point}ポイントが必要です。"
+      flash[:alert] = get_point_message(requested_point, "交換")
       render :new 
     end
   end
 
-  def reset_flash
-    flash[:alert] = ''
-  end
 end
