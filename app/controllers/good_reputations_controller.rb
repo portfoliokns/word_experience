@@ -4,6 +4,8 @@ class GoodReputationsController < ApplicationController
   include CheckRedirector
   before_action :check_user_id, only: [:create]
   before_action :check_exchanged_word_id_for_reputation, only: [:create]
+  include ErrorMessageFlash
+  before_action :reset_flash, only: [:create]
 
   def create
     insert_or_change_good_reputation
@@ -12,6 +14,7 @@ class GoodReputationsController < ApplicationController
     else
       @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
       set_category
+      flash.now[:alert] = get_reputation_message_incident
       render 'exchanged_words/index'
     end
   end

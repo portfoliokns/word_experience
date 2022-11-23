@@ -11,7 +11,9 @@
       "ワード" 編集
     </h3>
 
-    <%= flash[:alert] %>
+    <div class="alert_message">
+      <%= flash[:alert] %>
+    </div>
 
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word),class: "word_edit_list", local: true) do |form| %>
 

@@ -20,8 +20,10 @@
         ・現在、エラー表示等の機能は実装できていません。ご不便をおかけいたします。
       </div>
     </div>
-
-    <%= flash[:alert] %>
+    
+    <div class="alert_message">
+      <%= flash[:alert] %>
+    </div>
 
     <%= form_with class: "exchanged_word_new_box", url: user_exchanged_words_path, method: :post, local: true do |form| %>
       <%= form.submit '交換',class:"exchanged_word_new_button" %>

@@ -32,7 +32,7 @@ class ExchangedWordsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = get_no_word_message()
+      flash.now[:alert] = get_no_word_message()
       render :new
     end
   end
@@ -95,7 +95,7 @@ class ExchangedWordsController < ApplicationController
   def check_requested_point
     requested_point = ENV["WORD_POINT_EXCHANGE"].to_i
     if have_decrease_error?(requested_point)
-      flash[:alert] = get_point_message(requested_point, "交換")
+      flash.now[:alert] = get_point_message(requested_point, "交換")
       render :new 
     end
   end

@@ -9,3 +9,10 @@
   list-style: disc;
   color: rgb(182, 48, 0);
 }
+
+.alert_message{
+  text-align: center;
+  font-size: 17px;
+  background-color: rgba(231, 93, 93, 0.4);
+  color: #222222;
+}

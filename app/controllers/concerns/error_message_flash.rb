@@ -25,6 +25,11 @@ module ErrorMessageFlash
     return text
   end
 
+  def get_reputation_message_incident
+    text = "評価登録の処理に失敗しました。管理者にお問合せください。"
+    return text
+  end
+
 end
 
 

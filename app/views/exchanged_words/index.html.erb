@@ -21,6 +21,10 @@
       </div>
     </div>
 
+    <div class="alert_message">
+      <%= flash[:alert] %>
+    </div>
+
     <%= form_with local: true do |form| %>
       <% @exchanged_words.each do |exchanged_word| %>
         <hr size="1" width="98%" noshade="">
