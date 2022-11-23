@@ -11,6 +11,12 @@ class WordCollection
     self.collection = WORD_NUM.times.map{ Word.new }
   end
 
+  def set_data(params)
+    self.collection = WORD_NUM.times.map do |n|
+      Word.new(params[n])
+    end
+  end
+
   def save_data(params)
     is_success = true
     ActiveRecord::Base.transaction do

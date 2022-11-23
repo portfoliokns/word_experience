@@ -22,11 +22,11 @@ class WordsController < ApplicationController
   end
 
   def create
-    if @words.save_data(words_params)
+    if @words.save_data(words_save_params)
       create_or_add_point
       redirect_to user_words_path(current_user.id)
     else
-      @words.new_set_data
+      @words.set_data(words_set_params)
       flash.now[:alert] = get_word_message("登録")
       render :new
     end
@@ -58,13 +58,23 @@ class WordsController < ApplicationController
   end
 
   private
-  def words_params
+  def words_save_params
     return params.require(:words).map do |word|
       word.permit(
         :name,
         :main_category_id,
         :service_category_id
       ).merge(user_id: current_user.id)
+    end
+  end
+
+  def words_set_params
+    return params.require(:words).map do |word|
+      word.permit(
+        :name,
+        :main_category_id,
+        :service_category_id
+      )
     end
   end
 
