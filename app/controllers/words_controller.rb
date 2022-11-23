@@ -11,7 +11,7 @@ class WordsController < ApplicationController
   before_action :check_requested_point_update, only:[:update]
   before_action :check_requested_point_destroy, only:[:destroy]
   include ErrorMessageFlash
-  before_action :reset_flash, only:[:create, :update, :destroy]
+  before_action :reset_flash
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')

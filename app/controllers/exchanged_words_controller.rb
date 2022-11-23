@@ -9,7 +9,7 @@ class ExchangedWordsController < ApplicationController
   include PointMethod
   before_action :check_requested_point, only:[:create]
   include ErrorMessageFlash
-  before_action :reset_flash, only:[:new]
+  before_action :reset_flash
   WORD_NUM = 2
   RANDOM_SEED = 17
 
@@ -28,7 +28,7 @@ class ExchangedWordsController < ApplicationController
         decrease_point(requested_point)
         redirect_to user_exchanged_words_path(current_user.id)
       else
-        flash.now[:alert] = get_point_message(requested_point, "交換")
+        flash.now[:alert] = get_word_message_incident(requested_point, "交換")
         render :new
       end
     else
