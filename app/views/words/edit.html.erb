@@ -11,6 +11,8 @@
       "ワード" 編集
     </h3>
 
+    <%= flash[:alert] %>
+
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word),class: "word_edit_list", local: true) do |form| %>
 
       <%= render 'shared/error_messages', model: form.object %>

@@ -10,6 +10,7 @@ class WordsController < ApplicationController
   include PointMethod
   before_action :check_requested_point_update, only:[:update]
   before_action :check_requested_point_destroy, only:[:destroy]
+  before_action :reset_flash, only:[:new]
 
   def index
     @words = Word.where(user_id: current_user.id).order('updated_at DESC')
@@ -25,6 +26,7 @@ class WordsController < ApplicationController
       redirect_to user_words_path(current_user.id)
     else
       @words.new_set_data
+      flash.now[:alert] = 'ワードの登録に失敗しました。登録済のワードと重複している、またはプルダウンを選択していない可能性があります。'
       render :new
     end
   end
@@ -38,6 +40,7 @@ class WordsController < ApplicationController
       redirect_to user_words_path(current_user.id)
     else
       set_category
+      flash.now[:alert] = 'ワードの更新に失敗しました。登録済のワードと重複している可能性があります。'
       render :edit
     end
   end
@@ -48,6 +51,7 @@ class WordsController < ApplicationController
       redirect_to user_words_path(current_user.id)
     else
       set_category
+      flash.now[:alert] = 'ワードの削除に失敗しました。管理者にお問合せください。'
       render :edit
     end
   end
@@ -89,6 +93,7 @@ class WordsController < ApplicationController
     requested_point = ENV["WORD_POINT_UPDATE"].to_i
     if have_decrease_error?(requested_point)
       set_category
+      flash[:alert] = "ワードポイントが#{requested_point - @word_point}ポイント足りません。更新には#{requested_point}ポイントが必要です。"
       render :edit
     end
   end
@@ -97,7 +102,12 @@ class WordsController < ApplicationController
     requested_point = ENV["WORD_POINT_DESTROY"].to_i
     if have_decrease_error?(requested_point)
       set_category
+      flash[:alert] = "ワードポイントが#{requested_point - @word_point}ポイント足りません。削除には#{requested_point}ポイントが必要です。"
       render :edit
     end
+  end
+
+  def reset_flash
+    flash[:alert] = ''
   end
 end

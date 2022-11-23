@@ -25,6 +25,8 @@
       </div>
     </div>
 
+    <%= flash[:alert] %>
+
     <%= form_with class: "word_new_list", modele: @words, url: user_words_path, method: :post, local: true do |form| %>
       <% @words.collection.each do |word| %>
         <%= fields_for 'words[]', word do |field| %>
