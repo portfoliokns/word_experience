@@ -7,22 +7,22 @@ module PointMethod
       now_point = WordPoint.find_by(user_id: current_user.id).point
       check = false if now_point >= requested_point
     end
-    return check
+    check
   end
 
   def set_word_point_display
-    if !user_signed_in?
-      @word_point = 'Login Please'
-    elsif WordPoint.exists?(user_id: current_user.id)
-      @word_point = WordPoint.find_by(user_id: current_user.id).point
-    else
-      @word_point = '0'
-    end
+    @word_point = if !user_signed_in?
+                    'Login Please'
+                  elsif WordPoint.exists?(user_id: current_user.id)
+                    WordPoint.find_by(user_id: current_user.id).point
+                  else
+                    '0'
+                  end
   end
 
   def create_point
     word_point = WordPoint.new
-    word_point.point = ENV["WORD_POINT_CREATE"].to_i
+    word_point.point = ENV['WORD_POINT_CREATE'].to_i
     word_point.user_id = current_user.id
     word_point.save
   end
@@ -40,8 +40,8 @@ module PointMethod
   end
 
   private
+
   def set_word_point
     @word_point = WordPoint.find_by(user_id: current_user.id)
   end
-
 end

@@ -21,5 +21,4 @@ module CheckRedirector
   def check_exchanged_word_id_for_reputation
     redirect_to root_path unless ExchangedWord.exists?(user_id: params[:user_id], id: params[:exchanged_word_id])
   end
-  
 end

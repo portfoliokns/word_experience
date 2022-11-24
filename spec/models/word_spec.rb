@@ -20,7 +20,7 @@ RSpec.describe Word, type: :model do
       end
     end
 
-    context "登録できない場合" do
+    context '登録できない場合' do
       it '名称が空である' do
         @word.name = ''
         @word.valid?
@@ -30,13 +30,13 @@ RSpec.describe Word, type: :model do
       it '名称が3文字以下である' do
         @word.name = 'あいう'
         @word.valid?
-        expect(@word.errors.full_messages).to include("Name is too short (minimum is 4 characters)")
+        expect(@word.errors.full_messages).to include('Name is too short (minimum is 4 characters)')
       end
 
       it '名称が31文字以上である' do
         @word.name = Faker::Lorem.characters(number: 31)
         @word.valid?
-        expect(@word.errors.full_messages).to include("Name is too long (maximum is 30 characters)")
+        expect(@word.errors.full_messages).to include('Name is too long (maximum is 30 characters)')
       end
 
       it 'ユーザーが先に名称を登録していて、同じ名称である' do
@@ -45,7 +45,7 @@ RSpec.describe Word, type: :model do
         @next_word.user_id = @word.user_id
         @next_word.name = @word.name
         @next_word.valid?
-        expect(@next_word.errors.full_messages).to include("Name has already been taken")
+        expect(@next_word.errors.full_messages).to include('Name has already been taken')
       end
 
       it 'メインカテゴリーが空(---)である' do

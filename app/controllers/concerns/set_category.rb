@@ -5,5 +5,4 @@ module SetCategory
     @main_category = MainCategory.all
     @service_category = ServiceCategory.all
   end
-
 end
