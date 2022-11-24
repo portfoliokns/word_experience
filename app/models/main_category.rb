@@ -15,7 +15,8 @@ class MainCategory < ActiveHash::Base
     { id: 13, name: 'ハウツーとスタイル' },
     { id: 14, name: '教育' },
     { id: 15, name: '科学と技術' },
-    { id: 16, name: '非営利団体と社会活動' }
+    { id: 16, name: '非営利団体と社会活動' },
+    { id: 99999, name: 'その他' }
   ]
 
   include ActiveHash::Associations
