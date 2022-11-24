@@ -11,7 +11,7 @@ module ErrorMessageFlash
   end
 
   def get_word_message(action_name)
-    text = "ワードの#{action_name}に失敗しました。"
+    text = "ワードの#{action_name}に失敗しました。入力に誤りがあります。"
     return text
   end
 

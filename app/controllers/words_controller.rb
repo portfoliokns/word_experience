@@ -92,6 +92,13 @@ class WordsController < ApplicationController
     @word = Word.find_by(user_id: params[:user_id],id: params[:id])
   end
 
+  def re_set_word
+    writting_word = Word.new(params.require(:word).permit(:name, :main_category_id, :service_category_id))
+    @word.name = writting_word.name
+    @word.main_category_id = writting_word.main_category_id
+    @word.service_category_id = writting_word.service_category_id
+  end
+
   def create_or_add_point
     if WordPoint.exists?(user_id: current_user.id)
       add_point(ENV["WORD_POINT_CREATE"].to_i)
@@ -104,6 +111,7 @@ class WordsController < ApplicationController
     requested_point = ENV["WORD_POINT_UPDATE"].to_i
     if have_decrease_error?(requested_point)
       set_category
+      re_set_word
       flash[:alert] = get_point_message(requested_point, "更新")
       render :edit
     end

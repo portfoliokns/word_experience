@@ -29,7 +29,8 @@
       <%= flash[:alert] %>
     </div>
 
-    <%= form_with class: "word_new_list", modele: @words, url: user_words_path, method: :post, local: true do |form| %>
+    <%= form_with class: "word_new_list", model: @words, url: user_words_path, method: :post, local: true do |form| %>
+      <%= render 'shared/error_messages', model: form.object %>
       <% @words.collection.each do |word| %>
         <%= fields_for 'words[]', word do |field| %>
           <hr size="1" width="99%">
