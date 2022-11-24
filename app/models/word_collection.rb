@@ -8,7 +8,7 @@ class WordCollection
   attr_accessor :collection
 
   def new_set_data
-    self.collection = WORD_NUM.times.map{ Word.new }
+    self.collection = WORD_NUM.times.map { Word.new }
   end
 
   def set_data(params)
@@ -25,7 +25,7 @@ class WordCollection
       end
       raise ActiveRecord::RecordInvalid unless is_success
     end
-  rescue
+  rescue StandardError
     p 'transaction error'
   ensure
     return is_success

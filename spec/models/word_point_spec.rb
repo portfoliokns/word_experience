@@ -13,7 +13,7 @@ RSpec.describe WordPoint, type: :model do
       end
     end
 
-    context "登録できない場合" do
+    context '登録できない場合' do
       it 'ワードポイントが空である' do
         @word_point.point = ''
         @word_point.valid?
@@ -23,21 +23,20 @@ RSpec.describe WordPoint, type: :model do
       it 'ワードポイントが整数でない' do
         @word_point.point = '@'
         @word_point.valid?
-        expect(@word_point.errors.full_messages).to include("Point is not a number")
+        expect(@word_point.errors.full_messages).to include('Point is not a number')
       end
 
       it 'ワードポイントが0より小さい数字である(-1以下の整数)' do
         @word_point.point = -1
         @word_point.valid?
-        expect(@word_point.errors.full_messages).to include("Point must be greater than or equal to 0")
+        expect(@word_point.errors.full_messages).to include('Point must be greater than or equal to 0')
       end
 
       it 'ワードポイントが999,999,999より大きい数字である(1,000,000,000以上の整数)' do
-        @word_point.point = 1000000000
+        @word_point.point = 1_000_000_000
         @word_point.valid?
-        expect(@word_point.errors.full_messages).to include("Point must be less than or equal to 999999999")
+        expect(@word_point.errors.full_messages).to include('Point must be less than or equal to 999999999')
       end
-
     end
   end
 end

@@ -20,10 +20,12 @@ class GoodReputationsController < ApplicationController
   end
 
   private
+
   def insert_or_change_good_reputation
-    good_reputation_saved_count = GoodReputation.where(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id]).count
+    good_reputation_saved_count = GoodReputation.where(user_id: params[:user_id],
+                                                       exchanged_word_id: params[:exchanged_word_id]).count
     if good_reputation_saved_count == 0
-      @good_reputation = GoodReputation.new()
+      @good_reputation = GoodReputation.new
       made_good_reputation
     else
       @good_reputation = GoodReputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
@@ -40,11 +42,6 @@ class GoodReputationsController < ApplicationController
   end
 
   def change_reputation
-    if @good_reputation.star_flag == true
-      @good_reputation.star_flag = false
-    else
-      @good_reputation.star_flag = true
-    end
+    @good_reputation.star_flag = !(@good_reputation.star_flag == true)
   end
-
 end

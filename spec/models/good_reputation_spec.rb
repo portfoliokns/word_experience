@@ -13,14 +13,12 @@ RSpec.describe GoodReputation, type: :model do
       end
     end
 
-    context "登録できない場合" do
+    context '登録できない場合' do
       it 'star_flagがTrue、Falseでない' do
         @good_reputation.star_flag = ''
         @good_reputation.valid?
-        expect(@good_reputation.errors.full_messages).to include("Star flag is not included in the list")
+        expect(@good_reputation.errors.full_messages).to include('Star flag is not included in the list')
       end
     end
   end
-
-
 end
