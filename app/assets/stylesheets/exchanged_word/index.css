@@ -29,6 +29,15 @@
   width: 45px;
 }
 
+.user_profile_link{
+  padding: 8px 24px;
+  text-decoration: none;
+  margin-right: 10px;
+  color: #6c757d;
+  font-weight: 700;
+  font-size: 14px;
+}
+
 
 /* new */
 .exchanged_word_new_box{
