@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :exchanged_words, only: [:index, :new, :create, :show] do
       resources :good_reputations, only: [:create]
     end
+    resources :user_profiles, only: [:index]
   end
 end
