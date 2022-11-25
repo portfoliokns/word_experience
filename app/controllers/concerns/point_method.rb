@@ -11,13 +11,13 @@ module PointMethod
   end
 
   def set_word_point_display
-    @word_point = if !user_signed_in?
-                    'Login Please'
-                  elsif WordPoint.exists?(user_id: current_user.id)
-                    WordPoint.find_by(user_id: current_user.id).point
-                  else
-                    '0'
-                  end
+    if !user_signed_in?
+      @word_point = 'Login Please'
+    elsif WordPoint.exists?(user_id: current_user.id)
+      @word_point = WordPoint.find_by(user_id: current_user.id).point
+    else
+      @word_point = 0
+    end
   end
 
   def create_point

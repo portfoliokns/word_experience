@@ -50,8 +50,13 @@
         </button>
         <div class="collapse" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">プロフィール</a></li>
-            <li><a href="#" class="link-dark rounded">パスワード変更</a></li>
+            <% if user_signed_in? %>
+              <%= link_to 'プロフィール', edit_user_registration_path, class: "link-dark rounded" %>
+              <%= link_to 'パスワード変更', root_path, class: "link-dark rounded" %>
+            <% elsif %>
+              <%= link_to 'プロフィール', user_session_path, class: "link-dark rounded" %>
+              <%= link_to 'パスワード変更', user_session_path, class: "link-dark rounded" %>
+            <% end %>
           </ul>
         </div>
       </li>
