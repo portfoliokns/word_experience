@@ -154,6 +154,20 @@ belongs_to :user<br>
 belongs_to :word<br>
 belongs_to :exchanged_word
 
+## bad_reputationsテーブル ： 低評価テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| word           | references | null: false, foreign_key: true |
+| exchanged_word | references | null: false, foreign_key: true |
+| bad_flag      | boolean    | null: false |
+
+### アソシエーション
+belongs_to :user<br>
+belongs_to :word<br>
+belongs_to :exchanged_word
+
 <br>
 
 # 画面遷移図
