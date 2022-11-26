@@ -8,14 +8,23 @@ class BadReputationsController < ApplicationController
   before_action :reset_flash, only: [:create]
 
   def create
-    insert_or_change_bad_reputation
-    if @bad_reputation.save
-      redirect_to user_exchanged_words_path(current_user.id)
-    else
-      @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
-      set_category
-      flash.now[:alert] = get_reputation_message_incident
-      render 'exchanged_words/index'
+    is_success = true
+    ActiveRecord::Base.transaction do
+      insert_or_change_bad_reputation
+      insert_or_change_good_reputation
+      is_success = false unless @bad_reputation.save
+      if @good_reputation != nil
+        is_success = false unless @good_reputation.save
+      end
+      if is_success
+        redirect_to user_exchanged_words_path(current_user.id)
+      else
+        raise ActiveRecord::Rollback
+        @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
+        set_category
+        flash.now[:alert] = get_reputation_message_incident
+        render 'exchanged_words/index'
+      end
     end
   end
 
@@ -43,6 +52,30 @@ class BadReputationsController < ApplicationController
 
   def change_bad_flag
     @bad_reputation.bad_flag = !(@bad_reputation.bad_flag == true)
+  end
+
+  def insert_or_change_good_reputation
+    good_reputation_saved_count = GoodReputation.where(user_id: params[:user_id],
+                                                       exchanged_word_id: params[:exchanged_word_id]).count
+    if good_reputation_saved_count == 0
+      @good_reputation = GoodReputation.new
+      made_good_reputation
+    elsif @bad_reputation.bad_flag == true
+      @good_reputation = GoodReputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
+      change_star_flag
+    end
+  end
+
+  def made_good_reputation
+    exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:exchanged_word_id])
+    @good_reputation.user_id = current_user.id
+    @good_reputation.word_id = exchanged_word.word_id
+    @good_reputation.exchanged_word_id = exchanged_word.id
+    @good_reputation.star_flag = false
+  end
+
+  def change_star_flag
+    @good_reputation.star_flag = false
   end
 
 end
