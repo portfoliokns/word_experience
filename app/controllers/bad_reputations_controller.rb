@@ -8,8 +8,7 @@ class BadReputationsController < ApplicationController
   before_action :reset_flash, only: [:create]
 
   def create
-    is_success = true
-    insert_or_change_bad_reputation
+    insert_or_change_reputation
     if @reputation.save
       redirect_to user_exchanged_words_path(current_user.id)
     else
@@ -22,19 +21,19 @@ class BadReputationsController < ApplicationController
 
   private
 
-  def insert_or_change_bad_reputation
-    bad_reputation_saved_count = Reputation.where(user_id: params[:user_id],
+  def insert_or_change_reputation
+    reputation_saved_count = Reputation.where(user_id: params[:user_id],
                                                        exchanged_word_id: params[:exchanged_word_id]).count
-    if bad_reputation_saved_count == 0
+    if reputation_saved_count == 0
       @reputation = Reputation.new
-      made_bad_reputation
+      set_reputation
     else
       @reputation = Reputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
       change_bad_flag
     end
   end
 
-  def made_bad_reputation
+  def set_reputation
     exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:exchanged_word_id])
     @reputation.user_id = current_user.id
     @reputation.word_id = exchanged_word.word_id

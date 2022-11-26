@@ -8,7 +8,6 @@ class GoodReputationsController < ApplicationController
   before_action :reset_flash, only: [:create]
 
   def create
-    is_success = true
     insert_or_change_reputation
     if @reputation.save
       redirect_to user_exchanged_words_path(current_user.id)
@@ -23,14 +22,14 @@ class GoodReputationsController < ApplicationController
   private
 
   def insert_or_change_reputation
-    good_reputation_saved_count = Reputation.where(user_id: params[:user_id],
+    reputation_saved_count = Reputation.where(user_id: params[:user_id],
                                                        exchanged_word_id: params[:exchanged_word_id]).count
-    if good_reputation_saved_count == 0
+    if reputation_saved_count == 0
       @reputation = Reputation.new
       set_reputation
     else
       @reputation = Reputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
-      change_flag
+      change_star_flag
     end
   end
 
@@ -43,7 +42,7 @@ class GoodReputationsController < ApplicationController
     @reputation.bad_flag = false
   end
 
-  def change_flag
+  def change_star_flag
     @reputation.star_flag = !(@reputation.star_flag == true)
     if @reputation.bad_flag == true
       @reputation.bad_flag = false
