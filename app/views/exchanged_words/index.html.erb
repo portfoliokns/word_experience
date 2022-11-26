@@ -39,9 +39,21 @@
             <% end %>
                 ★
               </div>
-            <div class="reputation_counter">
+            <div class="reputation_star_counter">
               <%= exchanged_word.word.good_reputations.where(star_flag: true).count %>
             </div>
+            <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
+          </div>
+          <div class="reputation">
+            <% if exchanged_word.good_reputations.count == 0 %>
+              <div class="word_reputation_bad">
+            <% elsif exchanged_word.good_reputations[0].star_flag %>
+              <div class="reputation_bad">
+            <% else %>
+              <div class="word_reputation_bad">
+            <% end %>
+                ×
+              </div>
             <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: exchanged_word.word.name, class: "word_name" %>

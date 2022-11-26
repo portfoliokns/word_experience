@@ -31,7 +31,15 @@
             <div class="word_reputation_star">
               ★
             </div>
-            <div class="reputation_counter">
+            <div class="reputation_star_counter">
+              <%= word.good_reputations.where(star_flag: true).count %>
+            </div>
+          </div>
+          <div class="reputation">
+            <div class="word_reputation_bad">
+              ×
+            </div>
+            <div class="reputation_bad_counter">
               <%= word.good_reputations.where(star_flag: true).count %>
             </div>
           </div>
