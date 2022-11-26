@@ -5,9 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :words, dependent: :destroy
   has_many :exchanged_words, dependent: :destroy
-  has_many :bad_reputations, dependent: :destroy
   has_one :word_point, dependent: :destroy
-  has_many :good_reputations, dependent: :destroy
+  has_many :reputations, dependent: :destroy
   accepts_nested_attributes_for :word_point
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i

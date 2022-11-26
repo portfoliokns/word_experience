@@ -102,7 +102,6 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 has_many :words<br>
 has_many :exchanged_words<br>
 has_many :good_reputations<br>
-has_many :bad_reputations<br>
 has_to :word_point
 
 ##  wordsテーブル ： ワードテーブル
@@ -117,8 +116,7 @@ has_to :word_point
 ### アソシエーション
 belongs_to :user<br>
 has_many :exchanged_words<br>
-has_many :good_reputations<br>
-has_many :bad_reputations
+has_many :good_reputations
 
 ## exchanged_words ： 交換済みのワードテーブル
 
@@ -130,8 +128,7 @@ has_many :bad_reputations
 ### アソシエーション
 belongs_to :user<br>
 belongs_to :word<br>
-has_many :good_reputations<br>
-has_many :bad_reputations
+has_many :good_reputations
 
 ## word_pointテーブル ： ワードポイントテーブル
 
@@ -143,7 +140,7 @@ has_many :bad_reputations
 ### アソシエーション
 belongs_to :user
 
-## good_reputationsテーブル ： 高評価テーブル
+## reputationsテーブル ： 高評価テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
@@ -151,20 +148,7 @@ belongs_to :user
 | word           | references | null: false, foreign_key: true |
 | exchanged_word | references | null: false, foreign_key: true |
 | star_flag      | boolean    | null: false |
-
-### アソシエーション
-belongs_to :user<br>
-belongs_to :word<br>
-belongs_to :exchanged_word
-
-## bad_reputationsテーブル ： 低評価テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| word           | references | null: false, foreign_key: true |
-| exchanged_word | references | null: false, foreign_key: true |
-| bad_flag      | boolean    | null: false |
+| bad_flag       | boolean    | null: false |
 
 ### アソシエーション
 belongs_to :user<br>

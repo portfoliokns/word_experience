@@ -1,8 +1,7 @@
 class Word < ApplicationRecord
   belongs_to :user
   has_many :exchanged_words, dependent: :destroy
-  has_many :good_reputations, dependent: :destroy
-  has_many :bad_reputations, dependent: :destroy
+  has_many :reputations, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :main_category
   belongs_to :service_category

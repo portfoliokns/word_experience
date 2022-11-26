@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_26_085031) do
-
-  create_table "bad_reputations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "word_id", null: false
-    t.bigint "exchanged_word_id", null: false
-    t.boolean "bad_flag", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["exchanged_word_id"], name: "index_bad_reputations_on_exchanged_word_id"
-    t.index ["user_id"], name: "index_bad_reputations_on_user_id"
-    t.index ["word_id"], name: "index_bad_reputations_on_word_id"
-  end
+ActiveRecord::Schema.define(version: 2022_11_26_142716) do
 
   create_table "exchanged_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -33,16 +21,17 @@ ActiveRecord::Schema.define(version: 2022_11_26_085031) do
     t.index ["word_id"], name: "index_exchanged_words_on_word_id"
   end
 
-  create_table "good_reputations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "reputations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "word_id", null: false
     t.bigint "exchanged_word_id", null: false
     t.boolean "star_flag", null: false
+    t.boolean "bad_flag", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["exchanged_word_id"], name: "index_good_reputations_on_exchanged_word_id"
-    t.index ["user_id"], name: "index_good_reputations_on_user_id"
-    t.index ["word_id"], name: "index_good_reputations_on_word_id"
+    t.index ["exchanged_word_id"], name: "index_reputations_on_exchanged_word_id"
+    t.index ["user_id"], name: "index_reputations_on_user_id"
+    t.index ["word_id"], name: "index_reputations_on_word_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,14 +70,11 @@ ActiveRecord::Schema.define(version: 2022_11_26_085031) do
     t.index ["user_id"], name: "index_words_on_user_id"
   end
 
-  add_foreign_key "bad_reputations", "exchanged_words"
-  add_foreign_key "bad_reputations", "users"
-  add_foreign_key "bad_reputations", "words"
   add_foreign_key "exchanged_words", "users"
   add_foreign_key "exchanged_words", "words"
-  add_foreign_key "good_reputations", "exchanged_words"
-  add_foreign_key "good_reputations", "users"
-  add_foreign_key "good_reputations", "words"
+  add_foreign_key "reputations", "exchanged_words"
+  add_foreign_key "reputations", "users"
+  add_foreign_key "reputations", "words"
   add_foreign_key "word_points", "users"
   add_foreign_key "words", "users"
 end

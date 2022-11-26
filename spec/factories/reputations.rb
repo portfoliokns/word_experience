@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :bad_reputation do
+  factory :reputation do
     
   end
 end

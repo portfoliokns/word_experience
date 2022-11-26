@@ -1,4 +1,4 @@
-class GoodReputation < ApplicationRecord
+class Reputation < ApplicationRecord
   belongs_to :user
   belongs_to :word
   belongs_to :exchanged_word
