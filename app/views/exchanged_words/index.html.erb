@@ -45,16 +45,16 @@
             <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
           </div>
           <div class="reputation">
-            <% if exchanged_word.good_reputations.count == 0 %>
+            <% if exchanged_word.bad_reputations.count == 0 %>
               <div class="word_reputation_bad">
-            <% elsif exchanged_word.good_reputations[0].star_flag %>
+            <% elsif exchanged_word.bad_reputations[0].bad_flag %>
               <div class="reputation_bad">
             <% else %>
               <div class="word_reputation_bad">
             <% end %>
                 ×
               </div>
-            <%= link_to  "", user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),{modele: @good_reputation, method: :post, class:"reputation_link"} %>
+            <%= link_to  "", user_exchanged_word_bad_reputations_path(current_user.id,exchanged_word.id),{modele: @bad_reputation, method: :post, class:"reputation_link"} %>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: exchanged_word.word.name, class: "word_name" %>
           <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(exchanged_word.word.main_category_id).name, class: "word_category" %>

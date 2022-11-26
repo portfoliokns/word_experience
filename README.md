@@ -102,6 +102,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 has_many :words<br>
 has_many :exchanged_words<br>
 has_many :good_reputations<br>
+has_many :bad_reputations<br>
 has_to :word_point
 
 ##  wordsテーブル ： ワードテーブル
@@ -116,7 +117,8 @@ has_to :word_point
 ### アソシエーション
 belongs_to :user<br>
 has_many :exchanged_words<br>
-has_many :good_reputations
+has_many :good_reputations<br>
+has_many :bad_reputations
 
 ## exchanged_words ： 交換済みのワードテーブル
 
@@ -128,7 +130,8 @@ has_many :good_reputations
 ### アソシエーション
 belongs_to :user<br>
 belongs_to :word<br>
-has_many :good_reputations
+has_many :good_reputations<br>
+has_many :bad_reputations
 
 ## word_pointテーブル ： ワードポイントテーブル
 
