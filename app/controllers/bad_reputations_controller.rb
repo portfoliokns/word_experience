@@ -12,15 +12,10 @@ class BadReputationsController < ApplicationController
     if @bad_reputation.save
       redirect_to user_exchanged_words_path(current_user.id)
     else
-      binding.pry
       @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
-      binding.pry
       set_category
-      binding.pry
       flash.now[:alert] = get_reputation_message_incident
-      binding.pry
       render 'exchanged_words/index'
-      binding.pry
     end
   end
 
@@ -34,7 +29,7 @@ class BadReputationsController < ApplicationController
       made_bad_reputation
     else
       @bad_reputation = BadReputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
-      change_reputation
+      change_bad_flag
     end
   end
 
@@ -46,7 +41,7 @@ class BadReputationsController < ApplicationController
     @bad_reputation.bad_flag = true
   end
 
-  def change_reputation
+  def change_bad_flag
     @bad_reputation.bad_flag = !(@bad_reputation.bad_flag == true)
   end
 
