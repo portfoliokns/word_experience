@@ -40,7 +40,7 @@
               ×
             </div>
             <div class="reputation_bad_counter">
-              <%= word.good_reputations.where(star_flag: true).count %>
+              <%= word.bad_reputations.where(bad_flag: true).count %>
             </div>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: word.name, class: "word_name" %>
