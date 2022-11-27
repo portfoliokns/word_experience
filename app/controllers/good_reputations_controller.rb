@@ -6,6 +6,7 @@ class GoodReputationsController < ApplicationController
   before_action :check_exchanged_word_id_for_reputation, only: [:create]
   include ErrorMessageFlash
   before_action :reset_flash, only: [:create]
+  include ReputationMethod
 
   def create
     insert_or_change_reputation
@@ -22,30 +23,13 @@ class GoodReputationsController < ApplicationController
   private
 
   def insert_or_change_reputation
-    reputation_saved_count = Reputation.where(user_id: params[:user_id],
-                                                       exchanged_word_id: params[:exchanged_word_id]).count
-    if reputation_saved_count == 0
-      @reputation = Reputation.new
-      set_reputation
+    if get_reputation_count == 0
+      star_flag = true
+      bad_flag = false
+      @reputation = set_new_reputation(star_flag, bad_flag)
     else
-      @reputation = Reputation.find_by(user_id: params[:user_id], exchanged_word_id: params[:exchanged_word_id])
-      change_star_flag
+      @reputation = change_star_flag_and_get_reputation
     end
   end
 
-  def set_reputation
-    exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:exchanged_word_id])
-    @reputation.user_id = current_user.id
-    @reputation.word_id = exchanged_word.word_id
-    @reputation.exchanged_word_id = exchanged_word.id
-    @reputation.star_flag = true
-    @reputation.bad_flag = false
-  end
-
-  def change_star_flag
-    @reputation.star_flag = !(@reputation.star_flag == true)
-    if @reputation.bad_flag == true
-      @reputation.bad_flag = false
-    end
-  end
 end

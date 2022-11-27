@@ -47,7 +47,9 @@
 }
 
 .user_profile_link{
-  padding: 8px 24px;
+  text-align: center;
+  width: 120px;
+  padding: 8px 5px;
   text-decoration: none;
   margin-right: 10px;
   color: #6c757d;
