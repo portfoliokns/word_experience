@@ -22,6 +22,14 @@
   color: #eefe57;
 }
 
+.word_reputation_bad{
+  margin-left: 15px;
+  -webkit-text-stroke:1px #887373;
+  font-size: 30px;
+  font-weight: 600;
+  color: #887373;
+}
+
 .word_name{
   border-radius: 5px;
   padding: 8px;

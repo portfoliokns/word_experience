@@ -140,7 +140,7 @@ has_many :good_reputations
 ### アソシエーション
 belongs_to :user
 
-## good_reputationsテーブル ： 高評価テーブル
+## reputationsテーブル ： 高評価テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
@@ -148,6 +148,7 @@ belongs_to :user
 | word           | references | null: false, foreign_key: true |
 | exchanged_word | references | null: false, foreign_key: true |
 | star_flag      | boolean    | null: false |
+| bad_flag       | boolean    | null: false |
 
 ### アソシエーション
 belongs_to :user<br>

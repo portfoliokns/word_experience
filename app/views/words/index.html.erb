@@ -31,8 +31,16 @@
             <div class="word_reputation_star">
               ★
             </div>
-            <div class="reputation_counter">
-              <%= word.good_reputations.where(star_flag: true).count %>
+            <div class="reputation_star_counter">
+              <%= word.reputations.where(star_flag: true).count %>
+            </div>
+          </div>
+          <div class="reputation">
+            <div class="word_reputation_bad">
+              ×
+            </div>
+            <div class="reputation_bad_counter">
+              <%= word.reputations.where(bad_flag: true).count %>
             </div>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: word.name, class: "word_name" %>

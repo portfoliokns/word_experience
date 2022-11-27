@@ -1,4 +1,4 @@
-class GoodReputationsController < ApplicationController
+class BadReputationsController < ApplicationController
   include SetCategory
   before_action :authenticate_user!
   include CheckRedirector
@@ -24,11 +24,11 @@ class GoodReputationsController < ApplicationController
 
   def insert_or_change_reputation
     if get_reputation_count == 0
-      star_flag = true
-      bad_flag = false
+      star_flag = false
+      bad_flag = true
       @reputation = set_new_reputation(star_flag, bad_flag)
     else
-      @reputation = change_star_flag_and_get_reputation
+      @reputation = change_bad_flag_and_get_reputation
     end
   end
 

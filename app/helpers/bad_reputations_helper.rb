@@ -1,0 +1,2 @@
+module BadReputationsHelper
+end
