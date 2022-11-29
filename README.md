@@ -34,7 +34,7 @@
 2. 登録ページから自分のおすすめするワードを登録し、ワードポイントを取得します。
 3. 交換ページからワードポイントを消費して、他ユーザーのワードを取得します。なおワードはランダムに選ばれます。
 4. そのワードをもとに、Youtubeなどのサービスで検索し、新たな体験をしましょう。
-5. 新たな体験ができたら、エクセレントボタン（☆）をクリックして、そのワードを評価しましょう。
+5. 新たな体験ができたら、高評価ボタン（☆）をクリックして、そのワードを評価しましょう。もしくは新たな体験ができなかった、あるいはそれが不適切なワードであった場合、低評価ボタン（×）をクリックして、フィードバックしましょう。
 
 ## その他の機能
 - ユーザー情報編集・削除する機能
@@ -57,30 +57,33 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 以下のスプレッドシートに記載しています。
 - https://docs.google.com/spreadsheets/d/1yzDRJ6sSt-AF3oIAkdFZPp3kPQ1zRaSLwDUKOSCbEDo/edit#gid=982722306
 
-# 実装した機能についての画像やGIFおよびその説明
-- ワード登録機能
-[![Image from Gyazo](https://i.gyazo.com/fb7b76d7565ca1fb3de99f6b78285451.gif)](https://gyazo.com/fb7b76d7565ca1fb3de99f6b78285451)
+# 実装した機能についての説明
+アプリケーション上の操作マニュアル動画を参照してください。
+- http://35.73.136.1/manuals
 
-- ワード交換機能
-[![Image from Gyazo](https://i.gyazo.com/68937e7200b881e4c920f01600e9bbe6.gif)](https://gyazo.com/68937e7200b881e4c920f01600e9bbe6)
+<br>
 
-- コピー機能（HTTPSでない場合は機能しません）
-[![Image from Gyazo](https://i.gyazo.com/aa3e7ded686df7506cfcc71336250485.gif)](https://gyazo.com/aa3e7ded686df7506cfcc71336250485)
+# オリジナルアプリ作成完了から実装した機能
+- 低評価ボタン（×）の追加
+- 操作マニュアルページの追加、および操作説明のyoutube動画を追加
 
 <br>
 
 # 実装予定の機能
-- 低評価ボタン（👎）の追加
 - プロフィール機能の追加（他のユーザーがプロフィールを閲覧できる機能やユーザー自身が編集できる機能）
 - ワードを一覧の数を制限する機能
-- エラー時のメッセージ表示
+- エラーメッセージの詳細を表示する機能（現状では自分のワードを登録する際の、エラーの詳細がわからないため、ユーザーが混乱してしまう）
 - パスワード変更ページの追加
 - "ワード"ランキングページの追加
+- HTTP通信をHTTPS通信へ切り替え（フリードメインの取得、EC2の設定変更）
+- ワード交換アルゴリズムの修正（現在、このアルゴリズムはデータの数が増えるほど、アプリケーションサーバーのパフォーマンスに影響を及ぼす潜在的な問題を抱えています。なおフォートフォリオとして動作させるだけであれば、問題ありません）
+- ワードの検索機能
+- ワード交換時の機能追加（交換できる数を可変にできる機能、条件の絞り込み機能など）
 
 <br>
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/1e13ee58b2abcb2e26310887dce1c0be.png)](https://gyazo.com/1e13ee58b2abcb2e26310887dce1c0be)
+[![Image from Gyazo](https://i.gyazo.com/d22cf7c37ac49d4cde4da1c3a4072ca4.png)](https://gyazo.com/d22cf7c37ac49d4cde4da1c3a4072ca4)
 
 <br>
 
@@ -158,7 +161,7 @@ belongs_to :exchanged_word
 <br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/b4443cf82d2076b2c594797ccc94a2f5.png)](https://gyazo.com/b4443cf82d2076b2c594797ccc94a2f5)
+[![Image from Gyazo](https://i.gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0.png)](https://gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0)
 
 <br>
 
@@ -167,6 +170,7 @@ belongs_to :exchanged_word
 - バックエンド：Ruby、Ruby on Rails
 - インフラ：AWS(EC3)
 - タスク管理：GitHub
+- その他：YouTube
 
 <br>
 
@@ -177,6 +181,16 @@ belongs_to :exchanged_word
 % bundle install
 % yarn install
 ```
+なおこのアプリをローカルで動作させるには、以下の環境変数を別途、設定する必要があります。なお環境変数を設定する場合は、既存の変数を誤って変更・削除しないようご注意ください。
+```
+BASIC_AUTH_USER='----'・・・文字列
+BASIC_AUTH_PASSWORD='----'・・・文字列
+WORD_POINT_CREATE="----"・・・整数
+WORD_POINT_UPDATE="----"・・・整数
+WORD_POINT_DESTROY="----"・・・整数
+WORD_POINT_EXCHANGE="----"・・・整数
+```
+
 <br>
 
 # 工夫したポイント
