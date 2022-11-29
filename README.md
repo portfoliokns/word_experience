@@ -161,7 +161,7 @@ belongs_to :exchanged_word
 <br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/b4443cf82d2076b2c594797ccc94a2f5.png)](https://gyazo.com/b4443cf82d2076b2c594797ccc94a2f5)
+[![Image from Gyazo](https://i.gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0.png)](https://gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0)
 
 <br>
 
@@ -170,6 +170,7 @@ belongs_to :exchanged_word
 - バックエンド：Ruby、Ruby on Rails
 - インフラ：AWS(EC3)
 - タスク管理：GitHub
+- その他：YouTube
 
 <br>
 
