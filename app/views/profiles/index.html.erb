@@ -23,9 +23,16 @@
       <div class="profile">ニックネーム：
         <%= current_user.nickname %>
       </div>
-      <div class="profile">高評価の総数：44</div>
-      <div class="profile">低評価の総数：22</div>
-      <div class="profile">高評価率：66%</div>
+      <div class="profile">高評価の総数：
+        <%= @good_reputation_total %>
+      </div>
+      <div class="profile">低評価の総数：
+        <%= @bad_reputation_total %>
+      </div>
+      <div class="profile">高評価率：
+        <%= @rate %>
+        %
+      </div>
     </div>
 
   </div>
