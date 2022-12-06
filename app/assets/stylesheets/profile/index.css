@@ -1,0 +1,11 @@
+.profile_flame{
+  font-size: 26px;
+  color: #6c757d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile{
+  margin-top: 30px;
+}
