@@ -10,6 +10,12 @@ module CheckRedirector
     end
   end
 
+  def check_profile
+    if !User.exists?(params[:user_id])
+      redirect_to root_path
+    end
+  end
+
   def check_word_id
     redirect_to root_path unless Word.exists?(user_id: params[:user_id], id: params[:id])
   end

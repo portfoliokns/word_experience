@@ -1,5 +1,8 @@
 class ProfilesController < ApplicationController
   include ReputationMethod
+  before_action :authenticate_user!
+  include CheckRedirector
+  before_action :check_profile, only: [:index]
 
   def index
     @nickname = User.find_by(id: params[:user_id]).nickname
@@ -7,7 +10,7 @@ class ProfilesController < ApplicationController
     @bad_reputation_total = get_reputation_total_per_user(params[:user_id],false)
     sum_reputation = @good_reputation_total + @bad_reputation_total
     if sum_reputation == 0
-      @rate = 0.0
+      @rate = '---'
     else
       result = (@good_reputation_total.quo(sum_reputation)).to_f * 100
       @rate = result.round(1)
