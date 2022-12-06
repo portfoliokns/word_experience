@@ -5,6 +5,11 @@ class ProfilesController < ApplicationController
   before_action :check_profile, only: [:index]
 
   def index
+    if current_user.id == params[:user_id].to_i
+      @login_users_profile = true
+    else
+      @login_users_profile = false
+    end
     @nickname = User.find_by(id: params[:user_id]).nickname
     @good_reputation_count = get_good_reputation_count_per_user(params[:user_id])
     @bad_reputation_count = get_bad_reputation_count_per_user(params[:user_id])

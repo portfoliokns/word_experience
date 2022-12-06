@@ -15,7 +15,7 @@
       <div class="word_board_text">
         ・このページでは、ユーザーのニックネームや高評価率を確認できます。<br>
         ・他のユーザーも、あなたのプロフィールを閲覧することがあります。<br>
-        ・評価率を気にしつつ、ワードを投稿していきましょう。
+        ・そのため評価率を元に、ワードを投稿していきましょう。
       </div>
     </div>
 
@@ -23,12 +23,14 @@
       <div class="profile">ニックネーム：
         <%= @nickname %>
       </div>
-      <div class="profile">高評価の総数：
-        <%= @good_reputation_count %>
-      </div>
-      <div class="profile">低評価の総数：
-        <%= @bad_reputation_count %>
-      </div>
+      <% if @login_users_profile %>
+        <div class="profile">高評価の総数：
+          <%= @good_reputation_count %>
+        </div>
+        <div class="profile">低評価の総数：
+          <%= @bad_reputation_count %>
+        </div>
+      <% end %>
       <div class="profile">高評価率：
         <%= @rate %>
         %
