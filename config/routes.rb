@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       resources :good_reputations, only: [:create]
       resources :bad_reputations, only: [:create]
     end
+    resources :profiles, only: [:index]
   end
 end
