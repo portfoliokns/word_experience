@@ -6,13 +6,13 @@ class ProfilesController < ApplicationController
 
   def index
     @nickname = User.find_by(id: params[:user_id]).nickname
-    @good_reputation_total = get_reputation_total_per_user(params[:user_id], true)
-    @bad_reputation_total = get_reputation_total_per_user(params[:user_id],false)
-    sum_reputation = @good_reputation_total + @bad_reputation_total
+    @good_reputation_count = get_good_reputation_count_per_user(params[:user_id])
+    @bad_reputation_count = get_bad_reputation_count_per_user(params[:user_id])
+    sum_reputation = @good_reputation_count + @bad_reputation_count
     if sum_reputation == 0
       @rate = '---'
     else
-      result = (@good_reputation_total.quo(sum_reputation)).to_f * 100
+      result = (@good_reputation_count.quo(sum_reputation)).to_f * 100
       @rate = result.round(1)
     end
   end
