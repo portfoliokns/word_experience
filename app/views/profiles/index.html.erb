@@ -8,7 +8,7 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      <%= current_user.nickname %>のプロフィール情報
+      <%= @nickname %>のプロフィール情報
     </h3>
 
     <div class="word_board">
@@ -21,7 +21,7 @@
 
     <div class="profile_flame">
       <div class="profile">ニックネーム：
-        <%= current_user.nickname %>
+        <%= @nickname %>
       </div>
       <div class="profile">高評価の総数：
         <%= @good_reputation_total %>
