@@ -5,6 +5,14 @@ module ReputationMethod
     return Reputation.where(user_id: params[:user_id],exchanged_word_id: params[:exchanged_word_id]).count
   end
 
+  def get_good_reputation_count_per_user(user_id)
+    return Word.where(user_id: user_id).joins(:reputations).where(reputations: { star_flag: true }).count
+  end
+
+  def get_bad_reputation_count_per_user(user_id)
+    return Word.where(user_id: user_id).joins(:reputations).where(reputations: { bad_flag: true }).count
+  end
+
   def set_new_reputation(star_flag, bad_flag)
     exchanged_word = ExchangedWord.find_by(user_id: params[:user_id], id: params[:exchanged_word_id])
     reputation = Reputation.new

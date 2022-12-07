@@ -51,7 +51,7 @@
         <div class="collapse" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <% if user_signed_in? %>
-              <%= link_to 'プロフィール', edit_user_registration_path, class: "link-dark rounded" %>
+              <%= link_to 'プロフィール', user_profiles_path(current_user.id), class: "link-dark rounded" %>
               <%= link_to 'パスワード変更', root_path, class: "link-dark rounded" %>
             <% elsif %>
               <%= link_to 'プロフィール', user_session_path, class: "link-dark rounded" %>
