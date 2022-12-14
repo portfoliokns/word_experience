@@ -1,8 +1,6 @@
 .top-container{
   font-size: 18px;
   color: #6c757d;
-  margin: 0 10px 10px 10px;
-  padding: 0 10px 10px 10px;
   border-bottom: solid 1px;
   display: flex;
   justify-content: space-between;
@@ -17,16 +15,8 @@
   font-size: 20px;
 }
 
-.links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
 .link {
   padding: 8px 24px;
-  margin-right: 4px;
   text-decoration: none;
   background-color: #fcf5f3;
   color: #6c757d;
