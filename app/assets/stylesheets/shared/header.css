@@ -33,39 +33,34 @@
   border-radius: 10px;
 }
 
-.login {
+.tweet, .login, .user, .sign-up, .log-out{
   padding: 8px 24px;
   text-decoration: none;
-  margin-right: 10px;
   color: #FFFFFF;
-  background-color: #ea7d24;
   border: 1px solid;
-  border-radius: 20px;
+  border-radius: 20px;  
 }
 
-.sign-up {
-  padding: 8px 24px;
-  text-decoration: none;
-  color: #FFFFFF;
-  background-color: #3ccace;
-  border: 1px solid;
-  border-radius: 20px;
+
+.tweet{
+  margin-right: 10px;
+  background-color: #1da1f2;
+}
+
+.login {
+  margin-right: 10px;
+  background-color: #ea7d24;
 }
 
 .user {
-  padding: 8px 24px;
-  text-decoration: none;
   margin-right: 10px;
-  color: #6c757d;
-  font-weight: 700;
-  font-size: 20px;
+  background-color: #858fee;
+}
+
+.sign-up {
+  background-color: #3ccace;
 }
 
 .log-out {
-  padding: 8px 24px;
-  text-decoration: none;
-  color: #FFFFFF;
   background-color: #ea7d24;
-  border: 1px solid;
-  border-radius: 20px;
 }
