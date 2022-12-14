@@ -68,10 +68,10 @@
   padding: 8px 20px;
   margin-left: 5px;
   font-size: 15px;
-  background-color: rgb(52, 152, 219);
-  color: #EEEEEE;
+  background-color: rgb(252, 241, 226);
+  color: #333333;
+  border: solid 0.1px black;
   text-decoration: none;
-  border: none;
 }
 
 
@@ -111,7 +111,7 @@
   border-radius: 5px;
   padding: 8px 32px;
   font-size: 15px;
-  background-color: rgb(52, 152, 219);
+  background-color: #1da1f2;
   color: #EEEEEE;
   border: none;
 }
@@ -151,7 +151,7 @@
   margin-top: 5px;
   padding: 7px 20px;
   font-size: 15px;
-  background-color: rgb(52, 152, 219);
+  background-color: #1da1f2;
   color: #EEEEEE;
   text-decoration: none;
   border: none;

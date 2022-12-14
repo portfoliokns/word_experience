@@ -1,4 +1,4 @@
-<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+<div class="flex-shrink-0 p-3 bg-white" style="width: 240px;">
     <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold">
@@ -10,23 +10,7 @@
       </span>
     </a>
     <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          みんなの"ワード"
-        </button>
-        <div class="collapse show" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <% if user_signed_in? %>
-              <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "link-dark rounded" %>
-              <%= link_to '交換済のワード一覧', user_exchanged_words_path(current_user.id), class: "link-dark rounded" %>
-            <% elsif %>
-              <%= link_to '交換ページ', user_session_path, class: "link-dark rounded" %>
-              <%= link_to '交換済のワード一覧', user_session_path, class: "link-dark rounded" %>
-            <% end %>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
+
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
           あなたの"ワード"
@@ -44,11 +28,30 @@
         </div>
       </li>
       <li class="border-top my-3"></li>
+
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          みんなの"ワード"
+        </button>
+        <div class="collapse show" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <% if user_signed_in? %>
+              <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "link-dark rounded" %>
+              <%= link_to '交換済のワード一覧', user_exchanged_words_path(current_user.id), class: "link-dark rounded" %>
+            <% elsif %>
+              <%= link_to '交換ページ', user_session_path, class: "link-dark rounded" %>
+              <%= link_to '交換済のワード一覧', user_session_path, class: "link-dark rounded" %>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
           ユーザー情報
         </button>
-        <div class="collapse" id="home-collapse">
+        <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <% if user_signed_in? %>
               <%= link_to 'プロフィール', user_profiles_path(current_user.id), class: "link-dark rounded" %>
@@ -61,11 +64,12 @@
         </div>
       </li>
       <li class="border-top my-3"></li>
+
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
           その他
         </button>
-        <div class="collapse" id="account-collapse">
+        <div class="collapse show" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark rounded">利用規約</a></li>
             <li><a href="#" class="link-dark rounded">プライバシーポリシー</a></li>
