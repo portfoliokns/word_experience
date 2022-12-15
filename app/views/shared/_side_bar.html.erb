@@ -9,7 +9,7 @@
 </div>
 
 <div class="side_bar_block">
-  <label class="side_bar_title_header">あなたの"ワード</label>
+  <label class="side_bar_title_header">あなたの"ワード"</label>
   <div class="side_bar_links">
     <% if user_signed_in? %>
       <%= link_to '登録ページ', new_user_word_path(current_user.id), class: "side_bar_link" %>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="side_bar_block">
-  <label class="side_bar_title_header">みんなの"ワード</label>
+  <label class="side_bar_title_header">みんなの"ワード"</label>
   <div class="side_bar_links">
     <% if user_signed_in? %>
       <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "side_bar_link" %>
