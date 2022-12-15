@@ -12,6 +12,7 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"", maxlength:"40", autofocus: true %>
+    <p class='info-text'>※ニックネームは他のユーザーに公開されます</p>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -92,6 +93,14 @@
       <br>を確認し、同意したものとみなします。
     </h2>
   </div>
+  <div class="form-group">
+    <h2 class='form-bottom-text'>
+      ※アカウント登録がすでにお済の方は
+      <%= link_to 'こちら', user_session_path %>
+      からログインができます。
+    </h2>
+  </div>
+  
   <div class='register-btn'>
     <%= f.submit "ユーザーアカウント 登録" ,class:"register-orange-btn" %>
   </div>
