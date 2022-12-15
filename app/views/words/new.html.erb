@@ -44,7 +44,10 @@
         <% end %>
       <% end %>
       <hr size="1" width="99%">
-      <%= form.submit '登録',class:"word_new_button_save", data: { confirm: "このワードを登録します。更新してもよろしいですか。" } %>
+      <%= form.submit '登録',
+          class:"word_new_button_save",
+          id:"blue_button",
+          data: { confirm: "このワードを登録します。更新してもよろしいですか。" } %>
     <% end %>
 
   </div>

@@ -10,51 +10,51 @@
 
 <div class="side_bar_block">
   <label class="side_bar_title_header">あなたの"ワード"</label>
-  <div class="side_bar_links">
+  <div class="side_bar_contents">
     <% if user_signed_in? %>
-      <%= link_to '登録ページ', new_user_word_path(current_user.id), class: "side_bar_link" %>
-      <%= link_to '登録済のワード一覧', user_words_path(current_user.id), class: "side_bar_link" %>
+      <%= link_to '登録ページ', new_user_word_path(current_user.id), class: "side_bar_content" %>
+      <%= link_to '登録済のワード一覧', user_words_path(current_user.id), class: "side_bar_content" %>
     <% elsif %>
-      <%= link_to '登録ページ', user_session_path, class: "side_bar_link" %>
-      <%= link_to '登録済のワード一覧', user_session_path, class: "side_bar_link" %>
+      <%= link_to '登録ページ', user_session_path, class: "side_bar_content" %>
+      <%= link_to '登録済のワード一覧', user_session_path, class: "side_bar_content" %>
     <% end %>
   </div>
 </div>
 
 <div class="side_bar_block">
   <label class="side_bar_title_header">みんなの"ワード"</label>
-  <div class="side_bar_links">
+  <div class="side_bar_contents">
     <% if user_signed_in? %>
-      <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "side_bar_link" %>
-      <%= link_to '交換済のワード一覧', user_exchanged_words_path(current_user.id), class: "side_bar_link" %>
+      <%= link_to '交換ページ', new_user_exchanged_word_path(current_user.id), class: "side_bar_content" %>
+      <%= link_to '交換済のワード一覧', user_exchanged_words_path(current_user.id), class: "side_bar_content" %>
     <% elsif %>
-      <%= link_to '交換ページ', user_session_path, class: "side_bar_link" %>
-      <%= link_to '交換済のワード一覧', user_session_path, class: "side_bar_link" %>
+      <%= link_to '交換ページ', user_session_path, class: "side_bar_content" %>
+      <%= link_to '交換済のワード一覧', user_session_path, class: "side_bar_content" %>
     <% end %>
   </div>
 </div>
 
 <div class="side_bar_block">
   <label class="side_bar_title_header">ユーザー情報</label>
-  <div class="side_bar_links">
+  <div class="side_bar_contents">
     <% if user_signed_in? %>
-      <%= link_to 'プロフィール', user_profiles_path(current_user.id), class: "side_bar_link" %>
-      <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: "side_bar_link" %>
-      <%= link_to 'パスワード変更', root_path, class: "side_bar_link" %>
+      <%= link_to 'プロフィール', user_profiles_path(current_user.id), class: "side_bar_content" %>
+      <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: "side_bar_content" %>
+      <%= link_to 'パスワード変更', root_path, class: "side_bar_content" %>
     <% elsif %>
-      <%= link_to 'プロフィール', user_session_path, class: "side_bar_link" %>
-      <%= link_to 'ユーザー情報編集', user_session_path, class: "side_bar_link" %>
-      <%= link_to 'パスワード変更', user_session_path, class: "side_bar_link" %>
+      <%= link_to 'プロフィール', user_session_path, class: "side_bar_content" %>
+      <%= link_to 'ユーザー情報編集', user_session_path, class: "side_bar_content" %>
+      <%= link_to 'パスワード変更', user_session_path, class: "side_bar_content" %>
     <% end %>
   </div>
 </div>
 
 <div class="side_bar_block">
   <label class="side_bar_title_header">その他</label>
-  <div class="side_bar_links">
-    <%= link_to '利用規約', "#", class: "side_bar_link" %>
-    <%= link_to 'プライバシーポリシー', "#", class: "side_bar_link" %>
-    <%= link_to '個人情報保護法', "#", class: "side_bar_link" %>
+  <div class="side_bar_contents">
+    <%= link_to '利用規約', "#", class: "side_bar_content" %>
+    <%= link_to 'プライバシーポリシー', "#", class: "side_bar_content" %>
+    <%= link_to '個人情報保護法', "#", class: "side_bar_content" %>
   </div>
 </div>
 

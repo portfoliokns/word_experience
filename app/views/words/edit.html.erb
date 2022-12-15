@@ -29,11 +29,14 @@
       <%= form.text_field :created_at, readonly: true, disabled: true, value: @word.created_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
       <label class="word_edit_title">更新日時（編集不可）</label>
       <%= form.text_field :updated_at, readonly: true, disabled: true, value: @word.updated_at.strftime('%Y/%m/%d %H:%M:%S'), class:"word_edit_field" %>
-      <%= form.submit '保存',class:"word_edit_save_button", data: { confirm: "このワードを更新します。更新してもよろしいですか。" } %>
+      <%= form.submit '保存',class:"word_edit_save_button", id: "blue_button", data: { confirm: "このワードを更新します。更新してもよろしいですか。" } %>
     <% end %>
 
     <%= form_with(model: @word, url: user_word_path(@word.user_id, @word), class: "word_edit_delete", method: :delete, local: true) do |form| %>
-      <%= form.submit '削除',class: "word_edit_delete_button", data: { confirm: "このワードを削除してもよろしいですか?削除した場合、他のユーザーもこのワードを確認できなくなります。" } %>
+      <%= form.submit '削除',
+            class: "word_edit_delete_button",
+            id:"gray_button",
+            data: { confirm: "このワードを削除してもよろしいですか?削除した場合、他のユーザーもこのワードを確認できなくなります。" } %>
     <% end %>
   </div>
 </div>

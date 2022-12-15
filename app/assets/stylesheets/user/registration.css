@@ -152,7 +152,7 @@
   width: 100%;
   margin-top: 10px;
   background: #f49e5d;
-  border: 1px solid #f49e5d;
+  border: 1px solid #fcf5f3;
   border-radius: 10px;
   color: #fff;
   line-height: 48px;
@@ -183,8 +183,9 @@
 
 .delete-gray-btn {
   width: 100%;
-  background: #dfcab3;
-  border: 1px solid #dfcab3;
+  background: #b4bcc7;
+  border: 1px solid #fcf5f3;
+  margin-bottom: 25px;
   border-radius: 10px;
   color: #fff;
   line-height: 48px;

@@ -23,13 +23,13 @@
   color: #565856;
 }
 
-.side_bar_links{
+.side_bar_contents{
   display: flex;
   flex-direction: column;
   align-items: left;
 }
 
-.side_bar_link{
+.side_bar_content{
   font-size: 15px;
   color: #505650;
   text-decoration: none;
