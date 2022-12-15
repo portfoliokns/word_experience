@@ -93,16 +93,23 @@
       <br>を確認し、同意したものとみなします。
     </h2>
   </div>
+  
+  <div class='register-btn'>
+    <%= f.submit "ユーザーアカウント 登録" ,class:"register-orange-btn" %>
+  </div>
+
   <div class="form-group">
     <h2 class='form-bottom-text'>
       ※アカウント登録がすでにお済の方は
       <%= link_to 'こちら', user_session_path %>
-      からログインができます。
+      からログインしてください。
+
+      <br>
+
+      ※トップページへ戻るには
+      <%= link_to 'こちら', root_path %>
+      をクリックしてください。
     </h2>
-  </div>
-  
-  <div class='register-btn'>
-    <%= f.submit "ユーザーアカウント 登録" ,class:"register-orange-btn" %>
   </div>
 </div>
 <% end %>
