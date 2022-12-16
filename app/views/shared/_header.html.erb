@@ -1,22 +1,20 @@
 <div class="top-container">
-  <%= link_to "Word Experience", root_path, class: "icon" %>
+  <%= link_to "Word Experience", root_path, class: "icon", id: "icon_text" %>
   
   <div>
-    <ul class="links">
-      <%= link_to "お問合せ", "#", class: "link" %>
-      <%= link_to "マニュアル", manuals_path, class: "link" %>
-      <%= link_to "About", "https://github.com/konishi333/word_experience/blob/master/README.md", class: "link" %>
-    </ul>
+    <%= link_to "お問合せ", "#", class: "link", id: "question_form_button" %>
+    <%= link_to "マニュアル", manuals_path, class: "link", id: "manual_form_button", target: :_blank, rel: "noopener noreferrer" %>
+    <%= link_to "About", "https://github.com/konishi333/word_experience/blob/master/README.md", class: "link", id: "about_form_button", target: :_blank, rel: "noopener noreferrer" %>
   </div>
   
   <div>
-    <%= link_to  "Tweet", "https://twitter.com/share?text=Word Experience http://35.73.136.1/", class: "tweet", target: :_blank, rel: "noopener noreferrer" %>
+    <%= link_to  "Tweet", "https://twitter.com/share?text=Word Experience http://35.73.136.1/", class: "tweet", id: "tweet_button", target: :_blank, rel: "noopener noreferrer" %>
     <% if user_signed_in? %>
-      <%= link_to current_user.nickname, edit_user_registration_path, class: "user" %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out", id: "logout_button", data: { confirm: "ログアウトしてもよろしいですか。" } %>
+      <%= link_to current_user.nickname, edit_user_registration_path, class: "user", id: "user_nickname_button" %>
     <% else %>
-      <%= link_to 'ログイン', user_session_path, class: "login" %>
-      <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+      <%= link_to 'ログイン', user_session_path, class: "login", id: "login_button" %>
+      <%= link_to '新規登録', new_user_registration_path, class: "sign-up", id: "sign_up_button" %>
     <% end %>
   </div>
 </div>
