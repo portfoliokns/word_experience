@@ -2,11 +2,11 @@ function changeFontColor (obj, params) {
   try {
     if (obj != null){
       obj.addEventListener('mouseover', function(){
-        this.setAttribute("style", "color: " + params)
+        this.setAttribute("style", "color: " + params);
       });
   
       obj.addEventListener('mouseout', function(){
-        this.removeAttribute("style")
+        this.removeAttribute("style");
       });
     };
   } catch (error) {
@@ -14,15 +14,15 @@ function changeFontColor (obj, params) {
   }
 }
 
-function changeBackgroundColorForEach (objects, params) {
+function changeColorUnderlineForEach (objects, params) {
   try {
     objects.forEach(function (obj) {
       obj.addEventListener('mouseover', function(){
-        this.setAttribute("style", "background-color: " + params)
+        this.setAttribute("style", "text-decoration: underline; color: " + params);
       });
   
       obj.addEventListener('mouseout', function(){
-        this.removeAttribute("style")
+        this.removeAttribute("style");
       });
     });
   } catch (error) {
@@ -34,13 +34,29 @@ function changeBackgroundColor (obj, params) {
   try {
     if (obj != null){
       obj.addEventListener('mouseover', function(){
-        this.setAttribute("style", "background-color: " + params)
+        this.setAttribute("style", "background-color: " + params);
       });
   
       obj.addEventListener('mouseout', function(){
-        this.removeAttribute("style")
+        this.removeAttribute("style");
       });
     };
+  } catch (error) {
+    alert('javascriptで問題が発生しました。' + error);
+  }
+}
+
+function changeBackgroundColorForEach (objects, params) {
+  try {
+    objects.forEach(function (obj) {
+      obj.addEventListener('mouseover', function(){
+        this.setAttribute("style", "background-color: " + params);
+      });
+  
+      obj.addEventListener('mouseout', function(){
+        this.removeAttribute("style");
+      });
+    });
   } catch (error) {
     alert('javascriptで問題が発生しました。' + error);
   }
@@ -76,8 +92,12 @@ function mouse_over (){
   changeBackgroundColor(blueButton,"#8ac8ee");
   changeBackgroundColor(grayButton,"#b0aca8");
 
+  const copyTexts = document.querySelectorAll(".word_name");
   const silverButtons = document.querySelectorAll(".word_button_edit");
-  changeBackgroundColorForEach(silverButtons,"#d5d6ed66");
+  const userProfileLinks = document.querySelectorAll(".user_profile_link");
+  changeBackgroundColorForEach(copyTexts,"#f0fbfb");
+  changeBackgroundColorForEach(silverButtons,"#b3b4ce42");
+  changeColorUnderlineForEach(userProfileLinks,"#373cd3");
 };
 
 window.addEventListener('load', mouse_over);
