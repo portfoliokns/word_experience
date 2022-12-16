@@ -8,7 +8,7 @@
   </div>
   
   <div>
-    <%= link_to  "Tweet", "https://twitter.com/share?text=Word Experience http://35.73.136.1/", class: "tweet", id: "tweet_button", target: :_blank, rel: "noopener noreferrer" %>
+    <%= link_to  "Tweet", "https://twitter.com/share?text=Word Experience http://●●●●●●/ ※個人が作成したアプリになるので、ULRの部分を隠しています。", class: "tweet", id: "tweet_button", target: :_blank, rel: "noopener noreferrer" %>
     <% if user_signed_in? %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out", id: "logout_button", data: { confirm: "ログアウトしてもよろしいですか。" } %>
       <%= link_to current_user.nickname, edit_user_registration_path, class: "user", id: "user_nickname_button" %>

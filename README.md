@@ -38,6 +38,7 @@
 
 ## その他の機能
 - ユーザー情報編集・削除する機能
+- ユーザーのプロフィールを確認する機能(投稿されたワードの高評価率などを確認できる)
 - ワード編集・削除（ワードポイントを消費します）
 
 ## 利用時の注意点
@@ -63,7 +64,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 - https://docs.google.com/spreadsheets/d/1yzDRJ6sSt-AF3oIAkdFZPp3kPQ1zRaSLwDUKOSCbEDo/edit#gid=982722306
 
 # 実装した機能についての説明
-アプリケーション上の操作マニュアル動画を参照してください。
+アプリケーション上の操作マニュアル動画を参照してください。なおアップデートに伴いデザインが変更されていたり、アップデートされた機能の動画が準備されていない場合もあります。
 - http://35.73.136.1/manuals
 
 <br>
@@ -71,11 +72,12 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 # オリジナルアプリ作成完了から実装した機能
 - 低評価ボタン（×）の追加
 - 操作マニュアルページの追加、および操作説明のyoutube動画を追加
+- ユーザープロフィール確認機能の追加（ワードの高評価率を確認することができます）
+- デザインを一新（クライアント端末やブラウザの環境によって、bootstrapを適応した箇所のデザインが崩れることを確認したため、一新しました）
 
 <br>
 
 # 実装予定の機能
-- プロフィール機能の追加（他のユーザーがプロフィールを閲覧できる機能やユーザー自身が編集できる機能）
 - ワードを一覧の数を制限する機能
 - エラーメッセージの詳細を表示する機能（現状では自分のワードを登録する際の、エラーの詳細がわからないため、ユーザーが混乱してしまう）
 - パスワード変更ページの追加
@@ -166,7 +168,7 @@ belongs_to :exchanged_word
 <br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0.png)](https://gyazo.com/ef4cc425f30a0290e5e05391fd73b3b0)
+[![Image from Gyazo](https://i.gyazo.com/f9efb6e2529f300a2a30d1940afda745.png)](https://gyazo.com/f9efb6e2529f300a2a30d1940afda745)
 
 <br>
 
@@ -188,12 +190,12 @@ belongs_to :exchanged_word
 ```
 なおこのアプリをローカルで動作させるには、以下の環境変数を別途、設定する必要があります。なお環境変数を設定する場合は、既存の変数を誤って変更・削除しないようご注意ください。
 ```
-BASIC_AUTH_USER='----'・・・文字列
-BASIC_AUTH_PASSWORD='----'・・・文字列
-WORD_POINT_CREATE="----"・・・整数
-WORD_POINT_UPDATE="----"・・・整数
-WORD_POINT_DESTROY="----"・・・整数
-WORD_POINT_EXCHANGE="----"・・・整数
+BASIC_AUTH_USER='admin'・・・文字列
+BASIC_AUTH_PASSWORD='5678'・・・文字列
+WORD_POINT_CREATE="200"・・・整数
+WORD_POINT_UPDATE="15"・・・整数
+WORD_POINT_DESTROY="25"・・・整数
+WORD_POINT_EXCHANGE="50"・・・整数
 ```
 
 <br>
