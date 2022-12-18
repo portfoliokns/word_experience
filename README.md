@@ -64,7 +64,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 - https://docs.google.com/spreadsheets/d/1yzDRJ6sSt-AF3oIAkdFZPp3kPQ1zRaSLwDUKOSCbEDo/edit#gid=982722306
 
 # 実装した機能についての説明
-アプリケーション上の操作マニュアル動画を参照してください。なおアップデートに伴いデザインが変更されていたり、アップデートされた機能の動画が準備されていない場合もあります。
+アプリケーション上の操作マニュアル動画を参照してください。なおアップデートに伴いデザインが変更されていたり、アップデートされた機能の動画が準備されていない場合もあります。あらかじめご了承ください。
 - http://35.73.136.1/manuals
 
 <br>
@@ -74,6 +74,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 - 操作マニュアルページの追加、および操作説明のyoutube動画を追加
 - ユーザープロフィール確認機能の追加（ワードの高評価率を確認することができます）
 - デザインを一新（クライアント端末やブラウザの環境によって、bootstrapを適応した箇所のデザインが崩れることを確認したため、一新しました）
+- reCAPTCHAの実装
 
 <br>
 
@@ -177,7 +178,7 @@ belongs_to :exchanged_word
 - バックエンド：Ruby、Ruby on Rails
 - インフラ：AWS(EC3)
 - タスク管理：GitHub
-- その他：YouTube
+- その他：YouTube、Google reCAPTCHA
 
 <br>
 
