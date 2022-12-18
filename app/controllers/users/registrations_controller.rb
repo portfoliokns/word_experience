@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  include ErrorMessageFlash
   prepend_before_action :check_captcha, only: [:create]
 
   # GET /resource/sign_up
@@ -63,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def check_captcha
-    unless verify_recaptcha(message: "reCAPTCHAのチェックをしてください")
+    unless verify_recaptcha(message: get_recaptcha_message)
       self.resource = resource_class.new user_params
       resource.validate
       set_minimum_password_length
@@ -72,7 +73,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    binding.pry
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date)
   end
 end

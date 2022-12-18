@@ -42,7 +42,7 @@
       本人確認
     </p>
     <p class='form-info-text'>
-      このアプリケーションを使用するためには、ユーザーの登録が必要です。この情報はユーザーに公開されることはありません。
+      このアプリケーションを使用するためには、ユーザーの登録が必要です。この情報は他のユーザーに公開されることはありません。
     </p>
   </div>
   <div class="form-group">
@@ -95,7 +95,9 @@
   </div>
 
   <div class="form-group">
-    <%= flash[:recaptcha_error] %>
+    <div class="error-message">
+      <%= flash[:recaptcha_error] %>
+    </div>
     <%= recaptcha_tags %>
   </div>
 
