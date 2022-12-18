@@ -5,6 +5,10 @@ module ErrorMessageFlash
     flash[:alert] = ''
   end
 
+  def get_recaptcha_message
+    "reCAPTCHA認証をしてください。"
+  end
+
   def get_point_message(requested_point, action_name)
     "ワードポイントが#{requested_point - @word_point}ポイント足りません。#{action_name}には#{requested_point}ポイントが必要です。"
   end
