@@ -28,22 +28,10 @@
 
       <div class="profile_block">
         <div class="profile">投稿したワード数：
-          12
+          <%= @word_count %>
         </div>
         <div class="profile">交換したワード数：
-          8
-        </div>
-      </div>
-
-      <div class="profile_block">
-        <div class="profile">高評価した回数：
-          6
-        </div>
-        <div class="profile">低評価した回数：
-          1
-        </div>
-        <div class="profile">評価率：
-          93.0%
+          <%= @exchanged_word_count %>
         </div>
       </div>
 
@@ -62,7 +50,21 @@
         </div>
       </div>
 
-    </div>
+      <div class="profile_block">
+        <% if @login_users_profile %>
+          <div class="profile">高評価した回数：
+            <%= @good_reputation_count_by_myself %>
+          </div>
+          <div class="profile">低評価した回数：
+            <%= @bad_reputation_count_by_myself %>
+          </div>
+        <% end %>
+        <div class="profile">評価率：
+          <%= @count_rate %>
+          %
+        </div>
+      </div>
 
+    </div>
   </div>
 </div>
