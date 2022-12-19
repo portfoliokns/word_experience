@@ -62,6 +62,24 @@ function changeBackgroundColorForEach (objects, params) {
   }
 }
 
+function tooltipForEach (tooltip_blocks) {
+  try {
+    tooltip_blocks.forEach(function (tooltip_block) {
+      tooltip_block.addEventListener('mouseover', function(){
+        const tooltip = tooltip_block.children["tooltip"];
+        tooltip.setAttribute("style", "display: block;");
+      });
+
+      tooltip_block.addEventListener('mouseout', function(){
+        const tooltip = tooltip_block.children["tooltip"];
+        tooltip.removeAttribute("style");
+      });
+    });
+  } catch (error) {
+    alert('javascriptで問題が発生しました。' + error);
+  }
+}
+
 function mouse_over (){
   const iconText = document.getElementById("icon_text");
   const questionFormButton = document.getElementById("question_form_button");
@@ -98,6 +116,9 @@ function mouse_over (){
   changeBackgroundColorForEach(copyTexts,"#f0fbfb");
   changeBackgroundColorForEach(silverButtons,"#b3b4ce42");
   changeColorUnderlineForEach(userProfileLinks,"#373cd3");
+
+  const tooltip_blocks = document.querySelectorAll(".tooltip_block");
+  tooltipForEach(tooltip_blocks);
 };
 
 window.addEventListener('load', mouse_over);
