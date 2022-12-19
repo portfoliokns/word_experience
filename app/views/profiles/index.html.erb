@@ -13,28 +13,55 @@
 
     <div class="word_board">
       <div class="word_board_text">
-        ・このページでは、ユーザーのニックネームや高評価率を確認できます。<br>
+        ・このページでは、ユーザーが投稿したワードの数や高評価率といったアクティブな情報を確認できます。<br>
         ・他のユーザーも、あなたのプロフィールを閲覧することがあります。<br>
-        ・そのため評価率を元に、ワードを投稿していきましょう。
+        ・そのためアクティブな情報を意識しつつ、アプリを活用していきましょう。
       </div>
     </div>
 
     <div class="profile_flame">
-      <div class="profile">ニックネーム：
-        <%= @nickname %>
-      </div>
-      <% if @login_users_profile %>
-        <div class="profile">高評価の総数：
-          <%= @good_reputation_count %>
+      <div class="profile_block">
+        <div class="profile">ニックネーム：
+          <%= @nickname %>
         </div>
-        <div class="profile">低評価の総数：
-          <%= @bad_reputation_count %>
-        </div>
-      <% end %>
-      <div class="profile">高評価率：
-        <%= @rate %>
-        %
       </div>
+
+      <div class="profile_block">
+        <div class="profile">投稿済のワード数：
+          12
+        </div>
+        <div class="profile">交換済のワード数：
+          8
+        </div>
+      </div>
+
+      <div class="profile_block">
+        <div class="profile">高評価した回数：
+          6
+        </div>
+        <div class="profile">低評価した回数：
+          1
+        </div>
+        <div class="profile">評価率：
+          93.0%
+        </div>
+      </div>
+
+      <div class="profile_block">
+        <% if @login_users_profile %>
+          <div class="profile">高評価された数：
+            <%= @good_reputation_count %>
+          </div>
+          <div class="profile">低評価された数：
+            <%= @bad_reputation_count %>
+          </div>
+        <% end %>
+        <div class="profile">高評価率：
+          <%= @rate %>
+          %
+        </div>
+      </div>
+
     </div>
 
   </div>
