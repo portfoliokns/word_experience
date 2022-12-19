@@ -15,7 +15,7 @@
 }
 
 .tooltip_block{
-
+  position: relative;
 }
 
 .tooltip{
@@ -23,6 +23,9 @@
   font-size: 12px;
   color: #2925ff;
   font-weight: 600;
+  position: absolute;
+  top: -12px;
+  left: 40px;
 }
 
 .profile{
