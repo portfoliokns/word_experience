@@ -12,11 +12,11 @@
   <label class="side_bar_title_header">あなたの"ワード"</label>
   <div class="side_bar_contents">
     <% if user_signed_in? %>
-      <%= link_to '登録ページ', new_user_word_path(current_user.id), class: "side_bar_content" %>
-      <%= link_to '登録済のワード一覧', user_words_path(current_user.id), class: "side_bar_content" %>
+      <%= link_to '投稿ページ', new_user_word_path(current_user.id), class: "side_bar_content" %>
+      <%= link_to '投稿済のワード一覧', user_words_path(current_user.id), class: "side_bar_content" %>
     <% elsif %>
-      <%= link_to '登録ページ', user_session_path, class: "side_bar_content" %>
-      <%= link_to '登録済のワード一覧', user_session_path, class: "side_bar_content" %>
+      <%= link_to '投稿ページ', user_session_path, class: "side_bar_content" %>
+      <%= link_to '投稿済のワード一覧', user_session_path, class: "side_bar_content" %>
     <% end %>
   </div>
 </div>

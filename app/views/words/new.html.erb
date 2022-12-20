@@ -8,18 +8,18 @@
   </div>
   <div class="main_screen">
     <h3 class="word_theme">
-      "ワード" 新規登録
+      "ワード" 投稿
     </h3>
 
     <div class="word_board">
       <div class="word_board_text">
-        ・登録をすると、"WordPoint"が 200ポイント 手に入ります。
+        ・投稿をすると、"WordPoint"が 200ポイント 手に入ります。
         <br>
-        ・登録時の注意点：
+        ・投稿時の注意点：
         <br>
         　①ワードは4文字以上、30文字以下で入力してください。
         <br>
-        　②重複するワードは登録できません。
+        　②重複するワードは投稿できません。
         <br>
         　③カテゴリとサービスは必ず、1つずつ選択してください。
         <br>
@@ -44,10 +44,10 @@
         <% end %>
       <% end %>
       <hr size="1" width="99%">
-      <%= form.submit '登録',
+      <%= form.submit '投稿',
           class:"word_new_button_save",
           id:"blue_button",
-          data: { confirm: "このワードを登録します。更新してもよろしいですか。" } %>
+          data: { confirm: "このワードを投稿します。更新してもよろしいですか。" } %>
     <% end %>
 
   </div>

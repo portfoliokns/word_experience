@@ -6,6 +6,32 @@
   align-items: center;
 }
 
+.profile_block{
+  width: 400px;
+  text-align: center;
+  border-bottom: 0.1px solid #000000;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.tooltip_block{
+  position: relative;
+}
+
+.tooltip{
+  display: none;
+  font-size: 12px;
+  color: #2925ff;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  font-weight: 600;
+  text-align: center;
+  position: absolute;
+  top: -20px;
+  left: 35px;
+  box-shadow: 2px 2px 0px 0 rgb(199, 203, 204);
+}
+
 .profile{
   margin-top: 30px;
 }
