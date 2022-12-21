@@ -1,0 +1,19 @@
+.another_site{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.another_site_button{
+  width: 200px;
+  height: 200px;
+  background-color: #ece5e5a8;
+  color: #505650;
+  margin: 0 30px;
+  border: 0.1px solid #111111;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
