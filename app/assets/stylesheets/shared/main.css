@@ -27,8 +27,8 @@
 }
 
 .word_board_text{
-  width: auto;
-  height: 60px;
+  width: 500px;
+  height: 80px;
   padding: 8px 32px;
   margin-bottom: 10px;
   background-color: #FFFFFF;
@@ -36,5 +36,5 @@
   border: 1px double #efe2ce;
   font-size: 13px;
   color: #6c757d;
-  overflow: auto;
+  overflow: scroll;
 }

@@ -13,16 +13,17 @@
 
     <div class="word_board">
       <div class="word_board_text">
-        ・編集、削除したい場合、そのワードの編集ページへ移動してください。
-        <br>
-        ・編集には 15ポイント、削除には 25ポイント "WordPoint"が必要になります。
+        【操作説明】
         <br>
         ・ワードをクリックすると、クリップボードにワードがコピーされます。
         <br>
         　※HTTPSの通信ではない場合、コピー時にエラーが発生します。
+        <br>
+        ・編集、削除したい場合、そのワードの編集ページへ移動してください。
+        <br>
+        ・他のユーザーからの評価数を⭐️や❌から確認することができます。
       </div>
     </div>
-
     <%= form_with local: true do |form| %>
       <% @words.each do |word| %>
         <div class="word_list">

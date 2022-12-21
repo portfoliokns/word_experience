@@ -13,6 +13,22 @@
       ユーザーアカウントの編集
     </div>
 
+    <div class="word_board">
+      <div class="word_board_text">
+        【補足説明】
+        <br>
+        ・ユーザー情報を編集するためのページとなります。(退会やパスワード変更も含む)
+        <br>
+        ・更新する際は、現在登録しているパスワードを入力してください。
+        <br>
+        ・パスワードを変更したい場合は、チェックボックスにチェックを入れてください。
+        <br>
+        ・退会したい場合、「ユーザーアカウントの削除」をクリックしてください。
+        <br>
+        　※退会した場合、登録した情報はすべて削除され、復旧することができません。
+      </div>
+    </div>
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <div class="user_info_forms">
         <%= render "/devise/shared/error_messages", resource: resource %>
