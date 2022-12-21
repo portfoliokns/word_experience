@@ -78,23 +78,23 @@
           <%= f.password_field :current_password, class:"user_info_form_text_field", autocomplete: "current-password" %>
           <p class='user_info_text'>※現在登録しているパスワードを入力してください。</p>
         </div>
-        <div class="user_info_form">
+        <div class="user_info_password">
           <%= check_box_tag :password_check_box %>
-          <%= label_tag :password_text, "パスワードを変更したい" %>
+          <%= label_tag :password_check_box, "パスワードを変更する" %>
         </div>
         <div id="password_form">
           <div class="user_info_form">
-            <div class='form-text-wrap'>
-              <label class="form-text">新しいパスワード</label>
-              <span class="indispensable">必須</span>
+            <div class='user_info_form_title'>
+              <label class="user_info_form_content">新しいパスワード</label>
+              <span class="user_info_form_need">必須</span>
             </div>
             <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
             <p class='info-text'>※6文字以上の英字と数字の両方を含めてください</p>
           </div>
           <div class="user_info_form">
-            <div class='form-text-wrap'>
-              <label class="form-text">新しいパスワード(再度確認)</label>
-              <span class="indispensable">必須</span>
+            <div class='user_info_form_title'>
+              <label class="user_info_form_content">新しいパスワード(再度確認)</label>
+              <span class="user_info_form_need">必須</span>
             </div>
             <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"" %>
             <p class='info-text'>※同じパスワードをもう一度、入力してください</p>
