@@ -40,7 +40,7 @@
     <% if user_signed_in? %>
       <%= link_to 'プロフィール', user_profiles_path(current_user.id), class: "side_bar_content" %>
       <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: "side_bar_content" %>
-      <%= link_to 'パスワード変更', root_path, class: "side_bar_content" %>
+      <%= link_to 'パスワード変更', edit_user_registration_path(anchor: "password_change"), class: "side_bar_content" %>
     <% elsif %>
       <%= link_to 'プロフィール', user_session_path, class: "side_bar_content" %>
       <%= link_to 'ユーザー情報編集', user_session_path, class: "side_bar_content" %>
