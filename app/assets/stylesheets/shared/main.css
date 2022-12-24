@@ -9,6 +9,7 @@
   height: 100%;
   background-color: #f9fff9;
   border-radius: 10px 0 0 10px ;
+  overflow: auto;
 }
 
 .main_screen {
