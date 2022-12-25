@@ -110,6 +110,7 @@ function mouse_over (){
   changeBackgroundColor(blueButton,"#8ac8ee");
   changeBackgroundColor(grayButton,"#b0aca8");
 
+  // const copyTexts = document.querySelectorAll(".word_name");
   const copyTexts = document.querySelectorAll(".word_name");
   const silverButtons = document.querySelectorAll(".word_button_edit");
   const userProfileLinks = document.querySelectorAll(".user_profile_link");

@@ -38,12 +38,20 @@
   text-decoration: none;
 }
 
-.reputation_link{
+.reputation_link_star, .reputation_link_bad{
   position: absolute;
   top: 0;
-  left: 0;
   height: 45px;
+}
+
+.reputation_link_star{
+  left: 0;
   width: 45px;
+}
+
+.reputation_link_bad{
+  left: 10px;
+  width: 30px;
 }
 
 .user_profile_link{
