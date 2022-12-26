@@ -49,7 +49,11 @@
             </div>
           </div>
           <%= form.text_field :name, readonly: true, value: word.name, class: "word_name" %>
-          <%= link_to @service_category.find(word.service_category_id).name, @service_category.find(word.service_category_id).link, class: "service_category", target: :_blank, rel: "noopener noreferrer" %>
+          <% if @service_category.find(word.service_category_id).link == true %>
+            <%= link_to @service_category.find(word.service_category_id).name, @service_category.find(word.service_category_id).url, class: "service_category", target: :_blank, rel: "noopener noreferrer" %>
+          <% else %>
+            <%= link_to @service_category.find(word.service_category_id).name, @service_category.find(word.service_category_id).url, class: "service_category" %>
+          <% end %>
           <%= link_to '編集', edit_user_word_path(word.user_id,word), class: "word_button_edit" %>
         </div>
       <% end %>
