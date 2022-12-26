@@ -16,15 +16,22 @@
       <div class="word_board_text">
         【ワードの利用方法】
         <br>
-        ①ワードをコピーしましょう。
+        ①ワードをクリックし、コピーしましょう。
         <br>
-        ②GoogleやYouTubeなどのサービスで検索し、新たな体験を得ましょう。
+        ②サービスカテゴリをクリックし、そのサービスへアクセスしましょう。
         <br>
-        ③そのワードを評価し、フィードバックを返しましょう。(⭐️か❌を押しましょう)
+        ③GoogleやYouTubeなどのサービスで検索し、新たな体験を得ましょう。
+        <br>
+        ④そのワードを評価し、フィードバックを返しましょう。(⭐️か❌を押しましょう)
+        <br>
+        <br>
+        【注意事項】
         <br>
         ・ワードをクリックすると、クリップボードにワードがコピーされます。
         <br>
         　※HTTPSの通信ではない場合、コピー時にエラーが発生します。
+        <br>
+        ・サービスカテゴリには、一部アクセスできない項目もあります。
       </div>
     </div>
 
@@ -66,9 +73,12 @@
                 user_exchanged_word_bad_reputations_path(current_user.id,exchanged_word.id),
                 {modele: @bad_reputation, method: :post, class:"reputation_link_bad"} %>
           </div>
-          <%= form.text_field :name, readonly: true, size: 30, value: exchanged_word.word.name, class: "word_name" %>
-          <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(exchanged_word.word.main_category_id).name, class: "word_category" %>
-          <%= form.text_field :service_category_id, readonly: true, disabled: true, size: 15, value: @service_category.find(exchanged_word.word.service_category_id).name, class: "word_category" %>
+          <%= form.text_field :name, readonly: true, value: exchanged_word.word.name, class: "word_name" %>
+          <% if @service_category.find(exchanged_word.word.service_category_id).link == true %>
+            <%= link_to @service_category.find(exchanged_word.word.service_category_id).name, @service_category.find(exchanged_word.word.service_category_id).url, class: "service_category", target: :_blank, rel: "noopener noreferrer" %>
+          <% else %>
+            <%= link_to @service_category.find(exchanged_word.word.service_category_id).name, @service_category.find(exchanged_word.word.service_category_id).url, class: "service_category" %>
+          <% end %>
           <%= link_to '詳細', user_exchanged_word_path(current_user.id,exchanged_word.id), class: "word_button_edit" %>
           <%= link_to exchanged_word.word.user.nickname, user_profiles_path(exchanged_word.word.user_id), class:"user_profile_link" %>
         </div>
