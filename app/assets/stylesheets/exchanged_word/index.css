@@ -22,7 +22,7 @@
   position: absolute;
   top: 15px;
   left: 25px;
-  padding: 4px;
+  margin: 4px;
   font-size: 12px;
   color: #000000;
   text-decoration: none;
@@ -32,18 +32,26 @@
   position: absolute;
   top: 15px;
   left: 35px;
-  padding: 4px;
+  margin: 4px;
   font-size: 12px;
   color: #000000;
   text-decoration: none;
 }
 
-.reputation_link{
+.reputation_link_star, .reputation_link_bad{
   position: absolute;
   top: 0;
-  left: 0;
   height: 45px;
+}
+
+.reputation_link_star{
+  left: 0;
   width: 45px;
+}
+
+.reputation_link_bad{
+  left: 12px;
+  width: 30px;
 }
 
 .user_profile_link{
