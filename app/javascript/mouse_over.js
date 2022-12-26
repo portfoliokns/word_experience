@@ -130,12 +130,14 @@ function mouse_over (){
 
   const reputationLinkStar = document.querySelectorAll(".reputation_link_star");
   const reputationLinkBad = document.querySelectorAll(".reputation_link_bad");
-  const copyTexts = document.querySelectorAll(".word_name");
+  const copyWordName = document.querySelectorAll(".word_name");
+  const linkServiceCategory = document.querySelectorAll(".service_category");
   const silverButtons = document.querySelectorAll(".word_button_edit");
   const userProfileLinks = document.querySelectorAll(".user_profile_link");
   iconFocusForEach(reputationLinkStar,"#4e7651eb");
   iconFocusForEach(reputationLinkBad,"#484bef");
-  changeBackgroundColorForEach(copyTexts,"#f0fbfb");
+  changeBackgroundColorForEach(copyWordName,"#f0fbfb");
+  changeBackgroundColorForEach(linkServiceCategory,"#f0fbfb");
   changeBackgroundColorForEach(silverButtons,"#b3b4ce42");
   changeColorUnderlineForEach(userProfileLinks,"#373cd3");
 

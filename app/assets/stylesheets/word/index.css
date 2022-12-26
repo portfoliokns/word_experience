@@ -43,7 +43,7 @@
   cursor: copy;
 }
 
-.word_category{
+.service_category{
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
@@ -54,7 +54,7 @@
   text-align: center;
 }
 
-.word_category{
+/* .word_category{
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
@@ -62,7 +62,7 @@
   border: solid 0.1px black;
   background-color: #FFFFFF;
   text-align: center;
-}
+} */
 
 .word_button_edit{
   border-radius: 5px;

@@ -1,10 +1,10 @@
 class ServiceCategory < ActiveHash::Base
   self.data = [
     { id: 1, name: '--サービスを選択必須--' },
-    { id: 101, name: 'Googole' },
-    { id: 102, name: 'Googole Maps' },
-    { id: 103, name: 'Googole トレンド' },
-    { id: 104, name: 'Youtube' },
+    { id: 101, name: 'Googole', link: 'https://www.google.com/' },
+    { id: 102, name: 'Googole Maps', link: 'https://www.google.co.jp/maps/' },
+    { id: 103, name: 'Googole トレンド', link: 'https://trends.google.co.jp/' },
+    { id: 104, name: 'Youtube', link: 'https://www.youtube.com/' },
 
     { id: 201, name: 'Amazon' },
     { id: 202, name: 'prime video' },

@@ -45,8 +45,9 @@
             </div>
           </div>
           <%= form.text_field :name, readonly: true, size: 30, value: word.name, class: "word_name" %>
-          <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(word.main_category_id).name, class: "word_category" %>
-          <%= form.text_field :service_category_id, readonly: true, disabled: true, size: 15, value: @service_category.find(word.service_category_id).name, class: "word_category" %>
+          <%# <%= form.text_field :main_category_id, readonly: true, disabled: true, size: 15, value: @main_category.find(word.main_category_id).name, class: "word_category" %>
+          <%# <%= form.text_field :service_category_id, readonly: true, size: 15, value: @service_category.find(word.service_category_id).name, class: "service_category" %>
+          <%= link_to @service_category.find(word.service_category_id).name, @service_category.find(word.service_category_id).link, class: "service_category" %>
           <%= link_to '編集', edit_user_word_path(word.user_id,word), class: "word_button_edit" %>
         </div>
       <% end %>
