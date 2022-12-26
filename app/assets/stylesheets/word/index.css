@@ -32,6 +32,8 @@
 }
 
 .word_name{
+  width: 200px;
+  height: 20px;
   border-radius: 5px;
   padding: 8px;
   margin-left: 16px;
@@ -44,10 +46,14 @@
 }
 
 .service_category{
+  width: 200px;
+  height: 20px;
+  white-space:nowrap;
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
   font-size: 15px;
+  text-decoration: none;
   color: #6c757d;
   border: solid 0.1px black;
   background-color: #FFFFFF;
@@ -55,6 +61,8 @@
 }
 
 .word_button_edit{
+  width: 30px;
+  height: 20px;
   border-radius: 5px;
   padding: 8px 20px;
   margin-left: 5px;
@@ -63,6 +71,7 @@
   color: #333333;
   border: solid 0.1px black;
   text-decoration: none;
+  text-align: center;
 }
 
 

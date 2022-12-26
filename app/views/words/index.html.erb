@@ -44,7 +44,7 @@
               <%= word.reputations.where(bad_flag: true).count %>
             </div>
           </div>
-          <%= form.text_field :name, readonly: true, size: 30, value: word.name, class: "word_name" %>
+          <%= form.text_field :name, readonly: true, value: word.name, class: "word_name" %>
           <%= link_to @service_category.find(word.service_category_id).name, @service_category.find(word.service_category_id).link, class: "service_category", target: :_blank, rel: "noopener noreferrer" %>
           <%= link_to '編集', edit_user_word_path(word.user_id,word), class: "word_button_edit" %>
         </div>
