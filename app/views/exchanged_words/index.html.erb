@@ -44,12 +44,12 @@
             <% end %>
                 ★
               </div>
-            <div class="reputation_star_counter">
-              <%= exchanged_word.word.reputations.where(star_flag: true).count %>
-            </div>
             <%= link_to  "", 
                 user_exchanged_word_good_reputations_path(current_user.id,exchanged_word.id),
                 {modele: @good_reputation, method: :post, class:"reputation_link_star"} %>
+            <div class="reputation_star_counter">
+              <%= exchanged_word.word.reputations.where(star_flag: true).count %>
+            </div>
           </div>
           <div class="reputation">
             <% if exchanged_word.reputations.count == 0 %>

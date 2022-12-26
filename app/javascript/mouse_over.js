@@ -80,6 +80,24 @@ function tooltipForEach (tooltip_blocks) {
   }
 }
 
+function iconFocusForEach (objects,params) {
+    try {
+      objects.forEach(function (obj) {
+        obj.addEventListener('mouseover', function(){
+          const previousElement = obj.previousElementSibling
+          previousElement.setAttribute("style", "-webkit-text-stroke:1px " + params);
+        });
+    
+        obj.addEventListener('mouseout', function(){
+          const previousElement = obj.previousElementSibling
+          previousElement.removeAttribute("style");
+        });
+      });
+    } catch (error) {
+      alert('javascriptで問題が発生しました。' + error);
+    }
+  }
+
 function mouse_over (){
   const iconText = document.getElementById("icon_text");
   const questionFormButton = document.getElementById("question_form_button");
@@ -110,10 +128,13 @@ function mouse_over (){
   changeBackgroundColor(blueButton,"#8ac8ee");
   changeBackgroundColor(grayButton,"#b0aca8");
 
-  // const copyTexts = document.querySelectorAll(".word_name");
+  const reputationLinkStar = document.querySelectorAll(".reputation_link_star");
+  const reputationLinkBad = document.querySelectorAll(".reputation_link_bad");
   const copyTexts = document.querySelectorAll(".word_name");
   const silverButtons = document.querySelectorAll(".word_button_edit");
   const userProfileLinks = document.querySelectorAll(".user_profile_link");
+  iconFocusForEach(reputationLinkStar,"#4e7651eb");
+  iconFocusForEach(reputationLinkBad,"#484bef");
   changeBackgroundColorForEach(copyTexts,"#f0fbfb");
   changeBackgroundColorForEach(silverButtons,"#b3b4ce42");
   changeColorUnderlineForEach(userProfileLinks,"#373cd3");
