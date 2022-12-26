@@ -1,13 +1,3 @@
-/* 共通 */
-.word_theme {
-  color: #444444;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 30px;
-  color: #6c757d;
-}
-
 /* index */
 /* exchanged_wordと共有 */
 
@@ -58,6 +48,7 @@
   border: solid 0.1px black;
   background-color: #FFFFFF;
   text-align: center;
+  cursor: pointer;
 }
 
 .word_button_edit{
