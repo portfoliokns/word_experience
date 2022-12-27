@@ -30,9 +30,8 @@
   text-decoration: none;
   color: #FFFFFF;
   border: 1px solid;
-  border-radius: 20px;  
+  border-radius: 20px;
 }
-
 
 .tweet{
   margin-right: 4px;
@@ -55,4 +54,31 @@
 
 .log-out {
   background-color: #ea7d24;
+}
+
+@media (max-width: 599px) {
+  .top-container{
+    background-color: #CCCCCC;
+    flex-direction: column;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .icon{
+    padding: 1px 14px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .link {
+    font-size: 14px;
+    padding: 3px 14px;
+  }
+
+  .tweet, .login, .user, .sign-up, .log-out{
+    font-size: 14px;
+    padding: 3px 14px;
+    margin-bottom: 10px;
+  }
+
 }
