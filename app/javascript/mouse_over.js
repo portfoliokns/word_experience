@@ -62,6 +62,26 @@ function changeBackgroundColorForEach (objects, params) {
   }
 }
 
+function changeServiceCategoryForEach (objects, params) {
+  try {
+    objects.forEach(function (obj) {
+      obj.addEventListener('mouseover', function(){
+        console.log(obj)
+        if (obj.href.match('words#') || obj.href.match('exchanged_words#')) {
+          this.setAttribute("style", "cursor: not-allowed;");
+        } else {
+          this.setAttribute("style", "background-color: " + params);
+        };
+      });
+      obj.addEventListener('mouseout', function(){
+        this.removeAttribute("style");
+      });
+    });
+  } catch (error) {
+    alert('javascriptで問題が発生しましたaaa。' + error);
+  }
+}
+
 function tooltipForEach (tooltip_blocks) {
   try {
     tooltip_blocks.forEach(function (tooltip_block) {
@@ -137,7 +157,7 @@ function mouse_over (){
   iconFocusForEach(reputationLinkStar,"#4e7651eb");
   iconFocusForEach(reputationLinkBad,"#484bef");
   changeBackgroundColorForEach(copyWordName,"#f0fbfb");
-  changeBackgroundColorForEach(linkServiceCategory,"#f0fbfb");
+  changeServiceCategoryForEach(linkServiceCategory,"#f0fbfb");
   changeBackgroundColorForEach(silverButtons,"#b3b4ce42");
   changeColorUnderlineForEach(userProfileLinks,"#373cd3");
 
