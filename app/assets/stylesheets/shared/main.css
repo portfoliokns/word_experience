@@ -4,8 +4,8 @@
   top: 20vh;
 }
 
-.open,
-.close,
+.header_open,
+.header_close,
 .sidebar_open,
 .sidebar_close {
   display: none;
@@ -64,19 +64,19 @@
 }
 
 @media (max-width: 599px) {
-  .open,
-  .close,
+  .header_open,
+  .header_close,
   .sidebar_open,
   .sidebar_close {
     display: block;
     font-size: 20px;
   }
 
-  .open, .sidebar_open{
+  .header_open, .sidebar_open{
     position: absolute;
   }
 
-  .open{
+  .header_open{
     top: -3px;
     left: 50%;
     height: 30px;
@@ -107,7 +107,7 @@
     transition: all 0.2s;
   }
 
-  .back{
+  .header_back{
     position: absolute;
     top: 100%;
     left: 0;
@@ -116,7 +116,7 @@
     background-color: rgba(0,0,0,0.8);
   }
 
-  input[type="checkbox"]:checked ~ .back{
+  input[type="checkbox"]:checked ~ .header_back{
     top: 110px;
     left: 0;
     transition: all 0.2s;
