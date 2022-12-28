@@ -66,7 +66,6 @@ function changeServiceCategoryForEach (objects, params) {
   try {
     objects.forEach(function (obj) {
       obj.addEventListener('mouseover', function(){
-        console.log(obj)
         if (obj.href.match('words#') || obj.href.match('exchanged_words#')) {
           this.setAttribute("style", "cursor: not-allowed;");
         } else {
