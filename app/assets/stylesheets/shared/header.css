@@ -58,6 +58,7 @@
 
 @media (max-width: 599px) {
   .top-container{
+    height: 100px;
     background-color: #CCCCCC;
     flex-direction: column;
     border-bottom: none;
