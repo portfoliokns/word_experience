@@ -46,3 +46,10 @@
   margin-bottom: 15px;
   font-size: 10px;
 }
+@media (max-width: 599px) {
+  .sidebar_close{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 228, 196);
+  }
+}

@@ -1,14 +1,17 @@
 <input id="header_display" type="checkbox" class="header_check_box">
-<label for="header_display" class="open">🍔</label>
+<label for="header_display" class="open">▲</label>
+<label for="sidebar_display" class="sidebar_open">◀︎</label>
 <div class="header">
   <%= render "shared/header" %>
 </div>
 <label for="header_display" class="back"></label>
 
 <div class="split_main">
-  <div class="side-bar">
+  <input id="sidebar_display" type="checkbox" class="sidebar_check_box">
+  <div class="sidebar">
     <%= render "shared/side_bar" %>
   </div>
+  <label for="sidebar_display" class="sidebar_back"></label>
   <div class="main_screen">
     <h3 class="word_theme">
       管理人からのお知らせ

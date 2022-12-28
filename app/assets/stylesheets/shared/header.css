@@ -82,4 +82,10 @@
     margin-bottom: 10px;
   }
 
+  .close{
+    text-align: center;
+    background-color: bisque;
+    width: 100%;
+  }
+
 }
