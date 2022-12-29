@@ -1,5 +1,17 @@
-.youtube_flame{
+.youtube_frame{
   margin-top: 15px;
   display: flex;
   justify-content: center;
+}
+
+.youtube_frame iframe{
+  width: 800px;
+  height: 400px;
+}
+
+@media (max-width: 599px) {
+  .youtube_frame iframe{
+    width: 340px;
+    height: 180px;
+  }
 }
