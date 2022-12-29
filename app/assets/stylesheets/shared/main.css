@@ -76,11 +76,10 @@
 
   .header_open, .sidebar_open{
     position: absolute;
-    z-index: 100;
+    z-index: 50;
     height: 50px;
     width: 50%;
     top: 92%;
-    z-index: 50;
   }
 
   .header_open{
@@ -102,7 +101,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    /* height: 50%; */
     transition: all 0.2s;
     z-index: 100;
   }
