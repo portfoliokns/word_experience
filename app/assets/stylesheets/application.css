@@ -20,7 +20,7 @@ body {
 
 @media (max-width: 599px) {
   body {
-    padding: 2px;
+    padding: 0;
   }
 }
 
