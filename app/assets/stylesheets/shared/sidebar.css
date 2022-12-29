@@ -1,6 +1,7 @@
 .side_bar_word_point_block{
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #f2f8ff;
   border-radius: 10px 0 0 0 ;
 }
@@ -46,10 +47,48 @@
   margin-bottom: 15px;
   font-size: 10px;
 }
+
 @media (max-width: 599px) {
+  .sidebar_close, .side_bar_close{
+    height: 40px;
+  }
+
+  .side_bar_word_point_block{
+    margin-bottom: 15px;
+  }
+
   .sidebar_close{
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 228, 196);
+    background-color: #ffce9d;
+    width: 100%;
+  }
+
+  .side_bar_block{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+  }
+
+  .side_bar_title_header{
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .side_bar_contents{
+    align-items: center;
+  }
+
+  .side_bar_content{
+    font-size: 17px;
+    margin: 2px 0;
+    padding: 4px 10px;
+  }
+  
+  .copyright{
+    margin-left: 75px;
+    
+    
   }
 }

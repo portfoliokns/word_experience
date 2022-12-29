@@ -2,13 +2,13 @@
   <label for="header_display" class="header_close">×</label>
   <%= link_to "Word Experience", root_path, class: "icon", id: "icon_text" %>
   
-  <div>
+  <div class="links">
     <%= link_to "お問合せ", "#", class: "link", id: "question_form_button" %>
     <%= link_to "マニュアル", manuals_path, class: "link", id: "manual_form_button" %>
     <%= link_to "About", about_index_path, class: "link", id: "about_form_button" %>
   </div>
   
-  <div>
+  <div class="links">
     <%= link_to  "Tweet", "https://twitter.com/share?text=Word Experience http://●●●●●●/ ※個人が作成したアプリになるので、ULRの部分を隠しています。", class: "tweet", id: "tweet_button", target: :_blank, rel: "noopener noreferrer" %>
     <% if user_signed_in? %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out", id: "logout_button", data: { confirm: "ログアウトしてもよろしいですか。" } %>
