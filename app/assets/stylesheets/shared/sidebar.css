@@ -50,7 +50,7 @@
   .sidebar_close{
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 228, 196);
+    background-color: #ffce9d;
     height: 7%;
     width: 100%;
   }
