@@ -148,10 +148,9 @@
   }
 
   .word_board_text{
-    height:140px;
-  }
-
-  .word_board_text{
+    height:110px;
+    width: 80%;
     font-size: 12px;
+    padding: 8px 14px;
   }
 }

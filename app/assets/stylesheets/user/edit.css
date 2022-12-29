@@ -115,3 +115,9 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 599px) {
+  .user_info_form_text_field{
+    width: 90%;
+  }
+}

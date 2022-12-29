@@ -25,3 +25,20 @@
   font-size: 21px;
   margin-bottom: 8px;
 }
+
+@media (max-width: 599px) {
+  .about_board_text{
+    width: 80%;
+    height: 450px;
+  }
+
+  .about_board_text h3{
+    font-size: 22px;
+    margin: 14px 0;
+  }
+  
+  .about_board_text p{
+    font-size: 20px;
+    margin-bottom: 7px;
+  }
+}
