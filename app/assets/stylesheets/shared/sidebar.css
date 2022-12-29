@@ -51,5 +51,7 @@
     display: flex;
     justify-content: center;
     background-color: rgb(255, 228, 196);
+    height: 7%;
+    width: 100%;
   }
 }
