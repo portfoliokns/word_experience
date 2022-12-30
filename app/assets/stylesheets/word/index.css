@@ -65,7 +65,36 @@
   text-align: center;
 }
 
+@media (max-width: 599px) {
+  .word_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .word_reputation_bad{
+    margin-left: 0;
+  }
+
+  .word_name{
+    margin-left: 0;
+  }
+
+  .service_category{
+    margin-left: 0;
+  }
+
+  .word_name, .service_category{
+    margin-bottom: 5px;
+  }
+
+  .word_button_edit{
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  
+}
 
 
 /* new */
@@ -107,6 +136,23 @@
   border: none;
 }
 
+@media (max-width: 599px) {
+  .word_new_record{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .word_new_name, .word_new_category{
+    margin-left: 0;
+    margin-bottom: 4px;
+  }
+
+  .word_new_button_save{
+    margin-bottom: 30px;
+  }
+  
+}
 
 
 

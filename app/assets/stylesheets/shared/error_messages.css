@@ -16,3 +16,14 @@
   background-color: rgba(231, 93, 93, 0.4);
   color: #222222;
 }
+
+@media (max-width: 599px) {
+  .error-message {
+    font-size: 4.5vw;
+    text-align: center;
+  }
+
+  .alert_message{
+    margin: 0 15px;
+  }
+}
