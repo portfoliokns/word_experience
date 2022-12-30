@@ -65,6 +65,38 @@
   text-align: center;
 }
 
+@media (max-width: 599px) {
+  .word_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .word_reputation_bad{
+    margin-left: 0;
+  }
+
+  .word_name{
+    margin-left: 0;
+  }
+
+  .service_category{
+    margin-left: 0;
+  }
+
+  .word_name, .service_category{
+    margin-bottom: 5px;
+  }
+
+  .word_button_edit{
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  
+}
+
+
 /* new */
 .word_new_list{
   display: flex;
