@@ -9,3 +9,10 @@
   align-items: center;
   overflow: auto;
 }
+
+@media (max-width: 599px) {
+  .login_screen{
+    margin: 0;
+    height: 100vh;
+  }
+}
