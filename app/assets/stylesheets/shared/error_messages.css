@@ -10,6 +10,11 @@
   color: rgb(182, 48, 0);
 }
 
+.recaptcha_error-message{
+  color: rgb(182, 48, 0);
+  text-align: center;
+}
+
 .alert_message{
   text-align: center;
   font-size: 17px;

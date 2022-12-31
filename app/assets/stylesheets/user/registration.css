@@ -1,5 +1,6 @@
 .registration_screen{
-  background-color: #fcf5f3;
+  background-color: #f3f9fc;
+  margin: 0 20vw;
   padding-bottom: 40px;
   border-radius: 10px;
   display: flex;
@@ -20,6 +21,10 @@
   font-size: 15px;
   margin-top: 5px;
   text-align: center;
+}
+
+.field_with_errors {
+  display: contents;
 }
 
 .recaptcha{

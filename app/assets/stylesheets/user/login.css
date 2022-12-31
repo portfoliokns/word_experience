@@ -1,9 +1,11 @@
 .login_screen{
   background-color: #fcf5f3;
+  margin: 10vh 20vw;
   padding-bottom: 40px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   overflow: auto;
 }
