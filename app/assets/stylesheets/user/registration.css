@@ -1,5 +1,6 @@
 .registration_screen{
   background-color: #fcf5f3;
+  padding-bottom: 40px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

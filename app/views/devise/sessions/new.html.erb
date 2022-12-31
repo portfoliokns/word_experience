@@ -1,37 +1,31 @@
-<%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: '', local: true do |f| %>
-<div class=''>
-  <div class=''>
-    <h1 class=''>
-      ログインページ
-    </h1>
-  </div>
+<%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
+<div class='login_screen'>
+  <h1 class='word_theme'>
+    ログインページ
+  </h1>
   <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
-  <div class="">
-    <div class=''>
-      <label class="">メールアドレス</label>
-      <span class="">必須</span>
+  <div class="user_info_form">
+    <div class='user_info_form_title'>
+      <label class="user_info_form_content">メールアドレス</label>
     </div>
-    <%= f.email_field :email, class:"", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <%= f.email_field :email, class:"user_info_form_text_field", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
-  <div class="">
-    <div class=''>
+  <div class="user_info_form">
+    <div class='user_info_form_title'>
       <label class="">パスワード</label>
-      <span class="">必須</span>
     </div>
-    <%= f.password_field :password, class:"", id:"password", placeholder:"" %>
+    <%= f.password_field :password, class:"user_info_form_text_field", id:"password", placeholder:"" %>
   </div>
-  <div class='login-btn'>
-    <%= f.submit "ログイン" ,class:"login-orange-btn", id:"orange_button" %>
-  </div>
-  <div class="">
-    <p class=''>※アカウント登録がお済みでない方は
+    <%= f.submit "ログイン" ,class:"user_info_btn", id:"orange_button" %>
+  <div class="form-group">
+    <p class='form-bottom-text'>※アカウント登録がお済みでない方は
       <%= link_to 'こちら', new_user_registration_path %>
       から新規登録してください。
     </p>
-    <p class=''>※トップページへ戻るには
+    <p class='form-bottom-text'>※トップページへ戻るには
       <%= link_to 'こちら', root_path %>
       をクリックしてください。
     </p>

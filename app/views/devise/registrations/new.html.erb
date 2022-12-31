@@ -103,17 +103,14 @@
   <%= f.submit "ユーザーアカウント 登録" , class:"user_info_btn", id:"orange_button" %>
 
   <div class="form-group">
-    <h2 class="form-bottom-text">
-      ※アカウント登録がすでにお済の方は
+    <p class='form-bottom-text'>※アカウント登録がすでにお済の方は
       <%= link_to "こちら", user_session_path %>
       からログインしてください。
-
-      <br>
-
-      ※トップページへ戻るには
+    </p>
+    <p class='form-bottom-text'>※トップページへ戻るには
       <%= link_to "こちら", root_path %>
       をクリックしてください。
-    </h2>
+    </p>
   </div>
 </div>
 <% end %>
