@@ -1,25 +1,18 @@
-.login-btn {
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.form-info-text {
-  font-size: 15px;
-}
-
-.login-orange-btn {
-  width: 100%;
-  background: #f49e5d;
-  border: 1px solid #fcf5f3;
+.login_screen{
+  background-color: #fcf5f3;
+  margin: 10vh 20vw;
+  padding-bottom: 40px;
   border-radius: 10px;
-  color: #fff;
-  line-height: 48px;
-  font-size: 20px;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
 }
 
-.login-flash-message {
-  text-align: center;
-  color: red;
+@media (max-width: 599px) {
+  .login_screen{
+    margin: 0;
+    height: 100vh;
+  }
 }

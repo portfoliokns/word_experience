@@ -1,13 +1,18 @@
 .error-alert {
   display: flex;
   justify-content: center;
-  margin-bottom: 5vh;
+  margin-bottom: 10px;
 }
 
 .error-message {
   font-size: 1.3vw;
   list-style: disc;
   color: rgb(182, 48, 0);
+}
+
+.recaptcha_error-message{
+  color: rgb(182, 48, 0);
+  text-align: center;
 }
 
 .alert_message{
