@@ -17,3 +17,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.top_page_board{
+  display:flex;
+  justify-content: center;
+}
+
+.top_page_text{
+  width: 500px;
+  height: 500px;
+  padding: 8px 32px;
+  margin-bottom: 10px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: 1px double #efe2ce;
+  font-size: 13px;
+  color: #6c757d;
+  overflow: scroll;
+}
+
+@media (max-width: 599px) {
+  .top_page_text{
+    width: 80%;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
