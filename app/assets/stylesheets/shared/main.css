@@ -143,8 +143,13 @@
 
   .main_screen{
     width: 100%;
-    height: 600px;
-    padding: 0;
+    height: 100vh;
+    padding: 0 0 50px;
+    border-radius: 0;
+  }
+
+  .sidebar {
+    border-radius: 0;
   }
 
   .word_board_text{
