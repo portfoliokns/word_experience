@@ -14,7 +14,7 @@
 .split_main {
   display: flex;
   justify-content: left;
-  height: 600px;
+  height: calc(100vh - 91px);
 }
 
 .sidebar {
