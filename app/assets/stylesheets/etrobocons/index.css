@@ -1,0 +1,60 @@
+.etrobocons_header{
+  height: 60px;
+  width: 100%;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.etrobocons_header h1{
+  font-size: 40px;
+}
+
+.etrobocons_main_flame{
+  height: 100%;
+  width: 100%;
+  /* background-color: wheat; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.etrobocons_main{
+  height: 100%;
+  width: 90%;
+  margin: 20px 0;
+  /* background-color: green; */
+}
+
+.etrobocons_contents{
+  height: 100%;
+  width: 100%;
+  margin: 60px 0;
+  /* background-color: pink; */
+}
+
+.etrobocons_content{
+  height: 100%;
+  width: 100%;
+  /* background-color: yellow; */
+  /* border-bottom: 1px black solid; */
+  display: flex;
+  justify-content: center;
+}
+
+.etrobocons_title{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.etrobocons_youtube iframe{
+  width: 600px;
+  height: 400px;
+}
+
+.etrobocons_describe{
+  width: 60%;
+  margin-top: 30px;
+  font-size: 18px;
+}
