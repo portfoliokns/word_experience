@@ -2,6 +2,7 @@
   height: 60px;
   width: 100%;
   /* background-color: aquamarine; */
+  margin: 50px 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,7 @@
 .etrobocons_main{
   height: 100%;
   width: 90%;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   /* background-color: green; */
 }
 
