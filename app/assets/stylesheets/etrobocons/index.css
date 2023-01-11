@@ -57,6 +57,10 @@
   font-size: 18px;
 }
 
+.etrobocons_describe li{
+
+}
+
 .etrobocons_link{
   text-decoration: none;
   font-weight: 700;
@@ -69,7 +73,7 @@
   }
   
   .etrobocons_header h1{
-    font-size: 22px;
+    font-size: 30px;
     text-align: center;
   }
   
