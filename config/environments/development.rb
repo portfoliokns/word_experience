@@ -61,5 +61,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # SSL
-  # config.force_ssl = true
+  config.force_ssl = false
 end
