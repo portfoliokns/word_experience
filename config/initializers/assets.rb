@@ -16,3 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Javascript assets.
 Rails.application.config.assets.precompile += %w( password_control.js )
 Rails.application.config.assets.precompile += %w( copy_clipboard.js )
+Rails.application.config.assets.precompile += %w( dfp_control.js )

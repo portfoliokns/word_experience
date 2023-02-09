@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'etrobocons/index'
+  resources :devicefingerprinting, only: [:index]
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
