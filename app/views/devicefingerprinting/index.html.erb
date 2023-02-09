@@ -5,7 +5,7 @@
   <h1>このページを利用する際の注意点</h1>
   <div class="devicefingerprinting_text">
     このページでは、あなたがアクセスしている端末やWebブラウザの情報を読み取ります。
-    読み取った情報と、DeviceFingerに変換した情報を、Webブラウザ上に表示するというものです。
+    読み取った情報と、Device Fingerに変換した情報を、Webブラウザ上に表示するというものです。
     注意点および利用条件を読み、同意の上で、ご利用ください。
     なお同意いただけない方は、
     <%= link_to  "こちら", root_path, class:"devicefingerprinting_link" %>
@@ -15,7 +15,7 @@
   <h1>利用条件について</h1>
   <div class="devicefingerprinting_text">
     <li>収集した情報は、Device Finger Printingの値を生成することにのみに使用します。</li>
-    <li>なお生成するにあたり、外部APIを利用するため、第三者に情報が提供されます。</li>
+    <li>なお生成するにあたり、外部モジュールをjavascriptで使用するため、第三者に情報が提供される恐れがあります。</li>
     <li>ユーザーのプライバシーを保護するため、HTTPSのプロトコルを利用し、セキュリティを保護しています。</li>
     <li>なお本サイトではHTTPでの利用も可能であるため、通信プロトコルがHTTPSになっていることをユーザー自身で確認してください。</li>
     <li>この機能を使用するためにはユーザーの同意が必要となります。</li>
@@ -23,7 +23,7 @@
 
   <div class="devicefingerprinting_understood">
     <%= check_box_tag :understood_check_box %>
-    <%= label_tag :understood_check_box, "上記、注意点、利用条件を確認し、同意します。" %>
+    <%= label_tag :understood_check_box, "上記、注意点、利用条件を確認し、同意します" %>
   </div>
 
   <div class="devicefingerprinting_sub_main" id="sub_main">
@@ -38,8 +38,10 @@
 
     <h1>このページは何をするページなの？</h1>
     <div class="devicefingerprinting_text">
-      このページは、DeviceFingerPrintingの技術を利用するにあたり、技術的検証(POC)を想定して作成したWebページになります。
-      DeviceFingerPrintingを利用してアプリを開発したい、システムを組みたい、という方はこのWebページをもとに技術的検証を行うことができます。
+      このページは、Device Finger Printingの技術を利用するにあたり、技術的検証(POC)を想定して作成したWebページになります。
+      Device Finger Printingを利用してアプリを開発したい、システムを組みたい、という方はこのWebページをもとに技術的検証を行うことができます。
+      例えば、異なるディスプレイ上で値を確認してみたり、スマホの画面の向きを変えたり、異なるブラウザで値を確認してみるのも良いです。
+      またAdBlockなどの拡張機能が正しく機能しているかを確認することもできます。
     </div>
 
     <h1>Device Finger Printingはどのようなことに応用できるのか？</h1>
@@ -53,6 +55,15 @@
     </div>
 
     <h1>以下のボタンをクリックすることで情報を取得することができます</h1>
-    <%= link_to  "取得する", root_path, class:"devicefingerprinting_button" %>
+
+    <div class="devicefingerprinting_result_box" id="result_box">
+      <div class="devicefingerprinting_name">
+        出力結果
+      </div>
+      <div class="devicefingerprinting_result">
+        例. 0e41c561d65b23a8d8ea57f0d9015f25
+      </div>
+    </div>
+    <%= link_to  "取得する", "#", class:"devicefingerprinting_button", id:"button" %>
   </div>
 </div>

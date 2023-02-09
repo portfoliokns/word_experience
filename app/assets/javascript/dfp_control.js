@@ -1,40 +1,7 @@
-// function get_dfp (){
-//   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
-//   .then(FingerprintJS => FingerprintJS.load())
-
-//   fpPromise
-//   .then(fp => fp.get())
-//   .then(result => {
-//       console.log(result.visitorId);
-//       console.log(result.confidence.score);
-//       console.log(result.confidence.comment);
-//       console.log(navigator.plugins);
-//       console.log(navigator.userAgent);
-//       console.log(navigator.language);
-//       console.log(navigator.hardwareConcurrency);
-//       console.log(screen.colorDepth);
-//       console.log(new Date().getTimezoneOffset());
-//       console.log(window.sessionStorage);
-//       console.log(navigator.connection);
-//       console.log(navigator.deviceMemory);
-//       console.log(navigator.languages);
-//       console.log(navigator.maxTouchPoints);
-//       console.log(navigator.mediaCapabilities);
-//       console.log(navigator.vendor);
-//       console.log(navigator.webdriver);
-//       console.log(screen.height);
-//       console.log(screen.orientation);
-//       console.log(screen.width);
-//   })
-// };
-
-// window.addEventListener('load', get_dfp);
-
-
 function sub_main_hidden(){
   try {
-    const password_form = document.getElementById("sub_main");
-    password_form.setAttribute("style", "display: none;");
+    const subMain = document.getElementById("sub_main");
+    subMain.setAttribute("style", "display: none;");
   } catch (error) {
     alert('javascriptで問題が発生しました。' + error);
   }
@@ -42,8 +9,8 @@ function sub_main_hidden(){
 
 function sub_main_display(){
   try {
-    const password_form = document.getElementById("sub_main");
-    password_form.setAttribute("style", "display: flex;");
+    const subMain = document.getElementById("sub_main");
+    subMain.setAttribute("style", "display: flex;");
   } catch (error) {
     alert('javascriptで問題が発生しました。' + error);
   }
@@ -76,3 +43,28 @@ function init_form(){
 };
 
 window.addEventListener('load', init_form);
+
+function set_dfp (){
+  const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
+  .then(FingerprintJS => FingerprintJS.load())
+
+  fpPromise
+  .then(fp => fp.get())
+  .then(result => {
+    var textbox_element = document.getElementById("result_box");
+    var new_element = document.createElement("div");
+    new_element.textContent = result.visitorId;
+    new_element.classList.add("devicefingerprinting_result");
+    textbox_element.appendChild(new_element);
+  })
+};
+
+function get_dfp (){
+  const button = document.getElementById("button")
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    set_dfp();
+  });
+};
+
+window.addEventListener('load', get_dfp);

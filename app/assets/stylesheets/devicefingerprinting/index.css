@@ -1,7 +1,6 @@
 .devicefingerprinting_main,
 .devicefingerprinting_sub_main{
   font-size: 20px;
-  margin: 0 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,9 +8,9 @@
 }
 
 .devicefingerprinting_main h1{
-  margin: 70px 0 20px;
+  margin: 20px 0;
   padding: 0 30px;
-  font-size: 30px;
+  font-size: 28px;
   border-left: 45px paleturquoise solid;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -23,16 +22,17 @@
 
 .devicefingerprinting_link{
   text-decoration: none;
+  font-weight: 800;
 }
 
 .devicefingerprinting_understood{
   padding: 10px;
-  margin: 5px;
+  margin-bottom: 25px;
   border: 1px solid rgb(239, 230, 230);
 }
 
 .devicefingerprinting_text{
-  margin: 20px 0;
+  margin: 5px 0;
   padding: 1% 10%;
   counter-reset:list;
 }
@@ -40,7 +40,7 @@
 .devicefingerprinting_text li{
   position:relative;
   padding: 0 0 0 30px;
-  margin: 15px 0 15px 0px;
+  margin: 10px 0 10px 0px;
   line-height: 29px;
   border: dashed 1px transparent;
   -webkit-transition: 0.3s;
@@ -81,4 +81,16 @@
   background-color: #dcdaef;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 40px;
+}
+
+.devicefingerprinting_result_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.devicefingerprinting_result{
+  margin: 10px;
 }
