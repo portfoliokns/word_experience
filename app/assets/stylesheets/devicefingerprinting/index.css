@@ -94,3 +94,22 @@
 .devicefingerprinting_result{
   margin: 10px;
 }
+
+@media (max-width: 599px) {
+  .devicefingerprinting_main,
+  .devicefingerprinting_sub_main{
+    font-size: 16px;
+  }
+
+  .devicefingerprinting_main h1{
+    font-size: 20px;
+  }
+
+  .devicefingerprinting_understood{
+    margin: 10px 10px 40px;
+  }
+
+  .devicefingerprinting_text{
+    line-height: 24px;
+  }
+}
