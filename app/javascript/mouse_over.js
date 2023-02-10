@@ -100,22 +100,22 @@ function tooltipForEach (tooltip_blocks) {
 }
 
 function iconFocusForEach (objects,params) {
-    try {
-      objects.forEach(function (obj) {
-        obj.addEventListener('mouseover', function(){
-          const previousElement = obj.previousElementSibling
-          previousElement.setAttribute("style", "-webkit-text-stroke:1px " + params);
-        });
-    
-        obj.addEventListener('mouseout', function(){
-          const previousElement = obj.previousElementSibling
-          previousElement.removeAttribute("style");
-        });
+  try {
+    objects.forEach(function (obj) {
+      obj.addEventListener('mouseover', function(){
+        const previousElement = obj.previousElementSibling
+        previousElement.setAttribute("style", "-webkit-text-stroke:1px " + params);
       });
-    } catch (error) {
-      alert('javascriptで問題が発生しました。' + error);
-    }
+  
+      obj.addEventListener('mouseout', function(){
+        const previousElement = obj.previousElementSibling
+        previousElement.removeAttribute("style");
+      });
+    });
+  } catch (error) {
+    alert('javascriptで問題が発生しました。' + error);
   }
+}
 
 function mouse_over (){
   const iconText = document.getElementById("icon_text");

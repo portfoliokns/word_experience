@@ -1,0 +1,115 @@
+.devicefingerprinting_main,
+.devicefingerprinting_sub_main{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.devicefingerprinting_main h1{
+  margin: 20px 0;
+  padding: 0 30px;
+  font-size: 28px;
+  border-left: 45px paleturquoise solid;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-right: 45px paleturquoise solid;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  text-align: center;
+}
+
+.devicefingerprinting_link{
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.devicefingerprinting_understood{
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 1px solid rgb(239, 230, 230);
+}
+
+.devicefingerprinting_text{
+  margin: 5px 0;
+  padding: 1% 10%;
+  counter-reset:list;
+}
+
+.devicefingerprinting_text li{
+  position:relative;
+  padding: 0 0 0 30px;
+  margin: 10px 0 10px 0px;
+  line-height: 29px;
+  border: dashed 1px transparent;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  list-style: none;
+}
+
+.devicefingerprinting_text li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  background: rgb(139, 209, 209);
+  border-radius: 50%;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.devicefingerprinting_text li:hover{
+  border-bottom-color: #F6A38B;
+}
+
+.devicefingerprinting_button{
+  color: #111111;
+  text-decoration: none;
+  background-color: #dcdaef;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.devicefingerprinting_result_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.devicefingerprinting_result{
+  margin: 10px;
+}
+
+@media (max-width: 599px) {
+  .devicefingerprinting_main,
+  .devicefingerprinting_sub_main{
+    font-size: 16px;
+  }
+
+  .devicefingerprinting_main h1{
+    font-size: 20px;
+  }
+
+  .devicefingerprinting_understood{
+    margin: 10px 10px 40px;
+  }
+
+  .devicefingerprinting_text{
+    line-height: 24px;
+  }
+}
