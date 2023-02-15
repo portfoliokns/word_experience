@@ -13,9 +13,13 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    # NoticeMailer.send_admin(@Inquiry).deliver_now
-    # NoticeMailer.send_user(@Inquiry).deliver_now
-    redirect_to send_inquiry_path
+    if @Inquiry.valid?
+      # NoticeMailer.send_admin(@Inquiry).deliver_now
+      # NoticeMailer.send_user(@Inquiry).deliver_now
+      redirect_to send_inquiry_path
+    else
+      render :new
+    end
   end
 
   def back
