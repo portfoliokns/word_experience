@@ -27,17 +27,6 @@
       </div>
     </div>
 
-    <%# <div class="inquiry_form"> %>
-      <%# <div class="inquiry_box"> %>
-        <%# <label>お名前</label> %>
-        <%# <%= @Inquiry.name %> 
-        <%# <label>メールアドレス</label> %>
-        <%# <%= @Inquiry.email %> 
-        <%# <label>お問い合わせ内容</label> %>
-        <%# <%= @Inquiry.detail %> 
-      <%# </div> %>
-    <%# </div> %>
-
     <%= form_with(model: @Inquiry,class: "inquiry_form", url: inquiries_path, local: true) do |form| %>
       <div class="inquiry_box">
 
