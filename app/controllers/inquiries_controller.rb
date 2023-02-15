@@ -4,6 +4,9 @@ class InquiriesController < ApplicationController
 
   def new
     @Inquiry = Inquiry.new
+    @User = User.find_by(id: current_user.id)
+    @Inquiry.name = @User.last_name + "　" + @User.first_name
+    @Inquiry.email = @User.email
   end
 
   def confirm
