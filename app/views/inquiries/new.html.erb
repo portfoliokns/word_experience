@@ -1,0 +1,45 @@
+<input id="header_display" type="checkbox" class="header_check_box">
+<label for="header_display" class="header_open">▲</label>
+<label for="header_display" class="header_back"></label>
+<label for="sidebar_display" class="sidebar_open">◀︎</label>
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <input id="sidebar_display" type="checkbox" class="sidebar_check_box">
+  <label for="sidebar_display" class="sidebar_back"></label>
+  <div class="sidebar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="word_theme">
+      お問い合わせ内容を入力してください
+    </h3>
+
+    <div class="word_board">
+      <div class="word_board_text">
+        【このページの説明】<br>
+        ・質問やお困りごとは、こちらのページからお問い合わせください。<br>
+        ・あなたのお名前、返信先のメールアドレス、問合せ内容を記載してください。<br>
+        ・問合せ内容は1000文字以下で記載してください。<br>
+        ・必要事項を記載できましたら、確認ボタンを押してください。
+      </div>
+    </div>
+
+    <%= form_with(model: @Inquiry,class: "word_edit_list", url: confirm_inquiry_path, local: true) do |form| %>
+
+      <%= render 'shared/error_messages', model: form.object %>
+
+      <label class="word_edit_title">お名前</label>
+      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
+      <label class="word_edit_title">メールアドレス</label>
+      <%= form.text_field :email, value: @Inquiry.email, class:"word_edit_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
+      <label class="word_edit_title">お問い合わせ内容</label>
+      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", maxlength: 1000, placeholder:"1000文字以下で入力してください" %>
+      <%= form.submit '確認',class:"word_edit_save_button", id: "blue_button" %>
+    <% end %>
+  
+  
+  </div>
+</div>

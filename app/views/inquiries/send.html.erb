@@ -1,0 +1,28 @@
+<input id="header_display" type="checkbox" class="header_check_box">
+<label for="header_display" class="header_open">▲</label>
+<label for="header_display" class="header_back"></label>
+<label for="sidebar_display" class="sidebar_open">◀︎</label>
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <input id="sidebar_display" type="checkbox" class="sidebar_check_box">
+  <label for="sidebar_display" class="sidebar_back"></label>
+  <div class="sidebar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="word_theme">
+      お問合わせ
+    </h3>
+
+    <div class="word_board">
+      <div class="word_board_text">
+        【メールの送信が完了しました】<br>
+        ・管理者にお問い合わせのメールが送信されました。<br>
+        ・回答までしばらくお待ちください。
+      </div>
+    </div>
+  </div>
+</div>

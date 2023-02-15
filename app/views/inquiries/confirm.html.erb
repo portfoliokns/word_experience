@@ -1,0 +1,54 @@
+<input id="header_display" type="checkbox" class="header_check_box">
+<label for="header_display" class="header_open">▲</label>
+<label for="header_display" class="header_back"></label>
+<label for="sidebar_display" class="sidebar_open">◀︎</label>
+<div class="header">
+  <%= render "shared/header" %>
+</div>
+
+<div class="split_main">
+  <input id="sidebar_display" type="checkbox" class="sidebar_check_box">
+  <label for="sidebar_display" class="sidebar_back"></label>
+  <div class="sidebar">
+    <%= render "shared/side_bar" %>
+  </div>
+  <div class="main_screen">
+    <h3 class="word_theme">
+      入力内容を確認してください
+    </h3>
+
+    <div class="word_board">
+      <div class="word_board_text">
+        【このページの説明】<br>
+        ・お名前、メールアドレス、、お問い合わせ内容を再度ご確認ください。<br>
+        ・内容に問題がなければ、送信ボタンを押してください。<br>
+        ・送信後、管理人とあなたにメールが通達されます。<br>
+        ・回答には時間がかかりますので、あらかじめご了承ください。<br>
+        ・なお送信した場合、利用規約、プライバシーポリシー、個人情報保護法に同意したものとみなします。<br>
+        ・お問い合わせ内容を編集をしたい場合は、戻るボタンを押してください。
+      </div>
+    </div>
+
+    <%= form_with(model: @Inquiry,class: "word_edit_list", url: inquiries_path, local: true) do |form| %>
+      <label class="word_edit_title">お名前</label>
+      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
+      <label class="word_edit_title">メールアドレス</label>
+      <%= form.text_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
+      <label class="word_edit_title">お問い合わせ内容</label>
+      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
+      <%= form.submit '送信',class:"word_edit_save_button", id: "blue_button" %>
+    <% end %>
+
+    <%= form_with(model: @Inquiry,class: "word_edit_list", url: back_inquiry_path, local: true) do |form| %>
+      <label class="word_edit_title">お名前</label>
+      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
+      <label class="word_edit_title">メールアドレス</label>
+      <%= form.text_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
+      <label class="word_edit_title">お問い合わせ内容</label>
+      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
+      <%= form.submit '戻る',class:"word_edit_save_button", id: "blue_button" %>
+    <% end %>
+  
+  
+  </div>
+</div>
