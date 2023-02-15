@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "toppage#index"
+  resources :inquiries, only: [:new, :create]
+  post 'inquiries/confirm', to: 'inquiries#confirm', as: 'confirm_inquiry'
+  post 'inquiries/back', to: 'inquiries#back', as: 'back_inquiry'
+  get 'inquiries/send', to: 'inquiries#send', as: 'send_inquiry'
   resources :manuals, only: [:index]
   resources :about, only: [:index]
   resources :etrobocons, only: [:index]

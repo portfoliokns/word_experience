@@ -11,7 +11,7 @@
 
 # URL
 以下のURLからアクセスしてください。
-- http://35.73.136.1/
+- https://word-experience.link/
 
 <br>
 
@@ -54,7 +54,6 @@
 - ブラウザ：GoogleChrome バージョン: 108.0.5359.112
 
 ## 備考
-- 「ワードをクリックすると、クリップボードへコピーする」機能も実装しています。しかしHTTPSの通信でないため、エラーとなってしまいます。
 - 交換するためのワードの数が十分にない場合、交換ができません。また自分が登録したワードは交換の対象外になります。
 
 <br>
@@ -72,7 +71,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 
 # 実装した機能についての説明
 アプリケーション上の操作マニュアル動画を参照してください。なおアップデートに伴いデザインが変更されていたり、アップデートされた機能の動画が準備されていない場合もあります。あらかじめご了承ください。
-- http://35.73.136.1/manuals
+- https://word-experience.link/manuals
 
 <br>
 
@@ -101,7 +100,7 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 <br>
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/d22cf7c37ac49d4cde4da1c3a4072ca4.png)](https://gyazo.com/d22cf7c37ac49d4cde4da1c3a4072ca4)
+[![Image from Gyazo](https://i.gyazo.com/f293b6eed6983f8a9d5172a7d6c5fa90.png)](https://gyazo.com/f293b6eed6983f8a9d5172a7d6c5fa90)
 
 <br>
 
@@ -176,17 +175,29 @@ belongs_to :user<br>
 belongs_to :word<br>
 belongs_to :exchanged_word
 
+## inquiriesテーブル ： 高評価テーブル
+
+| Column              | Type       | Options                        |
+| --------------      | ---------- | ------------------------------ |
+| name                | string     | null: false                    |
+| email               | string     | null: false                    |
+| detail              | string     | null: false                    |
+
+
+### アソシエーション
+なし
+
 <br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/3f1947a714e42eb014ea7aa5666dbfa3.png)](https://gyazo.com/3f1947a714e42eb014ea7aa5666dbfa3)
+[![Image from Gyazo](https://i.gyazo.com/d61c17cc28cda67a14417ab27613f206.png)](https://gyazo.com/d61c17cc28cda67a14417ab27613f206)
 
 <br>
 
 # 開発環境	使用した言語・サービスを記載。
 - フロントエンド：HTML、CSS、JavaScript
 - バックエンド：Ruby、Ruby on Rails
-- インフラ：AWS(EC3)
+- インフラ：AWS(EC3)、Gmail
 - タスク管理：GitHub
 - その他：YouTube、Google reCAPTCHA
 
