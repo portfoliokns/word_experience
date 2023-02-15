@@ -31,7 +31,7 @@
       <label class="word_edit_title">お名前</label>
       <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
       <label class="word_edit_title">メールアドレス</label>
-      <%= form.text_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
+      <%= form.email_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
       <label class="word_edit_title">お問い合わせ内容</label>
       <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
       <%= form.submit '送信',class:"word_edit_save_button", id: "blue_button" %>
@@ -41,7 +41,7 @@
       <label class="word_edit_title">お名前</label>
       <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
       <label class="word_edit_title">メールアドレス</label>
-      <%= form.text_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
+      <%= form.email_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
       <label class="word_edit_title">お問い合わせ内容</label>
       <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
       <%= form.submit '戻る',class:"word_edit_save_button", id: "blue_button" %>
