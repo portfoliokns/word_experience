@@ -27,26 +27,36 @@
       </div>
     </div>
 
-    <%= form_with(model: @Inquiry,class: "word_edit_list", url: inquiries_path, local: true) do |form| %>
-      <label class="word_edit_title">お名前</label>
-      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
-      <label class="word_edit_title">メールアドレス</label>
-      <%= form.email_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
-      <label class="word_edit_title">お問い合わせ内容</label>
-      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
-      <%= form.submit '送信',class:"word_edit_save_button", id: "blue_button" %>
+    <%# <div class="inquiry_form"> %>
+      <%# <div class="inquiry_box"> %>
+        <%# <label>お名前</label> %>
+        <%# <%= @Inquiry.name %> 
+        <%# <label>メールアドレス</label> %>
+        <%# <%= @Inquiry.email %> 
+        <%# <label>お問い合わせ内容</label> %>
+        <%# <%= @Inquiry.detail %> 
+      <%# </div> %>
+    <%# </div> %>
+
+    <%= form_with(model: @Inquiry,class: "inquiry_form", url: inquiries_path, local: true) do |form| %>
+      <div class="inquiry_box">
+
+        <label>お名前</label>
+        <%= form.text_field :name, value: @Inquiry.name, class:"inquiry_text_field_confirm", readonly: true %>
+        <label>メールアドレス</label>
+        <%= form.email_field :email, value: @Inquiry.email, class:"inquiry_text_field_confirm", readonly: true %>
+        <label>お問い合わせ内容</label>
+        <%= form.text_area :detail, value: @Inquiry.detail, class:"inquiry_area_field_confirm", readonly: true %>
+        <%= form.submit '送信',class:"inquiry_blue_button", id: "blue_button" %>
+      </div>
     <% end %>
 
-    <%= form_with(model: @Inquiry,class: "word_edit_list", url: back_inquiry_path, local: true) do |form| %>
-      <label class="word_edit_title">お名前</label>
-      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", readonly: true %>
-      <label class="word_edit_title">メールアドレス</label>
-      <%= form.email_field :email, value: @Inquiry.email, class:"word_edit_field", readonly: true %>
-      <label class="word_edit_title">お問い合わせ内容</label>
-      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", readonly: true %>
-      <%= form.submit '戻る',class:"word_edit_save_button", id: "blue_button" %>
+    <%= form_with(model: @Inquiry,class: "inquiry_form", url: back_inquiry_path, local: true) do |form| %>
+      <%= form.text_field :name, value: @Inquiry.name, class:"inquiryt_object_hidden", readonly: true %>
+      <%= form.email_field :email, value: @Inquiry.email, class:"inquiryt_object_hidden", readonly: true %>
+      <%= form.text_area :detail, value: @Inquiry.detail, class:"inquiryt_object_hidden", readonly: true %>
+      <%= form.submit '戻る',class:"inquiry_gray_btn", id: "gray_button" %>
     <% end %>
-  
   
   </div>
 </div>

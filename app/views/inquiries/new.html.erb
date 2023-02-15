@@ -27,19 +27,19 @@
       </div>
     </div>
 
-    <%= form_with(model: @Inquiry,class: "word_edit_list", url: confirm_inquiry_path, local: true) do |form| %>
+    <%= form_with(model: @Inquiry,class: "inquiry_form", url: confirm_inquiry_path, local: true) do |form| %>
+      <div class="inquiry_box">
+        <%= render 'shared/error_messages', model: form.object %>
 
-      <%= render 'shared/error_messages', model: form.object %>
-
-      <label class="word_edit_title">お名前</label>
-      <%= form.text_field :name, value: @Inquiry.name, class:"word_edit_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
-      <label class="word_edit_title">メールアドレス</label>
-      <%= form.email_field :email, value: @Inquiry.email, class:"word_edit_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
-      <label class="word_edit_title">お問い合わせ内容</label>
-      <%= form.text_area :detail, value: @Inquiry.detail, class:"word_edit_field", maxlength: 1000, placeholder:"1000文字以下で入力してください" %>
-      <%= form.submit '確認',class:"word_edit_save_button", id: "blue_button" %>
+        <label>お名前</label>
+        <%= form.text_field :name, value: @Inquiry.name, class:"inquiry_text_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
+        <label>メールアドレス</label>
+        <%= form.email_field :email, value: @Inquiry.email, class:"inquiry_text_field", maxlength: 100, placeholder:"100文字以下で入力してください" %>
+        <label>お問い合わせ内容</label>
+        <%= form.text_area :detail, value: @Inquiry.detail, class:"inquiry_area_field", maxlength: 1000, placeholder:"1000文字以下で入力してください" %>
+        <%= form.submit '確認',class:"inquiry_blue_button", id: "blue_button" %>
+      </div>
     <% end %>
-  
   
   </div>
 </div>
