@@ -1,5 +1,11 @@
-<h2><%= @Inquiry.name %></h2>
+Word Experience管理者様
 
-<h2><%= @Inquiry.email %></h2>
-
-<h2><%= @Inquiry.detail %></h2>
+ユーザーからお問い合わせがありました。以下の内容をご確認いただき、ご対応をお願いいたします。<br><br>
+お名前<br>
+<%= @Inquiry.name %>
+<br><br>
+連絡先メールアドレス<br>
+<%= @Inquiry.email %>
+<br><br>
+お問い合わせ内容<br>
+<%= safe_join(@Inquiry.detail.split("\n"),tag(:br)) %>

@@ -17,7 +17,7 @@ class InquiriesController < ApplicationController
 
   def create
     if @Inquiry.valid?
-      # NoticeMailer.send_admin(@Inquiry).deliver_now
+      NoticeMailer.send_admin(@Inquiry).deliver_now
       # NoticeMailer.send_user(@Inquiry).deliver_now
       redirect_to send_inquiry_path
     else

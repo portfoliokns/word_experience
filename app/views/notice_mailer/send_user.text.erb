@@ -1,5 +1,12 @@
+<%= @Inquiry.name %>様
+
+管理者へメールを送信しました。回答までしばらくお待ちください。以下の内容でお問い合わせさせていただいています。<br><br>
+
+お名前<br>
 <%= @Inquiry.name %>
-
+<br><br>
+連絡先メールアドレス<br>
 <%= @Inquiry.email %>
-
-<%= @Inquiry.detail %>
+<br><br>
+お問い合わせ内容<br>
+<%= safe_join(@Inquiry.detail.split("\n"),tag(:br)) %>
