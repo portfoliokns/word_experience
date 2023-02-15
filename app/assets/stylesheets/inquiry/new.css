@@ -64,3 +64,13 @@
 .inquiryt_object_hidden{
   display: none;
 }
+
+@media (max-width: 599px) {
+  .inquiry_area_field, .inquiry_area_field_confirm{
+    width: 90%;
+  }
+
+  .inquiry_blue_button, .inquiry_gray_btn{
+    margin-bottom: 10px;
+  }
+}
