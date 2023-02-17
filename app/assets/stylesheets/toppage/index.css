@@ -25,7 +25,7 @@
 
 .top_page_text{
   width: 500px;
-  height: 500px;
+  height: 98%;
   padding: 8px 32px;
   margin-bottom: 10px;
   background-color: #FFFFFF;
@@ -37,9 +37,14 @@
 }
 
 @media (max-width: 599px) {
+  .top_page_board{
+    height: 85%;
+  }
+
   .top_page_text{
-    width: 80%;
+    width: 90%;
     font-size: 12px;
     padding: 8px 14px;
+    height: 90%;
   }
 }
