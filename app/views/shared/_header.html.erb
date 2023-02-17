@@ -11,11 +11,11 @@
   <div class="links">
     <%= link_to  "Tweet", "https://twitter.com/share?text=※個人が作成したアプリになります。なおこのアプリの存在はツイート禁止です。", class: "tweet", id: "tweet_button", target: :_blank, rel: "noopener noreferrer" %>
     <% if user_signed_in? %>
-      <%= link_to 'Sing out', destroy_user_session_path, method: :delete, class: "log-out", id: "logout_button", data: { confirm: "ログアウトしてもよろしいですか。" } %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "log-out", id: "logout_button", data: { confirm: "ログアウトしてもよろしいですか。" } %>
       <%= link_to current_user.nickname, edit_user_registration_path, class: "user", id: "user_nickname_button" %>
     <% else %>
-      <%= link_to 'Sing in', user_session_path, class: "login", id: "login_button" %>
-      <%= link_to 'Sing up', new_user_registration_path, class: "sign-up", id: "sign_up_button" %>
+      <%= link_to 'Sign in', user_session_path, class: "login", id: "login_button" %>
+      <%= link_to 'Sign up', new_user_registration_path, class: "sign-up", id: "sign_up_button" %>
     <% end %>
   </div>
 </div>
