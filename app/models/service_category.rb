@@ -1,9 +1,9 @@
 class ServiceCategory < ActiveHash::Base
   self.data = [
     { id: 1, name: '--サービスを選択必須--' },
-    { id: 101, name: 'Googole', url: 'https://www.google.com/', link: true },
-    { id: 102, name: 'Googole Maps', url: 'https://www.google.co.jp/maps/', link: true },
-    { id: 103, name: 'Googole トレンド', url: 'https://trends.google.co.jp/', link: true },
+    { id: 101, name: 'Google', url: 'https://www.google.com/', link: true },
+    { id: 102, name: 'Google Maps', url: 'https://www.google.co.jp/maps/', link: true },
+    { id: 103, name: 'Google トレンド', url: 'https://trends.google.co.jp/', link: true },
     { id: 104, name: 'Youtube', url: 'https://www.youtube.com/', link: true },
 
     { id: 201, name: 'Amazon', url: 'https://www.amazon.co.jp/', link: true },
