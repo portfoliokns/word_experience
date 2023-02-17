@@ -17,7 +17,7 @@
       このアプリについて
     </h3>
 
-  <div class="about_board">
+    <div class="about_board">
       <div class="about_board_text">
         <h3>管理人より、皆様へ👦</h3>
         <p>Word Experienceへアクセスいただき、ありがとうございます。</p>
@@ -27,11 +27,25 @@
         <p>そして他の方がどのような体験をしているかを、”ワード”を通じて体験してみてください。</p>
         <p>もしかすると、その"言葉"があなたの価値観を変えることがあるかもしれません。</p>
         <br>
-        <p>なおアプリの仕様などの詳細は
+        <p>現在、このアプリには、
+          <b>
+            <%= @user_num %>人
+          </b>
+          のユーザーがアカウント登録しており、ワードが
+          <b>
+            <%= @word_num %>個
+          </b>
+          登録されています。そしてワードが
+          <b>
+            <%= @exchanged_word_num %>個分
+          </b>
+          交換されています。
+        </p>
+        <br>
+        <p>アプリの仕様などの詳細は
         <%= link_to "GitHub(外部サイト)", "https://github.com/konishi333/word_experience/blob/master/README.md", target: :_blank, rel: "noopener noreferrer" %>
         をご確認ください。</p>
       </div>
     </div>
-  
   </div>
 </div>
