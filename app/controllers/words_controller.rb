@@ -14,7 +14,7 @@ class WordsController < ApplicationController
   before_action :reset_flash
 
   def index
-    @words = Word.where(user_id: current_user.id).order('updated_at DESC')
+    @words = Word.where(user_id: current_user.id).order('updated_at DESC').page(params[:page]).per(10)
   end
 
   def new

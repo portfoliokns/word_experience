@@ -64,5 +64,8 @@
         </div>
       <% end %>
     <% end %>
+    <div class="word_paginate">
+      <%= paginate @words, previous_label: '前へ', next_label: '次へ' %>
+    </div>
   </div>
 </div>
