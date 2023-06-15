@@ -90,5 +90,8 @@
         </div>
       <% end %>
     <% end %>
+    <div class="word_paginate">
+      <%= paginate @exchanged_words, inner_window: 2, outer_window: 2 %>
+    </div>
   </div>
 </div>
