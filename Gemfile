@@ -71,3 +71,4 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 gem 'recaptcha',  require: "recaptcha/rails"
+gem 'kaminari'

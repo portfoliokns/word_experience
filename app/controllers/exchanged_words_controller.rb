@@ -14,7 +14,7 @@ class ExchangedWordsController < ApplicationController
   RANDOM_SEED = 17
 
   def index
-    @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC')
+    @exchanged_words = ExchangedWord.where(user_id: current_user.id).order('created_at DESC').page(params[:page]).per(Word.per_page)
   end
 
   def new

@@ -11,4 +11,8 @@ class Word < ApplicationRecord
                    length: { minimum: 4, maximum: 30, allow_blank: true }
   validates :main_category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :service_category_id, numericality: { other_than: 1, message: "can't be blank" }
+
+  def self.per_page
+    8
+  end
 end
