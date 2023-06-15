@@ -66,7 +66,8 @@
 }
 
 .word_paginate{
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin: 20px 0;
 }
 
@@ -103,7 +104,6 @@
     margin: 30px 0 50px;
   }
 }
-
 
 /* new */
 .word_new_list{
