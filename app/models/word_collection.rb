@@ -20,16 +20,18 @@ class WordCollection
   def input_valid?(save_params, error_message)
     row_count = 1
     names_list = []
+    name_validator = Word.validators_on(:name).find { |v| v.kind == :length }
+    minimum_length = name_validator.options[:minimum]
 
     save_params.each do |params|
       if params[:name].empty?
-        message = "#{row_count}行目：ワードを入力してください。"
+        message = "#{row_count}項目：ワードが入力されていません。入力してください。"
         error_message.replace(message)
         return false
       end
 
       if names_list.include?(params[:name])
-        message = "#{row_count}行目の'#{params[:name]}'：同じワードを登録することはできません。"
+        message = "#{row_count}項目：同じワード '#{params[:name]}' を登録しようとしています。他のワードを入力してください。"
         error_message.replace(message)
         return false
       else
@@ -37,25 +39,25 @@ class WordCollection
       end
 
       if Word.exists?(name: params[:name])
-        message = "#{row_count}行目：同じ名前の単語が既に登録されています。"
+        message = "#{row_count}項目：同じワード '#{params[:name]}' が既に登録されています。別のワードを入力してください。"
         error_message.replace(message)
         return false
       end
 
-      if params[:name].length <= 3
-        message = "#{row_count}行目：ワードは4文字以上、30文字以下で入力してください。"
+      if params[:name].length < minimum_length
+        message = "#{row_count}項目：ワードは#{minimum_length}文字以上、30文字以下で入力してください。"
         error_message.replace(message)
         return false
       end
 
-      if params[:main_category_id] == "1"
-        message = "#{row_count}行目：カテゴリを選択してください。"
+      if params[:main_category_id] == MainCategory::CategorySelectId.to_s
+        message = "#{row_count}項目：カテゴリを選択してください。"
         error_message.replace(message)
         return false
       end
   
-      if params[:service_category_id] == "1"
-        message = "#{row_count}行目：サービスを選択してください。"
+      if params[:service_category_id] == ServiceCategory::CategorySelectId.to_s
+        message = "#{row_count}項目：サービスを選択してください。"
         error_message.replace(message)
         return false
       end
