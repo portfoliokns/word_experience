@@ -17,6 +17,7 @@
 
 .alert_message{
   text-align: center;
+  margin-bottom: 10px;
   font-size: 17px;
   background-color: rgba(231, 93, 93, 0.4);
   color: #222222;
@@ -29,6 +30,6 @@
   }
 
   .alert_message{
-    margin: 0 15px;
+    margin: 10px 15px;
   }
 }
