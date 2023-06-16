@@ -1,4 +1,5 @@
 class ServiceCategory < ActiveHash::Base
+  CategorySelectId = 1
   self.data = [
     { id: 1, name: '--サービスを選択必須--' },
     { id: 101, name: 'Google', url: 'https://www.google.com/', link: true },

@@ -1,4 +1,5 @@
 class MainCategory < ActiveHash::Base
+  CategorySelectId = 1
   self.data = [
     { id: 1, name: '-カテゴリを選択必須-' },
     { id: 2, name: '映画とアニメ' },

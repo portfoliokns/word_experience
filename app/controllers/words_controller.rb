@@ -22,13 +22,16 @@ class WordsController < ApplicationController
   end
 
   def create
-    if @words.save_data(words_save_params)
+    save_params = words_save_params
+    error_message = ""
+    return render_invalid_input(error_message) unless @words.input_valid?(save_params,error_message)
+
+    if @words.save_data(save_params)
       create_or_add_point
       redirect_to user_words_path(current_user.id)
     else
-      @words.set_data(words_set_params)
-      flash.now[:alert] = get_word_message('登録')
-      render :new
+      error_message = "ワードの登録に失敗しました。管理者にお問い合わせください。"
+      render_invalid_input(error_message)
     end
   end
 
@@ -125,5 +128,11 @@ class WordsController < ApplicationController
     set_category
     flash[:alert] = get_point_message(requested_point, '削除')
     render :edit
+  end
+
+  def render_invalid_input(test)
+    @words.set_data(words_set_params)
+    flash.now[:alert] = test
+    render :new
   end
 end
