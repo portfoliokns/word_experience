@@ -2,11 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //DOM初期化
   const Random_Sentence_Url_Api = "https://api.quotable.io/random";
-  console.log(Random_Sentence_Url_Api)
   const typeDisplay = document.getElementById("typeDisplay");
-  console.log(typeDisplay)
   const typeInput = document.getElementById("typeInput");
-  console.log(typeInput)
   const timer = document.getElementById("timer");
   const startButton = document.getElementById("startButton");
 
