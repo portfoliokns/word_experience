@@ -23,8 +23,8 @@
 }
 
 .typing_container .typing_type-Input {
-  margin-top: 4rem;
-  font-size: 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
 }
 
 .typing_timer { 
@@ -36,7 +36,7 @@
 }
 
 .typing_type-display {
-  margin-bottom: 1rem;
+  margin: 1rem;
   margin-left: 1rem;
 }
 
@@ -45,7 +45,7 @@
   border: 2px solid rgb(100,52,52);
   outline: none;
   width: 96%;
-  height: 17rem;
+  height: 12rem;
   margin: auto;
   resize: none;
   padding: 0.5rem 1rem;
@@ -70,6 +70,6 @@
   width: 100%;
   height: 5rem;
   font-size: 3rem;
-  margin-top: 4rem;
+  margin: 2rem 0;
   background-color: rgba(236, 216, 206, 0.75);
 }

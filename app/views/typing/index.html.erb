@@ -3,16 +3,15 @@
   <div class="typing_timer" id="timer">制限時間：30秒</div>
   <div class="typing_container">
     <div class="typing_type-display" id="typeDisplay"></div>
-    <textarea
-      class="typing_type-Input"
-      id="typeInput"
-      readonly
-      onpaste="return false;"
-      oncut="return false;"
-      oncopy="return false;"
-      ondrag="return false;"
-      ondrop="return false;">
-    </textarea>
-    <button id="startButton" class="typing_button" autofocus>開始する</button>
+    <%=text_area_tag "typeInput",
+      nil, class: "typing_type-Input",
+      readonly: true,
+      onpaste: "return false;",
+      oncut: "return false;",
+      oncopy: "return false;",
+      ondrag: "return false;",
+      ondrop: "return false;"
+    %>
+    <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
   </div>
 </div>

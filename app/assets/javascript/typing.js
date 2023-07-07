@@ -29,17 +29,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     sentenceArray.forEach((characterSpan, index) => {
       if ((arrayValue[index] == null)) {
-        characterSpan.classList.remove("correct");
-        characterSpan.classList.remove("incorrect");
+        characterSpan.classList.remove("typing_correct");
+        characterSpan.classList.remove("typing_incorrect");
         correct = false;
       } else if(characterSpan.innerText == arrayValue[index]) {
-        characterSpan.classList.add("correct");
-        characterSpan.classList.remove("incorrect");
+        characterSpan.classList.add("typing_correct");
+        characterSpan.classList.remove("typing_incorrect");
         typeSound.play();
         typeSound.currentTime = 0;
       } else {
-        characterSpan.classList.add("incorrect");
-        characterSpan.classList.remove("correct");
+        characterSpan.classList.add("typing_incorrect");
+        characterSpan.classList.remove("typing_correct");
         wrongSound.play();
         wrongSound.currentTime = 0;
         typeInput.value = reValue;
