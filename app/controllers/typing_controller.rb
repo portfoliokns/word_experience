@@ -1,0 +1,4 @@
+class TypingController < ApplicationController
+
+  
+end
