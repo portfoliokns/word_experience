@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :manuals, only: [:index]
   resources :about, only: [:index]
   resources :etrobocons, only: [:index]
+  resources :typing, only: [:index]
   resources :users, only: [:index] do
     resources :words, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :exchanged_words, only: [:index, :new, :create, :show] do

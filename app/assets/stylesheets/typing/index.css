@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Zen+Antique&display=swap");
+
+.typing_body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(to left top, #9ab2f4, #f8ff9d);
+  font-family: "Poppins", sans-serif;
+}
+
+.typing_container {
+  background-color: rgb(255, 235, 220);
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 0 4rem;
+  border-radius: 0.5rem;
+  width: 1000px;
+  min-height: 600px;
+  max-width: 90%;
+  box-shadow: 1px 5px 6px rgb(80, 80, 80);
+}
+
+.typing_type-Input {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.typing_timer { 
+  position: absolute;
+  top: 1rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(200, 87, 82);
+}
+
+.typing_type-display {
+  margin: 1rem;
+}
+
+.typing_type-Input {
+  background: transparent;
+  border: 2px solid rgb(100,52,52);
+  outline: none;
+  width: 96%;
+  height: 12rem;
+  margin: auto;
+  resize: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.typing_type-Input:focus {
+  border-color: black;
+}
+
+.typing_correct {
+  color: green;
+}
+
+.typing_incorrect {
+  color: red;
+  text-decoration: underline;
+}
+
+.typing_button {
+  width: 100%;
+  height: 5rem;
+  font-size: 3rem;
+  margin: 2rem 0;
+  background-color: rgba(236, 216, 206, 0.75);
+}
+
+@media (max-width: 599px) {
+  .typing_container {
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 599px;
+    min-height: 550px;
+  }
+
+  .typing_timer { 
+    position: absolute;
+    top: 0.1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(200, 87, 82);
+  }
+
+  .typing_type-display {
+    margin: 1rem 0 0;
+    width: 100%;
+  }
+  
+  .typing_type-Input {
+    font-size: 1rem;
+    width: 85%;
+    height: 7rem;
+    margin-top: 1rem;
+  }
+
+  .typing_button {
+    width: 100%;
+    height: 3rem;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    background-color: rgba(236, 216, 206, 0.75);
+  }
+}
