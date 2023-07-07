@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Zen+Antique&display=swap");
+
+.typing_body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(to left top, #9ab2f4, #f8ff9d);
+  font-family: "Poppins", sans-serif;
+}
+
+.typing_container {
+  background-color: rgb(255, 235, 220);
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 0 4rem;
+  border-radius: 0.5rem;
+  width: 1000px;
+  min-height: 600px;
+  max-width: 90%;
+  box-shadow: 1px 5px 6px rgb(80, 80, 80);
+}
+
+.typing_container .typing_type-Input {
+  margin-top: 4rem;
+  font-size: 3rem;
+}
+
+.typing_timer { 
+  position: absolute;
+  top: 1rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(200, 87, 82);
+}
+
+.typing_type-display {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.typing_type-Input {
+  background: transparent;
+  border: 2px solid rgb(100,52,52);
+  outline: none;
+  width: 96%;
+  height: 17rem;
+  margin: auto;
+  resize: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.typing_type-Input:focus {
+  border-color: black;
+}
+
+.typing_correct {
+  color: green;
+}
+
+.typing_incorrect {
+  color: red;
+  text-decoration: underline;
+}
+
+.typing_button {
+  width: 100%;
+  height: 5rem;
+  font-size: 3rem;
+  margin-top: 4rem;
+  background-color: rgba(236, 216, 206, 0.75);
+}
