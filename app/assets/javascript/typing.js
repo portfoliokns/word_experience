@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+  //DOM初期化
   const Random_Sentence_Url_Api = "https://api.quotable.io/random";
   console.log(Random_Sentence_Url_Api)
   const typeDisplay = document.getElementById("typeDisplay");
@@ -7,9 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log(typeInput)
   const timer = document.getElementById("timer");
   const startButton = document.getElementById("startButton");
+
+  //サウンド初期化
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
+  const bombSound = new Audio("../sounds/audio_bomb.mp3");
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -110,6 +115,8 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイムアップ時の処理を行う
   function TimeUp() {
     clearInterval(timerInterval);
+    bombSound.play();
+    bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
     typeInput.readOnly = true;
     startButton.focus();
