@@ -9,6 +9,7 @@
   overflow: scroll;
   background: linear-gradient(to left top, #9ab2f4, #f8ff9d);
   font-family: "Poppins", sans-serif;
+  position: relative;
 }
 
 .typing_timer { 
@@ -18,31 +19,32 @@
   color: rgb(200, 87, 82);
 }
 
+.typing_typeBox{
+  margin: 2rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .typing_Display{
   background-color: rgb(247, 241, 237);
   font-size: 2.4rem;
   font-weight: 600;
   padding: 1rem 2rem;
-  margin: 2rem 0 0;
   border-radius: 0.5rem;
   width: 100%;
-  max-width: 90%;
   height: auto;
   box-shadow: 1px 5px 6px rgb(80, 80, 80);
 }
 
 .typing_TypeInput {
-  background: transparent;
-  margin: 2rem 0 0;
-  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 90%;
-  height: auto;
-  border: 1px double rgb(100,52,52);
-  outline: none;
-  resize: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  height: 100%;
+  opacity: 0;
 }
 
 .typing_button {
@@ -50,12 +52,13 @@
   max-width: 90%;
   height: 5rem;
   font-size: 3rem;
-  margin: 2rem 0;
+  margin: 4rem 0 0;
   background-color: rgba(236, 216, 206, 0.75);
 }
 
 .typing_correct {
   color: green;
+  text-decoration: underline;
 }
 
 .typing_incorrect {
@@ -66,14 +69,16 @@
 @media (max-width: 599px) {
   .typing_timer { 
     font-size: 2rem;
+    margin: 1rem 0 0;
+  }
+
+  .typing_typeBox {
+    margin: 1rem 0 0;
   }
 
   .typing_Display{
     font-size: 1.2rem;
-  }
-
-  .typing_TypeInput {
-    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
   }
 
   .typing_button {
@@ -81,5 +86,6 @@
     height: auto;
     font-size: 1.4rem;
     padding: 0.4rem;
+    margin: 2rem 0 0;
   }
 }

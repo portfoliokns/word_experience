@@ -1,17 +1,22 @@
 <%= javascript_include_tag 'typing.js' %>
 <div class="typing_main">
   <div class="typing_timer" id="timer">制限時間：30秒</div>
-  <div class="typing_Display" id="typeDisplay">ここにタイピング対象の英語文字が表示されます。</div>
-  <%=text_area_tag "typeInput",
-    "こちらにタイピングする文字を入力してください。",
-    class: "typing_TypeInput",
-    readonly: true,
-    onpaste: "return false;",
-    oncut: "return false;",
-    oncopy: "return false;",
-    ondrag: "return false;",
-    ondrop: "return false;"
-  %>
-  
+  <div class="typing_typeBox">
+    <div class="typing_Display" id="typeDisplay">
+      ゲームを開始すると、ここに英語の文章が表示されます。
+      日本語入力を行った場合、動作が保証できません。
+      IMEが必ず半角英数になっていることを確認してください。
+    </div>
+    <%=text_area_tag "typeInput",
+      nil,
+      class: "typing_TypeInput",
+      readonly: true,
+      onpaste: "return false;",
+      oncut: "return false;",
+      oncopy: "return false;",
+      ondrag: "return false;",
+      ondrop: "return false;"
+    %>
+  </div>
   <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
 </div>

@@ -15,17 +15,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
-    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace"];
+    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab", "Enter"];
     if (eventKeys.includes(event.key)) {
       event.preventDefault();
     }
   });
 
+  // 日本語入力チェック
+  let previousComposition = '';
+  typeInput.addEventListener('compositionstart', () => {
+    previousComposition = typeInput.value;
+  });
+  typeInput.addEventListener('compositionend', () => {
+    const currentComposition = typeInput.value;
+    if (currentComposition !== previousComposition) {
+      alert("日本語入力または日本語変換による操作は、動作が保証できません。IMEが必ず半角英数になっていることを確認してください。");
+    }
+    previousComposition = currentComposition;
+  });
+
   // inputTextの入力値を判定する
   typeInput.addEventListener("input", () => {
 
+    let inputText = typeInput.value;
+    inputText = inputText.replace(/[^\sa-zA-Z'; ,.\-]/g, "");
+
     const sentenceArray = typeDisplay.querySelectorAll("span");
-    const arrayValue = typeInput.value.split("");
+    const arrayValue = inputText.split("");
     let reValue = "";
     let correct = true;
 
