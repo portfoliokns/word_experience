@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //ゲームにクリアした場合、ゲームを終了する
     if (correct == true){
-      clearInterval(timerInterval);
+      // clearInterval(timerInterval);
       correctSound.play();
       correctSound.currentTime = 0;
       timer.innerText = "クリア !!";
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //タイムアップ時の処理を行う
   function TimeUp() {
-    clearInterval(timerInterval);
+    // clearInterval(timerInterval);
     // bombSound.play();
     // bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //タイピングゲームを開始する
   startButton.addEventListener("click", () =>{
-    clearInterval(timerInterval);
+    // clearInterval(timerInterval);
     typeInput.readOnly = false;
     typeInput.focus();
     startButton.innerText = "リスタートする";
