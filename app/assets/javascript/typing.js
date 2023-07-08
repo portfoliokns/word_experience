@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
-    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace"];
+    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab"];
     if (eventKeys.includes(event.key)) {
       event.preventDefault();
     }
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
   typeInput.addEventListener("input", () => {
 
     let inputText = typeInput.value;
-    inputText = inputText.replace(/[^\sa-zA-Z'　,.]/g, "");
+    inputText = inputText.replace(/[^\sa-zA-Z'; ,.\-]/g, "");
 
     const sentenceArray = typeDisplay.querySelectorAll("span");
     const arrayValue = inputText.split("");
