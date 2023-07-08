@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // 日本語入力チェック
+  let previousComposition = '';
+  typeInput.addEventListener('compositionstart', () => {
+    previousComposition = typeInput.value;
+  });
+  typeInput.addEventListener('compositionend', () => {
+    const currentComposition = typeInput.value;
+    if (currentComposition !== previousComposition) {
+      alert("日本語入力または日本語変換による操作は、動作が保証できません。IMEが必ず半角英数になっていることを確認してください。");
+    }
+    previousComposition = currentComposition;
+  });
+
   // inputTextの入力値を判定する
   typeInput.addEventListener("input", () => {
 
