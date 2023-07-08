@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
-    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab"];
+    const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab", "Enter"];
     if (eventKeys.includes(event.key)) {
       event.preventDefault();
     }

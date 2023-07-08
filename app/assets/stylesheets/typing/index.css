@@ -57,6 +57,7 @@
 
 .typing_correct {
   color: green;
+  text-decoration: underline;
 }
 
 .typing_incorrect {
