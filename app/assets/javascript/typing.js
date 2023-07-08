@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
-  // const bombSound = new Audio("../sounds/audio_bomb.mp3");
+  const bombSound = new Audio("../sounds/audio_bomb.mp3");
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let timerInterval;
   function StartTimer() {
     clearInterval(timerInterval);
-    timerInterval = null;
 
     startTime = new Date();
     timerInterval = setInterval(() => {
@@ -120,6 +119,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function GameOverMode() {
     clearInterval(timerInterval);
     timerInterval = null;
+    bombSound.play();
+    bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
