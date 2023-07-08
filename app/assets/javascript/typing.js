@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
       correctSound.currentTime = 0;
       timer.innerText = "クリア !!";
       typeInput.readOnly = true;
-      startButton.focus();
+      // startButton.focus();
       startButton.innerText = "もう一度挑戦する";
     }
 
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
     typeInput.readOnly = true;
-    startButton.focus();
+    // startButton.focus();
     startButton.innerText = "もう一度挑戦する";
   };
 
