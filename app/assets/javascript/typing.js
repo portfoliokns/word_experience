@@ -54,13 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //ゲームにクリアした場合、ゲームを終了する
     if (correct == true){
-      // clearInterval(timerInterval);
-      correctSound.play();
-      correctSound.currentTime = 0;
-      timer.innerText = "クリア !!";
-      typeInput.readOnly = true;
-      // startButton.focus();
-      startButton.innerText = "もう一度挑戦する";
+      ClearMode();
     }
 
   });
@@ -72,11 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
     .then((data) => data.content);
   };
 
-  //（非同期処理）ランダムな文字列を取得して、画面に表示する
-  async function RenderNextSentence() {
+  //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
+  async function SetRandomSentence() {
     const sentence = await GetRandomSentence();
-    typeDisplay.innerText = "";
-
+    
     // 文章を1文字ずつ分解して、spanタグを生成する
     let oneText = sentence.split("");
     oneText.forEach((character) => {
@@ -85,8 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
       typeDisplay.appendChild(characterSpan);
     });
 
-    // リセットする
-    typeInput.value = "";
     StartTimer();
   };
 
@@ -95,12 +86,14 @@ document.addEventListener("DOMContentLoaded", function() {
   let originTime = 30;
   let timerInterval;
   function StartTimer() {
-    timer.innerText = "残り" + originTime + "秒";
+    clearInterval(timerInterval);
+    timerInterval = null;
+
     startTime = new Date();
     timerInterval = setInterval(() => {
       nowTime = originTime - getTimerTime()
       timer.innerText = "残り" + nowTime + "秒";
-      if (nowTime <= 0) TimeUp();
+      if (nowTime <= 0) GameOverMode();
     }, 1000);
   };
 
@@ -109,24 +102,37 @@ document.addEventListener("DOMContentLoaded", function() {
     return Math.floor((new Date() - startTime) / 1000);
   };
 
-  //タイムアップ時の処理を行う
-  function TimeUp() {
-    // clearInterval(timerInterval);
-    // bombSound.play();
-    // bombSound.currentTime = 0;
+  //タイピングゲームを開始する
+  startButton.addEventListener("click", () =>{
+    PlayMode();
+    SetRandomSentence();
+  });
+
+  function PlayMode() {
+    timer.innerText = "残り" + originTime + "秒";
+    typeDisplay.innerText = "";
+    typeInput.readOnly = false;
+    typeInput.value = "";
+    typeInput.focus();
+    startButton.innerText = "リスタートする";
+  };
+
+  function GameOverMode() {
+    clearInterval(timerInterval);
+    timerInterval = null;
     timer.innerText = "Game Over !!";
     typeInput.readOnly = true;
-    // startButton.focus();
     startButton.innerText = "もう一度挑戦する";
   };
 
-  //タイピングゲームを開始する
-  startButton.addEventListener("click", () =>{
-    // clearInterval(timerInterval);
-    typeInput.readOnly = false;
-    typeInput.focus();
-    startButton.innerText = "リスタートする";
-    RenderNextSentence();
-  });
+  function ClearMode() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    correctSound.play();
+    correctSound.currentTime = 0;
+    timer.innerText = "Clear !!";
+    typeInput.readOnly = true;
+    startButton.innerText = "もう一度挑戦する";
+  };
 
 });
