@@ -24,8 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // inputTextの入力値を判定する
   typeInput.addEventListener("input", () => {
 
+    let inputText = typeInput.value;
+    inputText = inputText.replace(/[^\sa-zA-Z'　,.]/g, "");
+
     const sentenceArray = typeDisplay.querySelectorAll("span");
-    const arrayValue = typeInput.value.split("");
+    const arrayValue = inputText.split("");
     let reValue = "";
     let correct = true;
 
