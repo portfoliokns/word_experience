@@ -52,8 +52,28 @@
   max-width: 90%;
   height: 5rem;
   font-size: 3rem;
-  margin: 4rem 0 0;
+  margin: 2rem 0;
   background-color: rgba(236, 216, 206, 0.75);
+}
+
+.typing_warning { 
+  width: 100%;
+  max-width: 90%;
+  margin-bottom: 3rem;
+}
+
+.typing_warning-title{
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1rem 0 0;
+}
+
+.typing_warning-description{
+  font-size: 1.2rem;
+}
+
+.typing_warning-description li {
+  margin: 1rem 0 0;
 }
 
 .typing_correct {
@@ -87,5 +107,14 @@
     font-size: 1.4rem;
     padding: 0.4rem;
     margin: 2rem 0 0;
+  }
+
+  .typing_warning-title{
+    margin: 1.3rem 0 0;
+    font-size: 1rem;
+  }
+
+  .typing_warning-description{
+    font-size: 0.9rem;
   }
 }

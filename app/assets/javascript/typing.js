@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
+  const bgmSound = new Audio("../sounds/audio_bgm.mp3");
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -123,8 +124,10 @@ document.addEventListener("DOMContentLoaded", function() {
     SetRandomSentence();
   });
 
+  //プレイ中
   function PlayMode() {
     timer.innerText = "残り" + originTime + "秒";
+    StartBGM()
     typeDisplay.innerText = "";
     typeInput.readOnly = false;
     typeInput.value = "";
@@ -132,9 +135,11 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "リスタートする";
   };
 
+  //ゲームオーバーモード
   function GameOverMode() {
     clearInterval(timerInterval);
     timerInterval = null;
+    StopBGM();
     bombSound.play();
     bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
@@ -142,14 +147,29 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "もう一度挑戦する";
   };
 
+  //クリアモード
   function ClearMode() {
     clearInterval(timerInterval);
     timerInterval = null;
+    StopBGM();
     correctSound.play();
     correctSound.currentTime = 0;
     timer.innerText = "Clear !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };
+
+  //BGM開始
+  function StartBGM() {
+    StopBGM();
+    bgmSound.volume = 0.3;
+    bgmSound.play();
+  }
+
+  //BGM終了
+  function StopBGM() {
+    bgmSound.pause();
+    bgmSound.currentTime = 0;
+  }
 
 });
