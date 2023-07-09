@@ -124,12 +124,10 @@ document.addEventListener("DOMContentLoaded", function() {
     SetRandomSentence();
   });
 
+  //プレイ中
   function PlayMode() {
     timer.innerText = "残り" + originTime + "秒";
-    bgmSound.pause();
-    bgmSound.currentTime = 0;
-    bgmSound.volume = 0.3;
-    bgmSound.play();
+    StartBGM()
     typeDisplay.innerText = "";
     typeInput.readOnly = false;
     typeInput.value = "";
@@ -137,11 +135,11 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "リスタートする";
   };
 
+  //ゲームオーバーモード
   function GameOverMode() {
     clearInterval(timerInterval);
     timerInterval = null;
-    bgmSound.pause();
-    bgmSound.currentTime = 0;
+    StopBGM();
     bombSound.play();
     bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
@@ -149,16 +147,29 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "もう一度挑戦する";
   };
 
+  //クリアモード
   function ClearMode() {
     clearInterval(timerInterval);
     timerInterval = null;
-    bgmSound.pause();
-    bgmSound.currentTime = 0;
+    StopBGM();
     correctSound.play();
     correctSound.currentTime = 0;
     timer.innerText = "Clear !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };
+
+  //BGM開始
+  function StartBGM() {
+    StopBGM();
+    bgmSound.volume = 0.3;
+    bgmSound.play();
+  }
+
+  //BGM終了
+  function StopBGM() {
+    bgmSound.pause();
+    bgmSound.currentTime = 0;
+  }
 
 });
