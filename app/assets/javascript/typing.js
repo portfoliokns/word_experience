@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
+  const bgmSound = new Audio("../sounds/audio_bgm.mp3");
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -125,6 +126,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function PlayMode() {
     timer.innerText = "残り" + originTime + "秒";
+    bgmSound.pause();
+    bgmSound.currentTime = 0;
+    bgmSound.volume = 0.3;
+    bgmSound.play();
     typeDisplay.innerText = "";
     typeInput.readOnly = false;
     typeInput.value = "";
@@ -135,6 +140,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function GameOverMode() {
     clearInterval(timerInterval);
     timerInterval = null;
+    bgmSound.pause();
+    bgmSound.currentTime = 0;
     bombSound.play();
     bombSound.currentTime = 0;
     timer.innerText = "Game Over !!";
@@ -145,6 +152,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function ClearMode() {
     clearInterval(timerInterval);
     timerInterval = null;
+    bgmSound.pause();
+    bgmSound.currentTime = 0;
     correctSound.play();
     correctSound.currentTime = 0;
     timer.innerText = "Clear !!";
