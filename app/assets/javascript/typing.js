@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
   //パラメータ
   let typeMissParams = 2.000;
   let typeMissCounter = 0;
+  let typeCorrectParams = 2;
+  let typeCorrectCounter = 0;
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -75,6 +77,22 @@ document.addEventListener("DOMContentLoaded", function() {
       reValue += arrayValue[index]
     })
 
+<<<<<<< Updated upstream
+=======
+    //タイプミスをした場合、減算タイムを増やす
+    if (typeMiss) {
+      typeMissCounter += 1;
+      missTime = typeMissCounter * typeMissParams;
+    } else {
+      typeCorrectCounter += 1;
+      if (typeCorrectCounter % 15 === 0) {
+        correctTime += typeCorrectParams;
+        correctSound.play();
+        correctSound.currentTime = 0;
+      }
+    };
+
+>>>>>>> Stashed changes
     //ゲームにクリアした場合、ゲームを終了する
     if (correct == true){
       ClearMode();
@@ -109,13 +127,14 @@ document.addEventListener("DOMContentLoaded", function() {
   let nowTime
   let originTime = 30.000;
   let missTime = 0.000;
+  let correctTime = 0;
   let timerInterval;
   function StartTimer() {
     clearInterval(timerInterval);
 
     startTime = new Date();
     timerInterval = setInterval(() => {
-      nowTime = originTime - getTimerTime() - missTime;
+      nowTime = originTime - getTimerTime() - missTime + correctTime;
       if (nowTime < 0.000) nowTime = 0.000;
       timer.innerText = "残り" + Math.ceil(nowTime) + "秒";
       if (nowTime <= 0.000) GameOverMode();
@@ -145,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "リスタートする";
     typeMissCounter = 0;
     missTime = 0.000;
+    typeCorrectCounter = 0;
+    correctTime = 0;
   };
 
   //ゲームオーバーモード
