@@ -48,13 +48,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const sentenceArray = typeDisplay.querySelectorAll("span");
     const arrayValue = inputText.split("");
     let reValue = "";
-    let correct = true;
+    let correctAll = true;
+    let typeMiss = false;
 
     sentenceArray.forEach((characterSpan, index) => {
       if ((arrayValue[index] == null)) {
         characterSpan.classList.remove("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
-        correct = false;
+        correctAll = false;
       } else if(characterSpan.innerText == arrayValue[index]) {
         characterSpan.classList.add("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
@@ -66,17 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
         wrongSound.play();
         wrongSound.currentTime = 0;
         typeInput.value = reValue;
-        typeMissCounter += 1;
-        missTime = typeMissCounter * typeMissParams;
-        correct = false;
+        correctAll = false;
+        typeMiss = true;
       }
 
       //復元用の文字列を作成
       reValue += arrayValue[index]
     })
 
+    //タイプミスをした場合、減算タイムを増やす
+    if (typeMiss) {
+      typeMissCounter += 1;
+      missTime = typeMissCounter * typeMissParams;
+      console.log('aaa');
+    };
+
     //ゲームにクリアした場合、ゲームを終了する
-    if (correct == true){
+    if (correctAll == true){
       ClearMode();
     }
 
