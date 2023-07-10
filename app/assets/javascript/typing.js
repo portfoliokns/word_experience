@@ -124,8 +124,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 経過時間を取得する(少数点第三位まで)
   function getTimerTime() {
-    let test = (new Date() - startTime) / 1000;
-    return test.toFixed(3);
+    let time = (new Date() - startTime) / 1000;
+    return time.toFixed(3);
   };
 
   //タイピングゲームを開始する
