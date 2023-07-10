@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
 
+  //パラメータ
+  let typeMissParams = 2.000;
+  let typeMissCounter = 0;
+
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
     const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab", "Enter"];
@@ -62,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
         wrongSound.play();
         wrongSound.currentTime = 0;
         typeInput.value = reValue;
+        typeMissCounter += 1;
+        missTime = typeMissCounter * typeMissParams;
         correct = false;
       }
 
@@ -100,22 +106,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //タイマーのカウントを開始する
   let startTime;
-  let originTime = 30;
+  let nowTime
+  let originTime = 30.000;
+  let missTime = 0.000;
   let timerInterval;
   function StartTimer() {
     clearInterval(timerInterval);
 
     startTime = new Date();
     timerInterval = setInterval(() => {
-      nowTime = originTime - getTimerTime()
-      timer.innerText = "残り" + nowTime + "秒";
-      if (nowTime <= 0) GameOverMode();
-    }, 1000);
+      nowTime = originTime - getTimerTime() - missTime;
+      if (nowTime < 0.000) nowTime = 0.000;
+      timer.innerText = "残り" + Math.ceil(nowTime) + "秒";
+      if (nowTime <= 0.000) GameOverMode();
+    }, 100);
   };
 
-  // 経過時間を取得する
+  // 経過時間を取得する(少数点第三位まで)
   function getTimerTime() {
-    return Math.floor((new Date() - startTime) / 1000);
+    let test = (new Date() - startTime) / 1000;
+    return test.toFixed(3);
   };
 
   //タイピングゲームを開始する
@@ -133,6 +143,8 @@ document.addEventListener("DOMContentLoaded", function() {
     typeInput.value = "";
     typeInput.focus();
     startButton.innerText = "リスタートする";
+    typeMissCounter = 0;
+    missTime = 0.000;
   };
 
   //ゲームオーバーモード
