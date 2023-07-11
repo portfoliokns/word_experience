@@ -1,6 +1,9 @@
 <%= javascript_include_tag 'typing.js' %>
 <div class="typing_main">
-  <div class="typing_timer" id="timer">制限時間：30秒</div>
+  <div class="typing_timerBox">
+    <div class="typing_timer" id="passedTimer">経過時間：0秒</div>
+    <div class="typing_timer" id="limitTimer">残り 30秒</div>
+  </div>
   <div class="typing_typeBox">
     <div class="typing_Display" id="typeDisplay">
       ゲームを開始すると、ここに英語の文章が表示されます。

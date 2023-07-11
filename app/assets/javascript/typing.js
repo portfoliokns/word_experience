@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const Random_Sentence_Url_Api = "https://api.quotable.io/random";
   const typeDisplay = document.getElementById("typeDisplay");
   const typeInput = document.getElementById("typeInput");
-  const timer = document.getElementById("timer");
+  const passedTimer = document.getElementById("passedTimer");
+  const limitTimer = document.getElementById("limitTimer");
   const startButton = document.getElementById("startButton");
 
   //サウンド初期化
@@ -132,8 +133,9 @@ document.addEventListener("DOMContentLoaded", function() {
     startTime = new Date();
     timerInterval = setInterval(() => {
       nowTime = originTime - getTimerTime() - missTime + correctTime;
+      passedTimer.innerText = "経過時間： " + Math.floor(getTimerTime()) + "秒";
       if (nowTime < 0.000) nowTime = 0.000;
-      timer.innerText = "残り" + Math.ceil(nowTime) + "秒";
+      limitTimer.innerText = "残り " + Math.ceil(nowTime) + "秒";
       if (nowTime <= 0.000) GameOverMode();
     }, 100);
   };
@@ -152,7 +154,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //プレイ中
   function PlayMode() {
-    timer.innerText = "残り" + originTime + "秒";
+    limitTimer.innerText = "残り " + originTime + "秒";
+    passedTimer.innerText = "経過時間：0秒";
     StartBGM()
     typeDisplay.innerText = "";
     typeInput.readOnly = false;
@@ -172,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     bombSound.play();
     bombSound.currentTime = 0;
-    timer.innerText = "Game Over !!";
+    limitTimer.innerText = "Game Over !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };
@@ -184,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     correctSound.play();
     correctSound.currentTime = 0;
-    timer.innerText = "Clear !!";
+    limitTimer.innerText = "Clear !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };

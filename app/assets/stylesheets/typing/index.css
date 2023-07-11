@@ -12,15 +12,26 @@
   position: relative;
 }
 
+.typing_timerBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 241, 237);
+  border-radius: 1rem;
+  margin: 2rem 0;
+  box-shadow: 1px 5px 6px rgb(80, 80, 80);
+}
+
 .typing_timer { 
-  margin: 2rem 0 0;
-  font-size: 4rem;
+  margin: 0 2rem;
+  padding: 1rem;
+  font-size: 3rem;
   font-weight: bold;
   color: rgb(200, 87, 82);
+  text-decoration: underline;
 }
 
 .typing_typeBox{
-  margin: 2rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +98,10 @@
 }
 
 @media (max-width: 599px) {
+  .typing_timerBox{
+    flex-direction: column;
+  }
+
   .typing_timer { 
     font-size: 2rem;
     margin: 1rem 0 0;
