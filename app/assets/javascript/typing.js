@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
+  const recoverySound = new Audio("../sounds/audio_recovery.mp3");
 
   //パラメータ
   let typeMissParams = 2.000;
@@ -85,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
       typeCorrectCounter += 1;
       if (typeCorrectCounter % 15 === 0) {
         correctTime += typeCorrectParams;
-        correctSound.play();
-        correctSound.currentTime = 0;
+        recoverySound.play();
+        recoverySound.currentTime = 0;
       }
     };
 
