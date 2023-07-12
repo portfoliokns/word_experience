@@ -47,8 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
   typeInput.addEventListener("input", () => {
 
     let inputText = typeInput.value;
-    // inputText = inputText.replace(/[^\sa-zA-Z':; ,.\-!?—0-9]/g, "");
-    // "–""..."が入力できなくなった。
 
     const sentenceArray = typeDisplay.querySelectorAll("span");
     const arrayValue = inputText.split("");
@@ -103,7 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
   async function SetRandomSentence() {
-    const sentence = await GetRandomSentence();
+    let sentence = await GetRandomSentence();
+    sentence = ReplaceCharacter(sentence);
     
     // 文章を1文字ずつ分解して、spanタグを生成する
     let oneText = sentence.split("");
@@ -214,6 +213,12 @@ document.addEventListener("DOMContentLoaded", function() {
       recoverySound.play();
       recoverySound.currentTime = 0;
     }
+  };
+
+  function ReplaceCharacter(sentence) {
+    sentence = sentence.replaceAll("–", "");
+    sentence = sentence.replaceAll("...", "");
+    return sentence
   };
 
 });
