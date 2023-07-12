@@ -82,15 +82,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //タイプミスの有無でタイムを加算・減算する
     if (typeMiss) {
-      typeMissCounter += 1;
-      missTime = typeMissCounter * typeMissParams;
+      CutDownTime();
     } else {
-      typeCorrectCounter += 1;
-      if (typeCorrectCounter % 15 === 0) {
-        correctTime += typeCorrectParams;
-        recoverySound.play();
-        recoverySound.currentTime = 0;
-      }
+      AddTime();
     };
 
     //ゲームにクリアした場合、ゲームを終了する
@@ -198,12 +192,28 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     bgmSound.volume = 0.3;
     bgmSound.play();
-  }
+  };
 
   //BGM終了
   function StopBGM() {
     bgmSound.pause();
     bgmSound.currentTime = 0;
-  }
+  };
+
+  //タイムを減算する
+  function CutDownTime() {
+    typeMissCounter += 1;
+    missTime = typeMissCounter * typeMissParams;
+  };
+
+  //タイムを加算する
+  function AddTime() {
+    typeCorrectCounter += 1;
+    if (typeCorrectCounter % 15 === 0) {
+      correctTime += typeCorrectParams;
+      recoverySound.play();
+      recoverySound.currentTime = 0;
+    }
+  };
 
 });
