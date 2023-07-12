@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
   typeInput.addEventListener("input", () => {
 
     let inputText = typeInput.value;
-    inputText = inputText.replace(/[^\sa-zA-Z':; ,.\-!?—0-9]/g, "");
+    // inputText = inputText.replace(/[^\sa-zA-Z':; ,.\-!?—0-9]/g, "");
+    // "–""..."が入力できなくなった。
 
     const sentenceArray = typeDisplay.querySelectorAll("span");
     const arrayValue = inputText.split("");
