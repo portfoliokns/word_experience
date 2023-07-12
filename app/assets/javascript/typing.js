@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const Random_Sentence_Url_Api = "https://api.quotable.io/random";
   const typeDisplay = document.getElementById("typeDisplay");
   const typeInput = document.getElementById("typeInput");
-  const timer = document.getElementById("timer");
+  const passedTimer = document.getElementById("passedTimer");
+  const limitTimer = document.getElementById("limitTimer");
   const startButton = document.getElementById("startButton");
 
   //サウンド初期化
@@ -13,10 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
+  const recoverySound = new Audio("../sounds/audio_recovery.mp3");
 
   //パラメータ
   let typeMissParams = 2.000;
   let typeMissCounter = 0;
+  let typeCorrectParams = 2;
+  let correctTime = 0;
 
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
@@ -43,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
   typeInput.addEventListener("input", () => {
 
     let inputText = typeInput.value;
-    inputText = inputText.replace(/[^\sa-zA-Z':; ,.\-!?—0-9]/g, "");
+    // inputText = inputText.replace(/[^\sa-zA-Z':; ,.\-!?—0-9]/g, "");
+    // "–""..."が入力できなくなった。
 
     const sentenceArray = typeDisplay.querySelectorAll("span");
     const arrayValue = inputText.split("");
@@ -75,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function() {
       reValue += arrayValue[index]
     })
 
-    //タイプミスをした場合、減算タイムを増やす
+    //タイプミスの有無でタイムを加算・減算する
     if (typeMiss) {
-      typeMissCounter += 1;
-      missTime = typeMissCounter * typeMissParams;
-      console.log('aaa');
+      CutDownTime();
+    } else {
+      AddTime();
     };
 
     //ゲームにクリアした場合、ゲームを終了する
@@ -122,9 +127,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     startTime = new Date();
     timerInterval = setInterval(() => {
-      nowTime = originTime - getTimerTime() - missTime;
+      nowTime = originTime - getTimerTime() - missTime + correctTime;
+      passedTimer.innerText = "経過時間： " + Math.floor(getTimerTime()) + "秒";
       if (nowTime < 0.000) nowTime = 0.000;
-      timer.innerText = "残り" + Math.ceil(nowTime) + "秒";
+      limitTimer.innerText = "残り " + Math.ceil(nowTime) + "秒";
       if (nowTime <= 0.000) GameOverMode();
     }, 100);
   };
@@ -143,7 +149,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //プレイ中
   function PlayMode() {
-    timer.innerText = "残り" + originTime + "秒";
+    limitTimer.innerText = "残り " + originTime + "秒";
+    passedTimer.innerText = "経過時間：0秒";
     StartBGM()
     typeDisplay.innerText = "";
     typeInput.readOnly = false;
@@ -152,6 +159,8 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.innerText = "リスタートする";
     typeMissCounter = 0;
     missTime = 0.000;
+    typeCorrectCounter = 0;
+    correctTime = 0;
   };
 
   //ゲームオーバーモード
@@ -161,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     bombSound.play();
     bombSound.currentTime = 0;
-    timer.innerText = "Game Over !!";
+    limitTimer.innerText = "Game Over !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };
@@ -173,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     correctSound.play();
     correctSound.currentTime = 0;
-    timer.innerText = "Clear !!";
+    limitTimer.innerText = "Clear !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
   };
@@ -183,12 +192,28 @@ document.addEventListener("DOMContentLoaded", function() {
     StopBGM();
     bgmSound.volume = 0.3;
     bgmSound.play();
-  }
+  };
 
   //BGM終了
   function StopBGM() {
     bgmSound.pause();
     bgmSound.currentTime = 0;
-  }
+  };
+
+  //タイムを減算する
+  function CutDownTime() {
+    typeMissCounter += 1;
+    missTime = typeMissCounter * typeMissParams;
+  };
+
+  //タイムを加算する
+  function AddTime() {
+    typeCorrectCounter += 1;
+    if (typeCorrectCounter % 15 === 0) {
+      correctTime += typeCorrectParams;
+      recoverySound.play();
+      recoverySound.currentTime = 0;
+    }
+  };
 
 });
