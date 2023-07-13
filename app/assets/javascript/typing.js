@@ -22,6 +22,35 @@ document.addEventListener("DOMContentLoaded", function() {
   let typeCorrectParams = 2;
   let correctTime = 0;
 
+  class sentenceQueue {
+    constructor() {
+      this.elements = [];
+      SetRandomSentence();
+    }
+
+    enqueue(element) {
+      this.elements.push(element);
+    }
+
+    dequeue() {
+      if (this.elements.length === 0) {
+        return "キューは空です";
+      }
+      return this.elements.shift();
+    }
+
+    isEmpty() {
+      if (this.elements.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
+  //文章情報を初期化
+  const sentences = new sentenceQueue();
+
   // 入力キーの制御
   typeInput.addEventListener("keydown", function(event) {
     const eventKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Backspace", "Tab", "Enter"];
@@ -85,10 +114,19 @@ document.addEventListener("DOMContentLoaded", function() {
       AddTime();
     };
 
+    //次の文章を設定する
+    if (correctAll == true & sentences.isEmpty() == false) {
+      typeInput.value = "";
+      SetSentence();
+      return 0;
+    };
+
     //ゲームにクリアした場合、ゲームを終了する
-    if (correctAll == true){
+    if (correctAll == true & sentences.isEmpty() == true){
+      // SetSentence();
       ClearMode();
-    }
+      return 0;
+    };
 
   });
 
@@ -101,18 +139,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
   async function SetRandomSentence() {
-    let sentence = await GetRandomSentence();
-    sentence = ReplaceCharacter(sentence);
-    
-    // 文章を1文字ずつ分解して、spanタグを生成する
+    for (let index = 0; index < 3; index++) {
+      let sentence = await GetRandomSentence();
+      sentence = ReplaceCharacter(sentence);
+      sentences.enqueue(sentence);
+    }
+  };
+
+  // 文章を1文字ずつ分解して、spanタグを生成する
+  function SetSentence() {
+    typeDisplay.innerText = "";
+    let sentence = sentences.dequeue();
     let oneText = sentence.split("");
     oneText.forEach((character) => {
       const characterSpan = document.createElement("span");
       characterSpan.innerText = character;
       typeDisplay.appendChild(characterSpan);
     });
-
-    StartTimer();
   };
 
   //タイマーのカウントを開始する
@@ -143,7 +186,9 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイピングゲームを開始する
   startButton.addEventListener("click", () =>{
     PlayMode();
-    SetRandomSentence();
+    // SetRandomSentence();
+    SetSentence();
+    StartTimer();
   });
 
   //プレイ中
@@ -172,6 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
     limitTimer.innerText = "Game Over !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
+    SetRandomSentence();
   };
 
   //クリアモード
@@ -184,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
     limitTimer.innerText = "Clear !!";
     typeInput.readOnly = true;
     startButton.innerText = "もう一度挑戦する";
+    SetRandomSentence();
   };
 
   //BGM開始
