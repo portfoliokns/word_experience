@@ -25,8 +25,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
   class sentenceQueue {
     constructor() {
+      this.setEnqueues();
+    }
+
+    async setEnqueues() {
       this.elements = [];
-      SetRandomSentence();
+      for (let index = 0; index < 3; index++) {
+        let sentence = await GetRandomSentence();
+        this.enqueue(sentence);
+      }
     }
 
     enqueue(element) {
@@ -35,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     dequeue() {
       if (this.elements.length === 0) {
-        return "キューは空です";
+        return "不具合が発生しました。管理人にお問合せください。";
       }
       return this.elements.shift();
     }
@@ -138,12 +145,14 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
-  async function SetRandomSentence() {
+  async function SetRandomSentences() {
+    randomSentences = [];
     for (let index = 0; index < 3; index++) {
       let sentence = await GetRandomSentence();
       sentence = ReplaceCharacter(sentence);
-      sentences.enqueue(sentence);
+      randomSentences.push(sentence);
     }
+    return randomSentences;
   };
 
   // 文章を1文字ずつ分解して、spanタグを生成する
@@ -161,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイマーのカウントを開始する
   let startTime;
   let nowTime
-  let originTime = 300.000;
+  let originTime = 100.000;
   let missTime = 0.000;
   let timerInterval;
   function StartTimer() {
@@ -222,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
     bombSound.play();
     bombSound.currentTime = 0;
     limitTimer.innerText = "Retire !!";
-    SetRandomSentence();
+    sentences.setEnqueues();
   };
 
   //ゲームオーバーモード
@@ -236,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function() {
     bombSound.currentTime = 0;
     limitTimer.innerText = "Game Over !!";
     typeInput.readOnly = true;
-    SetRandomSentence();
+    sentences.setEnqueues();
   };
 
   //クリアモード
@@ -250,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
     correctSound.currentTime = 0;
     limitTimer.innerText = "Clear !!";
     typeInput.readOnly = true;
-    SetRandomSentence();
+    sentences.setEnqueues();
   };
 
   //BGM開始
