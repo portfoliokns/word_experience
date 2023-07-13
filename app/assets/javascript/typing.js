@@ -301,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function CutDownTime() {
     typeMissCounter += 1;
     missTime = typeMissCounter * typeMissParams;
+    typeCorrectCounter = 0;
   };
 
   //タイムを加算する
