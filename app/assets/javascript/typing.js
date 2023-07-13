@@ -22,30 +22,32 @@ document.addEventListener("DOMContentLoaded", function() {
   let typeMissCounter = 0;
   let typeCorrectParams = 2;
   let correctTime = 0;
+  let sentenceNum = 3;
+  let correctTypeSegment = 15;
 
   class sentenceQueue {
     constructor() {
       this.setEnqueues();
-    }
+    };
 
     async setEnqueues() {
       this.elements = [];
-      for (let index = 0; index < 3; index++) {
+      for (let index = 0; index < sentenceNum; index++) {
         let sentence = await GetRandomSentence();
         this.enqueue(sentence);
       }
-    }
+    };
 
     enqueue(element) {
       this.elements.push(element);
-    }
+    };
 
     dequeue() {
       if (this.elements.length === 0) {
         return "不具合が発生しました。管理人にお問合せください。";
       }
       return this.elements.shift();
-    }
+    };
 
     isEmpty() {
       if (this.elements.length > 0) {
@@ -53,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         return true;
       }
-    }
+    };
   };
 
   //文章情報を初期化
@@ -99,13 +101,11 @@ document.addEventListener("DOMContentLoaded", function() {
       } else if(characterSpan.innerText == arrayValue[index]) {
         characterSpan.classList.add("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
-        typeSound.play();
-        typeSound.currentTime = 0;
+        TypingSoundPlay();
       } else {
         characterSpan.classList.add("typing_incorrect");
         characterSpan.classList.remove("typing_correct");
-        wrongSound.play();
-        wrongSound.currentTime = 0;
+        TypeMissSoundPlay();
         typeInput.value = reValue;
         correctAll = false;
         typeMiss = true;
@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (correctAll == true & sentences.isEmpty() == false) {
       typeInput.value = "";
       SetSentence();
+      CorrectSoundPlay()
       return 0;
     };
 
@@ -170,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイマーのカウントを開始する
   let startTime;
   let nowTime
-  let originTime = 100.000;
+  let originTime = 90.000;
   let missTime = 0.000;
   let timerInterval;
   function StartTimer() {
@@ -223,43 +224,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //リタイアモード
   function RetireMode() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    StopBGM();
-    startButton.disabled = false;
-    retireButton.disabled = true;
-    bombSound.play();
-    bombSound.currentTime = 0;
+    InitMode();
+    BombSoundPlay()
     limitTimer.innerText = "Retire !!";
-    sentences.setEnqueues();
   };
 
   //ゲームオーバーモード
   function GameOverMode() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    StopBGM();
-    startButton.disabled = false;
-    retireButton.disabled = true;
-    bombSound.play();
-    bombSound.currentTime = 0;
+    InitMode();
+    BombSoundPlay()
     limitTimer.innerText = "Game Over !!";
-    typeInput.readOnly = true;
-    sentences.setEnqueues();
   };
 
   //クリアモード
   function ClearMode() {
+    InitMode();
+    CorrectSoundPlay()
+    limitTimer.innerText = "Clear !!";
+  };
+
+  //モードの初期化
+  function InitMode() {
     clearInterval(timerInterval);
     timerInterval = null;
     StopBGM();
     startButton.disabled = false;
     retireButton.disabled = true;
-    correctSound.play();
-    correctSound.currentTime = 0;
-    limitTimer.innerText = "Clear !!";
-    typeInput.readOnly = true;
     sentences.setEnqueues();
+    typeInput.readOnly = true;
   };
 
   //BGM開始
@@ -275,6 +267,36 @@ document.addEventListener("DOMContentLoaded", function() {
     bgmSound.currentTime = 0;
   };
 
+  //タイピングサウンド
+  function TypingSoundPlay() {
+    typeSound.play();
+    typeSound.currentTime = 0;
+  };
+
+  //タイピングミスサウンド
+  function TypeMissSoundPlay() {
+    wrongSound.play();
+    wrongSound.currentTime = 0;
+  };
+
+  //爆発サウンド
+  function BombSoundPlay() {
+    bombSound.play();
+    bombSound.currentTime = 0;
+  };
+
+  //正解サウンド
+  function CorrectSoundPlay() {
+    correctSound.play();
+    correctSound.currentTime = 0;
+  };
+
+  //回復サウンド
+  function RecoverySoundPlay() {
+    recoverySound.play();
+    recoverySound.currentTime = 0;
+  }
+
   //タイムを減算する
   function CutDownTime() {
     typeMissCounter += 1;
@@ -284,13 +306,13 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイムを加算する
   function AddTime() {
     typeCorrectCounter += 1;
-    if (typeCorrectCounter % 15 === 0) {
+    if (typeCorrectCounter % correctTypeSegment === 0) {
       correctTime += typeCorrectParams;
-      recoverySound.play();
-      recoverySound.currentTime = 0;
+      RecoverySoundPlay()
     }
   };
 
+  //禁止文字を置き替える
   function ReplaceCharacter(sentence) {
     sentence = sentence.replaceAll("–", "");
     sentence = sentence.replaceAll("...", "");
