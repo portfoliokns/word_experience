@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const passedTimer = document.getElementById("passedTimer");
   const limitTimer = document.getElementById("limitTimer");
   const startButton = document.getElementById("startButton");
+  const retireButton = document.getElementById("retireButton");
 
   //サウンド初期化
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
@@ -123,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //ゲームにクリアした場合、ゲームを終了する
     if (correctAll == true & sentences.isEmpty() == true){
-      // SetSentence();
       ClearMode();
       return 0;
     };
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイマーのカウントを開始する
   let startTime;
   let nowTime
-  let originTime = 30.000;
+  let originTime = 300.000;
   let missTime = 0.000;
   let timerInterval;
   function StartTimer() {
@@ -186,12 +186,16 @@ document.addEventListener("DOMContentLoaded", function() {
   //タイピングゲームを開始する
   startButton.addEventListener("click", () =>{
     PlayMode();
-    // SetRandomSentence();
     SetSentence();
     StartTimer();
   });
 
-  //プレイ中
+  //リタイアする
+  retireButton.addEventListener("click", () =>{
+    RetireMode();
+  });
+
+  //プレイモード
   function PlayMode() {
     limitTimer.innerText = "残り " + originTime + "秒";
     passedTimer.innerText = "経過時間：0秒";
@@ -200,11 +204,25 @@ document.addEventListener("DOMContentLoaded", function() {
     typeInput.readOnly = false;
     typeInput.value = "";
     typeInput.focus();
-    startButton.innerText = "リスタートする";
+    startButton.disabled = true;
+    retireButton.disabled = false;
     typeMissCounter = 0;
     missTime = 0.000;
     typeCorrectCounter = 0;
     correctTime = 0;
+  };
+
+  //リタイアモード
+  function RetireMode() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    StopBGM();
+    startButton.disabled = false;
+    retireButton.disabled = true;
+    bombSound.play();
+    bombSound.currentTime = 0;
+    limitTimer.innerText = "Retire !!";
+    SetRandomSentence();
   };
 
   //ゲームオーバーモード
@@ -212,11 +230,12 @@ document.addEventListener("DOMContentLoaded", function() {
     clearInterval(timerInterval);
     timerInterval = null;
     StopBGM();
+    startButton.disabled = false;
+    retireButton.disabled = true;
     bombSound.play();
     bombSound.currentTime = 0;
     limitTimer.innerText = "Game Over !!";
     typeInput.readOnly = true;
-    startButton.innerText = "もう一度挑戦する";
     SetRandomSentence();
   };
 
@@ -225,11 +244,12 @@ document.addEventListener("DOMContentLoaded", function() {
     clearInterval(timerInterval);
     timerInterval = null;
     StopBGM();
+    startButton.disabled = false;
+    retireButton.disabled = true;
     correctSound.play();
     correctSound.currentTime = 0;
     limitTimer.innerText = "Clear !!";
     typeInput.readOnly = true;
-    startButton.innerText = "もう一度挑戦する";
     SetRandomSentence();
   };
 

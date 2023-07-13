@@ -21,7 +21,10 @@
       ondrop: "return false;"
     %>
   </div>
-  <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
+  <div class="typing_buttonBox">
+    <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
+    <%= button_tag "リタイアする", id: "retireButton", class: "typing_button", disabled: true %>
+  </div>
   <div class="typing_warning">
     <div class="typing_warning-title">
       【操作方法】

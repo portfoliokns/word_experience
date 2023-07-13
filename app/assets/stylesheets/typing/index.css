@@ -22,7 +22,7 @@
   box-shadow: 1px 5px 6px rgb(80, 80, 80);
 }
 
-.typing_timer { 
+.typing_timer {
   margin: 0 2rem;
   padding: 1rem;
   font-size: 3rem;
@@ -58,16 +58,20 @@
   opacity: 0.5;
 }
 
+.typing_buttonBox {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+
 .typing_button {
-  width: 100%;
-  max-width: 90%;
-  height: 5rem;
-  font-size: 3rem;
-  margin: 2rem 0;
+  margin: 0 4rem 0;
+  padding: 0.5rem;
+  font-size: 2rem;
   background-color: rgba(236, 216, 206, 0.75);
 }
 
-.typing_warning { 
+.typing_warning {
   width: 100%;
   max-width: 90%;
   margin-bottom: 3rem;
@@ -102,7 +106,7 @@
     flex-direction: column;
   }
 
-  .typing_timer { 
+  .typing_timer {
     font-size: 2rem;
     margin: 1rem 0 0;
   }
