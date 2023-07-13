@@ -2,7 +2,7 @@
 <div class="typing_main">
   <div class="typing_timerBox">
     <div class="typing_timer" id="passedTimer">経過時間：0秒</div>
-    <div class="typing_timer" id="limitTimer">残り 30秒</div>
+    <div class="typing_timer" id="limitTimer">残り 90秒</div>
   </div>
   <div class="typing_typeBox">
     <div class="typing_Display" id="typeDisplay">
@@ -21,7 +21,10 @@
       ondrop: "return false;"
     %>
   </div>
-  <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
+  <div class="typing_buttonBox">
+    <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
+    <%= button_tag "リタイアする", id: "retireButton", class: "typing_button", disabled: true %>
+  </div>
   <div class="typing_warning">
     <div class="typing_warning-title">
       【操作方法】
@@ -46,10 +49,10 @@
         タイプミスをした場合、タイムが2秒、減少します。
       </li>
       <li>
-        ゲームの途中で「リスタートする」ボタンからゲームを最初からやり直すことができます。
+        文字を連続して入力できた場合、タイムが2秒、延長できます。
       </li>
       <li>
-        ゲーム終了後、「もう一度挑戦する」ボタンを押すと、ゲームをもう一度遊べます。
+        ゲームの途中で「リタイアする」ボタンを押すと、ゲームをリタイアすることができ、もう一度、最初から挑戦することができます。
       </li>
     </div>
 
