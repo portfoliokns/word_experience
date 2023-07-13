@@ -145,16 +145,16 @@ document.addEventListener("DOMContentLoaded", function() {
     .then((data) => data.content);
   };
 
-  //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
-  async function SetRandomSentences() {
-    randomSentences = [];
-    for (let index = 0; index < 3; index++) {
-      let sentence = await GetRandomSentence();
-      sentence = ReplaceCharacter(sentence);
-      randomSentences.push(sentence);
-    }
-    return randomSentences;
-  };
+  // //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
+  // async function SetRandomSentences() {
+  //   randomSentences = [];
+  //   for (let index = 0; index < 3; index++) {
+  //     let sentence = await GetRandomSentence();
+  //     sentence = ReplaceCharacter(sentence);
+  //     randomSentences.push(sentence);
+  //   }
+  //   return randomSentences;
+  // };
 
   // 文章を1文字ずつ分解して、spanタグを生成する
   function SetSentence() {
