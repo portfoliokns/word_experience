@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
     RetireMode();
   });
 
+  //音量のON/OFF制御
   function setSoundVolume(content,sound, slider) {
     if (content.checked) {
       sound.volume = slider.value;
