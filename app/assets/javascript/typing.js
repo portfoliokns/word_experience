@@ -9,13 +9,27 @@ document.addEventListener("DOMContentLoaded", function() {
   const startButton = document.getElementById("startButton");
   const retireButton = document.getElementById("retireButton");
 
-  //サウンド初期化
+  //DOM初期化（音声関連）
+  const typingBgmContent = document.getElementById("bgm_sound");
+  const typingSoundContent = document.getElementById("typing_sound");
+  const typingMissSoundContent = document.getElementById("typing_miss_sound");
+  const clearSoundContent = document.getElementById("clear_sound");
+  const recoverySoundContent = document.getElementById("recovery_sound");
+  const gameOverSoundContent = document.getElementById("game_over_sound");
+  const bgmSlider = document.getElementById("bgm_volume_slider");
+  const typingSlider = document.getElementById("typing_volume_slider");
+  const missSlider = document.getElementById("miss_volume_slider");
+  const clearSlider = document.getElementById("clear_volume_slider");
+  const recoverySlider = document.getElementById("recovery_volume_slider");
+  const gameOverSlider = document.getElementById("game_over_volume_slider");
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
   const recoverySound = new Audio("../sounds/audio_recovery.mp3");
+  bgmSound.volume = 0.3;
+  bgmSlider.value = bgmSound.volume;
 
   //パラメータ
   let typeMissParams = 2.000;
@@ -98,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
         characterSpan.classList.remove("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
         correctAll = false;
-      } else if(characterSpan.innerText == arrayValue[index]) {
+      } else if(characterSpan.innerHTML == arrayValue[index]) {
         characterSpan.classList.add("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
         TypingSoundPlay();
@@ -143,17 +157,6 @@ document.addEventListener("DOMContentLoaded", function() {
     return fetch(Random_Sentence_Url_Api)
     .then((response) => response.json())
     .then((data) => data.content);
-  };
-
-  //（非同期処理）ランダムな文字列を取得して、画面に表示する(タイマーもスタートする)
-  async function SetRandomSentences() {
-    randomSentences = [];
-    for (let index = 0; index < 3; index++) {
-      let sentence = await GetRandomSentence();
-      sentence = ReplaceCharacter(sentence);
-      randomSentences.push(sentence);
-    }
-    return randomSentences;
   };
 
   // 文章を1文字ずつ分解して、spanタグを生成する
@@ -203,6 +206,88 @@ document.addEventListener("DOMContentLoaded", function() {
   //リタイアする
   retireButton.addEventListener("click", () =>{
     RetireMode();
+  });
+
+  //音量のON/OFF制御
+  function setSoundVolume(content,sound, slider) {
+    if (content.checked) {
+      sound.volume = slider.value;
+      slider.disabled = false;
+    } else {
+      sound.volume = 0;
+      slider.disabled = true;
+    }
+    typeInput.focus();
+  }
+
+  //BGMをON/OFFする
+  typingBgmContent.addEventListener("change", function() {
+    setSoundVolume(this, bgmSound, bgmSlider);
+  });
+
+  //タイピング音をON/OFFする
+  typingSoundContent.addEventListener("change", function() {
+    setSoundVolume(this, typeSound, typingSlider);
+  });
+
+  //タイピングミス音をON/OFFする
+  typingMissSoundContent.addEventListener("change", function() {
+    setSoundVolume(this, wrongSound, missSlider);
+  });
+
+  //正解音をON/OFFする
+  clearSoundContent.addEventListener("change", function() {
+    setSoundVolume(this, correctSound, clearSlider);
+  });
+
+  //回復音をON/OFFする
+  recoverySoundContent.addEventListener("change", function() {
+    setSoundVolume(this, recoverySound, recoverySlider);
+  });
+
+  //ゲームオーバー音をON/OFFする
+  gameOverSoundContent.addEventListener("change", function() {
+    setSoundVolume(this, bombSound, gameOverSlider);
+  });
+
+  //音量を設定する
+  bgmSlider.addEventListener("input", function() {
+    bgmSound.volume = this.value;
+  });
+  typingSlider.addEventListener("input", function() {
+    typeSound.volume = this.value;
+  });
+  missSlider.addEventListener("input", function() {
+    wrongSound.volume = this.value;
+  });
+  clearSlider.addEventListener("input", function() {
+    correctSound.volume = this.value;
+  });
+  recoverySlider.addEventListener("input", function() {
+    recoverySound.volume = this.value;
+  });
+  gameOverSlider.addEventListener("input", function() {
+    bombSound.volume = this.value;
+  });
+
+  //音量調整後のイベント
+  bgmSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  typingSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  missSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  clearSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  recoverySlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  gameOverSlider.addEventListener("change", function() {
+    typeInput.focus();
   });
 
   //プレイモード
@@ -257,7 +342,6 @@ document.addEventListener("DOMContentLoaded", function() {
   //BGM開始
   function StartBGM() {
     StopBGM();
-    bgmSound.volume = 0.3;
     bgmSound.play();
   };
 
@@ -269,32 +353,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //タイピングサウンド
   function TypingSoundPlay() {
+    if (!typingSoundContent.checked) return;
     typeSound.play();
     typeSound.currentTime = 0;
-  };
-
+  }
+  
   //タイピングミスサウンド
   function TypeMissSoundPlay() {
+    if (!typingMissSoundContent.checked) return;
     wrongSound.play();
     wrongSound.currentTime = 0;
-  };
-
-  //爆発サウンド
-  function BombSoundPlay() {
-    bombSound.play();
-    bombSound.currentTime = 0;
-  };
+  }
 
   //正解サウンド
   function CorrectSoundPlay() {
+    if (!clearSoundContent.checked) return;
     correctSound.play();
     correctSound.currentTime = 0;
-  };
+  }
 
   //回復サウンド
   function RecoverySoundPlay() {
+    if (!recoverySoundContent.checked) return;
     recoverySound.play();
     recoverySound.currentTime = 0;
+  }
+
+  //爆発サウンド
+  function BombSoundPlay() {
+    if (!gameOverSoundContent.checked) return;
+    bombSound.play();
+    bombSound.currentTime = 0;
   }
 
   //タイムを減算する
