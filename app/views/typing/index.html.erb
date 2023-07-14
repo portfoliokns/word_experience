@@ -26,7 +26,7 @@
     <%= button_tag "リタイアする", id: "retireButton", class: "typing_button", disabled: true %>
   </div>
   <div class="typing_option_box">
-    <div class="typing_option_title">サウンドON/OFF</div>
+    <div class="typing_option_title">サウンドの調整</div>
     <div class="typing_option_sound">
       <div class="typing_sound_content">
         <%= label_tag :bgm_sound, "BGM", class: "typing_label" %>
@@ -34,7 +34,7 @@
         <%= check_box_tag :bgm_sound, true, class: "typing_check_box" %>
       </div>
       <div class="typing_sound_content">
-        <%= label_tag :typing_sound, "タイピング", class: "typing_label" %>
+        <%= label_tag :typing_sound, "タイピング音", class: "typing_label" %>
         <%= range_field_tag :typing_sound, 1, in: 0..1, step: 0.1, id: "typing_volume_slider", class: "typing_volume" %>
         <%= check_box_tag :typing_sound, true, class: "typing_check_box" %>
       </div>
@@ -44,12 +44,12 @@
         <%= check_box_tag :typing_miss_sound, true, class: "typing_check_box" %>
       </div>
       <div class="typing_sound_content">
-        <%= label_tag :clear_sound, "正解", class: "typing_label" %>
+        <%= label_tag :clear_sound, "正解音", class: "typing_label" %>
         <%= range_field_tag :clear_sound, 1, in: 0..1, step: 0.1, id: "clear_volume_slider", class: "typing_volume" %>
         <%= check_box_tag :clear_sound, true, class: "typing_check_box" %>
       </div>
       <div class="typing_sound_content">
-        <%= label_tag :recovery_sound, "回復", class: "typing_label" %>
+        <%= label_tag :recovery_sound, "回復音", class: "typing_label" %>
         <%= range_field_tag :recovery_sound, 1, in: 0..1, step: 0.1, id: "recovery_volume_slider", class: "typing_volume" %>
         <%= check_box_tag :recovery_sound, true, class: "typing_check_box" %>
       </div>

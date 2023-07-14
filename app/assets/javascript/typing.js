@@ -8,29 +8,28 @@ document.addEventListener("DOMContentLoaded", function() {
   const limitTimer = document.getElementById("limitTimer");
   const startButton = document.getElementById("startButton");
   const retireButton = document.getElementById("retireButton");
+
+  //DOM初期化（音声関連）
   const typingBgmContent = document.getElementById("bgm_sound");
   const typingSoundContent = document.getElementById("typing_sound");
   const typingMissSoundContent = document.getElementById("typing_miss_sound");
   const clearSoundContent = document.getElementById("clear_sound");
   const recoverySoundContent = document.getElementById("recovery_sound");
   const gameOverSoundContent = document.getElementById("game_over_sound");
-
   const bgmSlider = document.getElementById("bgm_volume_slider");
-  bgmSlider.value = 0.3;
   const typingSlider = document.getElementById("typing_volume_slider");
   const missSlider = document.getElementById("miss_volume_slider");
   const clearSlider = document.getElementById("clear_volume_slider");
   const recoverySlider = document.getElementById("recovery_volume_slider");
   const gameOverSlider = document.getElementById("game_over_volume_slider");
-
-  //サウンド初期化
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
   const wrongSound = new Audio("../sounds/audio_wrong.mp3");
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
-  bgmSound.volume = 0.3;
   const recoverySound = new Audio("../sounds/audio_recovery.mp3");
+  bgmSound.volume = 0.3;
+  bgmSlider.value = bgmSound.volume;
 
   //パラメータ
   let typeMissParams = 2.000;
@@ -209,70 +208,44 @@ document.addEventListener("DOMContentLoaded", function() {
     RetireMode();
   });
 
+  function setSoundVolume(content,sound, slider) {
+    if (content.checked) {
+      sound.volume = slider.value;
+      slider.disabled = false;
+    } else {
+      sound.volume = 0;
+      slider.disabled = true;
+    }
+  }
+
   //BGMをON/OFFする
   typingBgmContent.addEventListener("change", function() {
-    if (this.checked) {
-      bgmSound.volume = bgmSlider.value;
-      bgmSlider.disabled = false;
-    } else {
-      bgmSound.volume = 0;
-      bgmSlider.disabled = true;
-    }
+    setSoundVolume(this, bgmSound, bgmSlider);
   });
 
   //タイピング音をON/OFFする
   typingSoundContent.addEventListener("change", function() {
-    if (this.checked) {
-      typeSound.volume = typingSlider.value;
-      typingSlider.disabled = false;
-    } else {
-      typeSound.volume = 0;
-      typingSlider.disabled = true;
-    }
+    setSoundVolume(this, typeSound, typingSlider);
   });
 
   //タイピングミス音をON/OFFする
   typingMissSoundContent.addEventListener("change", function() {
-    if (this.checked) {
-      wrongSound.volume = missSlider.value;
-      missSlider.disabled = false;
-    } else {
-      wrongSound.volume = 0;
-      missSlider.disabled = true;
-    }
+    setSoundVolume(this, wrongSound, missSlider);
   });
 
   //正解音をON/OFFする
   clearSoundContent.addEventListener("change", function() {
-    if (this.checked) {
-      correctSound.volume = clearSlider.value;
-      clearSlider.disabled = false;
-    } else {
-      correctSound.volume = 0;
-      clearSlider.disabled = true;
-    }
+    setSoundVolume(this, correctSound, clearSlider);
   });
 
   //回復音をON/OFFする
   recoverySoundContent.addEventListener("change", function() {
-    if (this.checked) {
-      recoverySound.volume = recoverySlider.value;
-      recoverySlider.disabled = false;
-    } else {
-      recoverySound.volume = 0;
-      recoverySlider.disabled = true;
-    }
+    setSoundVolume(this, recoverySound, recoverySlider);
   });
 
   //ゲームオーバー音をON/OFFする
   gameOverSoundContent.addEventListener("change", function() {
-    if (this.checked) {
-      bombSound.volume = gameOverSlider.value;
-      gameOverSlider.disabled = false;
-    } else {
-      bombSound.volume = 0;
-      gameOverSlider.disabled = true;
-    }
+    setSoundVolume(this, bombSound, gameOverSlider);
   });
 
   //音量を設定する
