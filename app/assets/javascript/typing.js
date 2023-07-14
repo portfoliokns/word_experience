@@ -216,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
       sound.volume = 0;
       slider.disabled = true;
     }
+    typeInput.focus();
   }
 
   //BGMをON/OFFする
@@ -266,6 +267,26 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   gameOverSlider.addEventListener("input", function() {
     bombSound.volume = this.value;
+  });
+
+  //音量調整後のイベント
+  bgmSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  typingSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  missSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  clearSlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  recoverySlider.addEventListener("change", function() {
+    typeInput.focus();
+  });
+  gameOverSlider.addEventListener("change", function() {
+    typeInput.focus();
   });
 
   //プレイモード
