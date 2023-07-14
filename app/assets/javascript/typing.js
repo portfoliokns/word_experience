@@ -8,6 +8,20 @@ document.addEventListener("DOMContentLoaded", function() {
   const limitTimer = document.getElementById("limitTimer");
   const startButton = document.getElementById("startButton");
   const retireButton = document.getElementById("retireButton");
+  const typingBgmContent = document.getElementById("bgm_sound");
+  const typingSoundContent = document.getElementById("typing_sound");
+  const typingMissSoundContent = document.getElementById("typing_miss_sound");
+  const clearSoundContent = document.getElementById("clear_sound");
+  const recoverySoundContent = document.getElementById("recovery_sound");
+  const gameOverSoundContent = document.getElementById("game_over_sound");
+
+  const bgmSlider = document.getElementById("bgm_volume_slider");
+  bgmSlider.value = 0.3;
+  const typingSlider = document.getElementById("typing_volume_slider");
+  const missSlider = document.getElementById("miss_volume_slider");
+  const clearSlider = document.getElementById("clear_volume_slider");
+  const recoverySlider = document.getElementById("recovery_volume_slider");
+  const gameOverSlider = document.getElementById("game_over_volume_slider");
 
   //サウンド初期化
   const typeSound = new Audio("../sounds/audio_typing-sound.mp3");
@@ -15,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const correctSound = new Audio("../sounds/audio_correct.mp3");
   const bombSound = new Audio("../sounds/audio_bomb.mp3");
   const bgmSound = new Audio("../sounds/audio_bgm.mp3");
+  bgmSound.volume = 0.3;
   const recoverySound = new Audio("../sounds/audio_recovery.mp3");
 
   //パラメータ
@@ -194,6 +209,92 @@ document.addEventListener("DOMContentLoaded", function() {
     RetireMode();
   });
 
+  //BGMをON/OFFする
+  typingBgmContent.addEventListener("change", function() {
+    if (this.checked) {
+      bgmSound.volume = bgmSlider.value;
+      bgmSlider.disabled = false;
+    } else {
+      bgmSound.volume = 0;
+      bgmSlider.disabled = true;
+    }
+  });
+
+  //タイピング音をON/OFFする
+  typingSoundContent.addEventListener("change", function() {
+    if (this.checked) {
+      typeSound.volume = typingSlider.value;
+      typingSlider.disabled = false;
+    } else {
+      typeSound.volume = 0;
+      typingSlider.disabled = true;
+    }
+  });
+
+  //タイピングミス音をON/OFFする
+  typingMissSoundContent.addEventListener("change", function() {
+    if (this.checked) {
+      wrongSound.volume = missSlider.value;
+      missSlider.disabled = false;
+    } else {
+      wrongSound.volume = 0;
+      missSlider.disabled = true;
+    }
+  });
+
+  //正解音をON/OFFする
+  clearSoundContent.addEventListener("change", function() {
+    if (this.checked) {
+      correctSound.volume = clearSlider.value;
+      clearSlider.disabled = false;
+    } else {
+      correctSound.volume = 0;
+      clearSlider.disabled = true;
+    }
+  });
+
+  //回復音をON/OFFする
+  recoverySoundContent.addEventListener("change", function() {
+    if (this.checked) {
+      recoverySound.volume = recoverySlider.value;
+      recoverySlider.disabled = false;
+    } else {
+      recoverySound.volume = 0;
+      recoverySlider.disabled = true;
+    }
+  });
+
+  //ゲームオーバー音をON/OFFする
+  gameOverSoundContent.addEventListener("change", function() {
+    if (this.checked) {
+      bombSound.volume = gameOverSlider.value;
+      gameOverSlider.disabled = false;
+    } else {
+      bombSound.volume = 0;
+      gameOverSlider.disabled = true;
+    }
+  });
+
+  //音量を設定する
+  bgmSlider.addEventListener("input", function() {
+    bgmSound.volume = this.value;
+  });
+  typingSlider.addEventListener("input", function() {
+    typeSound.volume = this.value;
+  });
+  missSlider.addEventListener("input", function() {
+    wrongSound.volume = this.value;
+  });
+  clearSlider.addEventListener("input", function() {
+    correctSound.volume = this.value;
+  });
+  recoverySlider.addEventListener("input", function() {
+    recoverySound.volume = this.value;
+  });
+  gameOverSlider.addEventListener("input", function() {
+    bombSound.volume = this.value;
+  });
+
   //プレイモード
   function PlayMode() {
     limitTimer.innerText = "残り " + originTime + "秒";
@@ -246,7 +347,6 @@ document.addEventListener("DOMContentLoaded", function() {
   //BGM開始
   function StartBGM() {
     StopBGM();
-    bgmSound.volume = 0.3;
     bgmSound.play();
   };
 
@@ -258,32 +358,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //タイピングサウンド
   function TypingSoundPlay() {
+    if (!typingSoundContent.checked) return;
     typeSound.play();
     typeSound.currentTime = 0;
-  };
-
+  }
+  
   //タイピングミスサウンド
   function TypeMissSoundPlay() {
+    if (!typingMissSoundContent.checked) return;
     wrongSound.play();
     wrongSound.currentTime = 0;
-  };
-
-  //爆発サウンド
-  function BombSoundPlay() {
-    bombSound.play();
-    bombSound.currentTime = 0;
-  };
+  }
 
   //正解サウンド
   function CorrectSoundPlay() {
+    if (!clearSoundContent.checked) return;
     correctSound.play();
     correctSound.currentTime = 0;
-  };
+  }
 
   //回復サウンド
   function RecoverySoundPlay() {
+    if (!recoverySoundContent.checked) return;
     recoverySound.play();
     recoverySound.currentTime = 0;
+  }
+
+  //爆発サウンド
+  function BombSoundPlay() {
+    if (!gameOverSoundContent.checked) return;
+    bombSound.play();
+    bombSound.currentTime = 0;
   }
 
   //タイムを減算する

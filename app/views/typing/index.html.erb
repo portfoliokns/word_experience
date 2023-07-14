@@ -25,6 +25,41 @@
     <%= button_tag "開始する", id: "startButton", class: "typing_button", autofocus: true %>
     <%= button_tag "リタイアする", id: "retireButton", class: "typing_button", disabled: true %>
   </div>
+  <div class="typing_option_box">
+    <div class="typing_option_title">サウンドON/OFF</div>
+    <div class="typing_option_sound">
+      <div class="typing_sound_content">
+        <%= label_tag :bgm_sound, "BGM", class: "typing_label" %>
+        <%= range_field_tag :bgm_sound, 1, in: 0..1, step: 0.1, id: "bgm_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :bgm_sound, true, class: "typing_check_box" %>
+      </div>
+      <div class="typing_sound_content">
+        <%= label_tag :typing_sound, "タイピング", class: "typing_label" %>
+        <%= range_field_tag :typing_sound, 1, in: 0..1, step: 0.1, id: "typing_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :typing_sound, true, class: "typing_check_box" %>
+      </div>
+      <div class="typing_sound_content">
+        <%= label_tag :typing_miss_sound, "タイピングミス", class: "typing_label" %>
+        <%= range_field_tag :typing_miss_sound, 1, in: 0..1, step: 0.1, id: "miss_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :typing_miss_sound, true, class: "typing_check_box" %>
+      </div>
+      <div class="typing_sound_content">
+        <%= label_tag :clear_sound, "正解", class: "typing_label" %>
+        <%= range_field_tag :clear_sound, 1, in: 0..1, step: 0.1, id: "clear_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :clear_sound, true, class: "typing_check_box" %>
+      </div>
+      <div class="typing_sound_content">
+        <%= label_tag :recovery_sound, "回復", class: "typing_label" %>
+        <%= range_field_tag :recovery_sound, 1, in: 0..1, step: 0.1, id: "recovery_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :recovery_sound, true, class: "typing_check_box" %>
+      </div>
+      <div class="typing_sound_content">
+        <%= label_tag :game_over_sound, "ゲームオーバー", class: "typing_label" %>
+        <%= range_field_tag :game_over_sound, 1, in: 0..1, step: 0.1, id: "game_over_volume_slider", class: "typing_volume" %>
+        <%= check_box_tag :game_over_sound, true, class: "typing_check_box" %>
+      </div>
+    </div>
+  </div>
   <div class="typing_warning">
     <div class="typing_warning-title">
       【操作方法】

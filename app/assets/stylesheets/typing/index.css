@@ -71,6 +71,35 @@
   background-color: rgba(236, 216, 206, 0.75);
 }
 
+.typing_option_box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(248, 248, 227);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0 0;
+  border-radius: 0.5rem;
+  box-shadow: 1px 5px 6px rgb(80, 80, 80);
+}
+
+.typing_option_title {
+  font-size: 1.5rem;
+}
+
+.typing_option_sound {
+  font-size: 1rem;
+}
+
+.typing_sound_content {
+  display: flex;
+  justify-content: right;
+  margin: 0.5rem 0 0;
+}
+
+.typing_volume {
+  margin: 0 1rem 0;
+}
+
 .typing_warning {
   width: 100%;
   max-width: 90%;
