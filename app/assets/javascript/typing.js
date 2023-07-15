@@ -115,24 +115,24 @@ document.addEventListener("DOMContentLoaded", function() {
       } else if(characterSpan.innerHTML == arrayValue[index]) {
         characterSpan.classList.add("typing_correct");
         characterSpan.classList.remove("typing_incorrect");
-        TypingSoundPlay();
       } else {
         characterSpan.classList.add("typing_incorrect");
         characterSpan.classList.remove("typing_correct");
-        TypeMissSoundPlay();
         typeInput.value = reValue;
         correctAll = false;
         typeMiss = true;
       }
-
+      
       //復元用の文字列を作成
       reValue += arrayValue[index]
-    })
-
-    //タイプミスの有無でタイムを加算・減算する
+    });
+    
+    //タイプミスの有無で処理を分岐
     if (typeMiss) {
+      TypeMissSoundPlay();
       CutDownTime();
     } else {
+      TypingSoundPlay();
       AddTime();
     };
 
