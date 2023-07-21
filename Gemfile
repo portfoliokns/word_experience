@@ -76,3 +76,4 @@ gem 'kaminari'
 #GitHub Alert
 gem "rack", ">= 2.2.6.4"
 gem "rails-html-sanitizer", ">= 1.4.4"
+gem "loofah", ">= 2.19.1"
