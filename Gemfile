@@ -72,3 +72,6 @@ group :production do
 end
 gem 'recaptcha',  require: "recaptcha/rails"
 gem 'kaminari'
+
+#GitHub Alert
+gem "rack", ">= 2.2.6.4"
