@@ -356,6 +356,7 @@ DEPENDENCIES
   puma (~> 4.3.12)
   rack (>= 2.2.6.4)
   rails (~> 6.0.0)
+  rails-html-sanitizer (>= 1.4.4)
   recaptcha
   rspec-rails
   rubocop
