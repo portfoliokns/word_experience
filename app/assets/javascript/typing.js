@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     dequeue() {
       if (this.elements.length === 0) {
-        return "不具合が発生しました。管理人にお問合せください。";
+        return "現在、文字取得用のAPIサーバーまたはDNSサーバーがダウンしているため、ゲームが正常に開始できません。このページを閉じてください。（2023/8/2追記）";
       }
       return this.elements.shift();
     };
