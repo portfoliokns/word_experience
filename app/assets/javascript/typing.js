@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   //DOM初期化
-  const Random_Sentence_Url_Api = "https://api.quotable.io/random";
+  const Random_Sentence_Url_Api = "https://api.quotable.io/random?minLength=110&maxLength=130";
   const typeDisplay = document.getElementById("typeDisplay");
   const typeInput = document.getElementById("typeInput");
   const passedTimer = document.getElementById("passedTimer");
