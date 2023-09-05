@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   //DOM初期化
-  const Random_Sentence_Url_Api = "https://api.quotable.io/random";
+  const Random_Sentence_Url_Api = "https://api.quotable.io/random?minLength=110&maxLength=130";
   const typeDisplay = document.getElementById("typeDisplay");
   const typeInput = document.getElementById("typeInput");
   const passedTimer = document.getElementById("passedTimer");
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     dequeue() {
       if (this.elements.length === 0) {
-        return "現在、文字取得用のAPIサーバーまたはDNSサーバーがダウンしているため、ゲームが正常に開始できません。このページを閉じてください。（2023/8/2追記）";
+        return "不具合が発生しました。リタイアして、再び開始してください。それでも不具合が生じる場合、外部APIにて障害が発生している可能性があります。";
       }
       return this.elements.shift();
     };
