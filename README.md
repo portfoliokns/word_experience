@@ -10,8 +10,10 @@
 <br>
 
 # URL
-以下のURLからアクセスしてください。
-- https://word-experience.link/
+~~以下のURLからアクセスしてください。~~
+- ~~https://word-experience.link/~~
+
+**サービスを終了しました。サービスは現在、稼働していません。**
 
 <br>
 
@@ -71,7 +73,10 @@ YoutubeやAmazonといった大手IT企業のサービスなどでは、パー�
 
 # 実装した機能についての説明
 アプリケーション上の操作マニュアル動画を参照してください。なおアップデートに伴いデザインが変更されていたり、アップデートされた機能の動画が準備されていない場合もあります。あらかじめご了承ください。
-- https://word-experience.link/manuals
+- ~~https://word-experience.link/manuals~~
+
+**サービスを終了しました。マニュアル動画は以下のURLからYouTube上で確認できます。**
+- https://www.youtube.com/watch?v=rXFKJnAtE6U
 
 <br>
 
